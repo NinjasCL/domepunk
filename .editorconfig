@@ -1,0 +1,8 @@
+[*]
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+end_of_line = lf
+
+[Makefile]
+indent_style = tab
