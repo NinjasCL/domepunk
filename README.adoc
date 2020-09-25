@@ -1,0 +1,4 @@
+# Dome Punk
+
+Utility libs for usage with https://github.com/avivbeeri/dome[Dome Game Engine]. Inspired by https://github.com/useflashpunk/FlashPunk[Flash Punk]
+and others.
