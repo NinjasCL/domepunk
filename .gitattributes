@@ -1,1 +1,2 @@
+$ cat .gitattributes
 *.wren linguist-language=JavaScript
