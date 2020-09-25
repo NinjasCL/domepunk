@@ -2,18 +2,20 @@ import "math" for Math
 /**
 * Static class with useful easer functions that can be used by Tweens.
 * Based on https://github.com/useflashpunk/FlashPunk/blob/master/net/flashpunk/utils/Ease.as
+* and https://github.com/HaxePunk/HaxePunk/blob/dev/haxepunk/utils/Ease.hx
 */
 class Ease {
 
     // Easing constants.
     PI { Num.pi }
-    PI2 { Num.pi / 2}
-    B1 { 1 / 2.75}
-    B2 { 2 / 2.75}
-    B3 { 1.5 / 2.75}
-    B4 { 2.5 / 2.75}
-    B5 { 2.25 / 2.75}
-    B6 { 2.625 / 2.75}
+    PI2 { Num.pi / 2 }
+    EL { 2 * Num.pi / 0.45 }
+    B1 { 1 / 2.75 }
+    B2 { 2 / 2.75 }
+    B3 { 1.5 / 2.75 }
+    B4 { 2.5 / 2.75 }
+    B5 { 2.25 / 2.75 }
+    B6 { 2.625 / 2.75 }
 
     /**
     * Operation of in/out easers:
@@ -25,6 +27,12 @@ class Ease {
     * inOut(t)
     *   return (t <= 0.5) ? in(t * 2) / 2 : out(t * 2 - 1) / 2 + 0.5
     */
+
+    /** Linear easing */
+    static linear(t)
+    {
+        return t
+    }
 
     /** Quadratic in. */
     static quadIn(t)
@@ -204,9 +212,9 @@ class Ease {
     /** Back in and out. */
     static backInOut(t)
     {
-        t *= 2
+        t = t * 2
         if (t < 1) return t * t * (2.70158 * t - 1.70158) / 2
-        t --
+        t = t - 1
         return (1 - (--t) * (t) * (-2.70158 * t - 1.70158)) / 2 + 0.5
     }
 }
