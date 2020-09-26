@@ -39,18 +39,28 @@ class Runner {
 
     var total = tests.count
     var count = 0
+    var error = null 
 
     tests.each{ |test|
+      
       count = count + 1
+      
       System.write("> Test ")
+
       if(test is List) {
         System.write("(%(count)/%(total)) %(test[0])")
-        test[1].call()
+        error = test[1].try()
       } else {
         System.write("(%(count)/%(total))")
-        test.call()
+        error = test.try()
       }
-      System.print("\t\t✅")
+
+      if(error) {
+        System.print("\t\t❌")
+        Fiber.abort(error)
+      } else {
+        System.print("\t\t✅")
+      }
     }
 
     System.print("🎉 All Tests Completed for: %(name)")

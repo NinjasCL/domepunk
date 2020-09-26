@@ -7,70 +7,78 @@ class EaseTests {
 
   static value { 10 }
 
-  static thatLinearWorks() {
-    return Fn.new() {
+  static thatLinearWorks {[
+    "thatLinearWorks",
+    Fiber.new {
       var value = EaseTests.value
       Assert.equal(Ease.linear(value), 10)
     }
-  }
+  ]}
 
-  static thatQuadInWorks() {
-    return Fn.new() {
+  static thatQuadInWorks {[
+    "thatQuadInWorks",
+    Fiber.new {
       var value = EaseTests.value
       Assert.equal(Ease.quadIn(value), 100)
     }
-  }
+  ]}
 
-  static thatQuadOutWorks() {
-    return Fn.new() {
+  static thatQuadOutWorks {[
+    "thatQuadOutWorks",
+    Fiber.new {
       var value = EaseTests.value
       Assert.equal(Ease.quadOut(value), -80)
     }
-  }
+  ]}
 
-  static thatQuadInOutWorks() {
-    return Fn.new() {
+  static thatQuadInOutWorks {[
+    "thatQuadInOutWorks",
+    Fiber.new {
       var value = EaseTests.value
       Assert.equal(Ease.quadInOut(value), 0)
     }
-  }
+  ]}
 
-  static thatCubeInWorks() {
-    return Fn.new() {
+  static thatCubeInWorks {[
+    "thatCubeInWorks",
+    Fiber.new {
       var value = EaseTests.value
       Assert.equal(Ease.cubeIn(value), 1000)
     }
-  }
+  ]}
 
-  static thatCubeOutWorks() {
-    return Fn.new() {
+  static thatCubeOutWorks {[
+    "thatCubeOutWorks",
+    Fiber.new {
       var value = EaseTests.value
       Assert.equal(Ease.cubeOut(value), 1001)
     }
-  }
+  ]}
 
-  static thatCubeInOutWorks() {
-    return Fn.new() {
+  static thatCubeInOutWorks {[
+    "thatCubeInOutWorks",
+    Fiber.new {
       var value = EaseTests.value
       Assert.equal(Ease.cubeInOut(value), 4001)
     }
-  }
+  ]}
 
-  static thatQuartInWorks() {
-    return Fn.new() {
+  static thatQuartInWorks {[
+    "thatQuartInWorks",
+    Fiber.new {
       var value = EaseTests.value
       Assert.equal(Ease.quartIn(value), 10000)
     }
-  }
+  ]}
 
   static all {[
-    ["thatLinearWorks", thatLinearWorks()],
-    ["thatQuadInWorks", thatQuadInWorks()],
-    ["thatQuadOutWorks", thatQuadOutWorks()],
-    ["thatCubeInWorks", thatCubeInWorks()],
-    ["thatCubeOutWorks", thatCubeOutWorks()],
-    ["thatCubeInOutWorks", thatCubeInOutWorks()],
-    ["thatQuartInWorks", thatQuartInWorks()]
+    thatLinearWorks,
+    thatQuadInWorks,
+    thatQuadOutWorks,
+    thatCubeInWorks,
+    thatCubeOutWorks,
+    thatCubeInOutWorks,
+    thatQuartInWorks,
   ]}
 }
 
