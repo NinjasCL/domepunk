@@ -53,7 +53,7 @@ class Runner {
       System.print("\t\t✅")
     }
 
-    System.print("🎉  All Tests Completed for: %(name)")
+    System.print("🎉 All Tests Completed for: %(name)")
     Process.exit()
   }
 }
