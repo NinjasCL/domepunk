@@ -20,4 +20,4 @@ c clean:
 	rm -f main.wren
 
 t test:
-	./dome src/test/Tests.wren
+	./dome src/test/main.test.wren
