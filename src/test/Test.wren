@@ -56,7 +56,10 @@ class Runner {
   }
 }
 
-// Assertion methods
+/**
+ * Used to make assertions about values in test cases.
+ * @author Camilo Castro <camilo@ninjas.cl>
+ */
 class Assert {
     static equal(a, b) {
         return Assert.equal(a, b, "%(a) is not equal to %(b)")
@@ -68,10 +71,31 @@ class Assert {
         }
     }
 
+    static notEqual(a, b) {
+        return Assert.notEqual(a, b, "%(a) is equal to %(b)")
+    }
+
+    static notEqual(a, b, message) {
+        if(a == b) {
+            return Fiber.abort(message)
+        }
+    }
+
+    /**
+   * Assert that a value is true.
+   * @param item: expected to be true
+   * @throws Fiber.abort if value is not true
+   */
     static isTrue(item) {
         return Assert.isTrue(item, "%(item) must be true")
     }
 
+    /**
+   * Assert that a value is true.
+   * @param item: value expected to be true
+   * @param message: The message to display in case of failure
+   * @throws Fiber.abort if value is not true
+   */
     static isTrue(item, message) {
         return Assert.equal(item, true, message)
     }
@@ -82,6 +106,26 @@ class Assert {
 
     static isFalse(item, message) {
         return Assert.equal(item, false, message)
+    }
+
+    static isNull(item) {
+        return Assert.isNull(item, "%(item) is not of type Null")
+    }
+
+    static isNull(item, message) {
+        if(!item is Null) {
+            return Fiber.abort(message)
+        }
+    }
+
+    static isNotNull(item) {
+        return Assert.isNotNull(item, "%(item) must not be Null")
+    }
+
+    static isNotNull(item, message) {
+        if(item is Null) {
+            return Fiber.abort(message)
+        }
     }
 
     static num(item) {
@@ -140,16 +184,6 @@ class Assert {
 
     static range(item, message) {
         if(!item is Range) {
-            return Fiber.abort(message)
-        }
-    }
-
-    static isNull(item) {
-        return Assert.isNull(item, "%(item) is not of type Null")
-    }
-
-    static isNull(item, message) {
-        if(!item is Null) {
             return Fiber.abort(message)
         }
     }
