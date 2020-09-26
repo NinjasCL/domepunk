@@ -7,7 +7,7 @@ import "dome" for Process
 
 class Test {
   // Fill the class name
-  static name { "Test " }
+  static name { "Test" }
 
   // And all the tests
   static thatIsAnExample() {
