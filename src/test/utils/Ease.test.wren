@@ -1,6 +1,6 @@
 import "dome" for Process
-import "../Test" for Runner, Assert
-import "../../utils/Ease" for Ease
+import "./Assert" for Assert
+import "../utils/Ease" for Ease
 
 class EaseTests {
   static name { "utils/Ease.wren" }
@@ -80,10 +80,4 @@ class EaseTests {
     thatCubeInOutWorks,
     thatQuartInWorks,
   ]}
-}
-
-class Game {
-    static init() {
-      Runner.run(EaseTests)
-    }
 }
