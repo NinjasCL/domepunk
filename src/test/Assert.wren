@@ -1,6 +1,7 @@
 /**
  * Used to make assertions about values in test cases.
  * Loosely inspired on https://github.com/massiveinteractive/MassiveUnit/blob/master/src/massive/munit/Assert.hx
+ * and https://github.com/EvanHahn/wren-please/blob/master/please.wren
  * @author Camilo Castro <camilo@ninjas.cl>
  */
 class Assert {
@@ -31,6 +32,79 @@ class Assert {
         if(a == b) {
             return Fiber.abort(message)
         }
+    }
+
+    static checkDeepEqual(a, b) {
+      if (a == b) {
+        return true
+      }
+
+      if (a.type != b.type) {
+        return false
+      }
+
+      var type = a.type
+      if (type == List) {
+        if (a.count != b.count) {
+          return false
+        }
+
+        var iterA = null
+        var iterB = null
+        while (iterA = a.iterate(iterA)) {
+          iterB = b.iterate(iterB)
+          var aValue = a.iteratorValue(iterA)
+          var bValue = b.iteratorValue(iterB)
+          var isEqual = Assert.checkDeepEqual(aValue, bValue)
+          if (!isEqual) {
+            return false
+          }
+        }
+
+        return true
+      }
+
+      if (type == Map) {
+        if (a.count != b.count) {
+          return false
+        }
+
+        for (key in a.keys) {
+          if (!b.containsKey(key)) {
+            return false
+          }
+
+          var isEqual = Assert.checkDeepEqual(a[key], b[key])
+          if (!isEqual) {
+            return false
+          }
+        }
+        return true
+      }
+
+      return false
+    }
+
+    static deepEqual(a, b) {
+      return Assert.deepEqual(a, b, "%(a) does not deeply equal %(b)")
+    }
+
+    static deepEqual(a, b, message) {
+      Assert.count = Assert.count + 1
+      if(!Assert.checkDeepEqual(a,b)) {
+        Fiber.abort(message)
+      }
+    }
+
+    static notDeepEqual(a, b) {
+      return Assert.notDeepEqual(a, b, "%(a) deeply equals %(b)")
+    }
+
+    static notDeepEqual(a, b, message) {
+      Assert.count = Assert.count + 1
+      if(Assert.checkDeepEqual(a,b)) {
+        Fiber.abort(message)
+      }
     }
 
     static isClass(item, Class) {
@@ -80,7 +154,7 @@ class Assert {
     }
 
     static abort(fiber) {
-      return Assert.abort(fiber, "fiber.try() must throw Fiber.abort()")
+      return Assert.abort(fiber, "%(fiber.toString) must throw Fiber.abort()")
     }
 
     static abort(fiber, message) {
@@ -89,12 +163,32 @@ class Assert {
     }
 
     static notAbort(fiber) {
-      return Assert.notAbort(fiber, "fiber.try() must not throw Fiber.abort()")
+      return Assert.notAbort(fiber, "%(fiber.toString) must not throw Fiber.abort()")
     }
 
     static notAbort(fiber, message) {
       var error = fiber.try()
       return Assert.equal(error, Null, "%(message) | error: %(error)")
+    }
+
+    static fail(block) {
+      return Assert.fail(block, "%(block.toString) must fail.")
+    }
+
+    static fail(block, message) {
+      var fiber = Fiber.new(block)
+      var error = fiber.try()
+      return Assert.notEqual(error, Null, message)
+    }
+
+    static succeed(block) {
+      return Assert.succeed(block, "%(block.toString) must succeed.")
+    }
+
+    static succeed(block, message) {
+      var fiber = Fiber.new(block)
+      var error = fiber.try()
+      return Assert.equal(error, Null, message)
     }
 
     static isType(item, Type) {
