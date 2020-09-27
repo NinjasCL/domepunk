@@ -1,9 +1,9 @@
 import "dome" for Process
-import "./Assert" for Assert
-import "../utils/Ease" for Ease
+import "./assert" for Assert
+import "../utils/ease" for Ease
 
 class EaseTests {
-  static name { "utils/Ease.wren" }
+  static name { "utils/ease.wren" }
 
   static value { 10 }
 

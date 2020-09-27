@@ -1,5 +1,5 @@
-import "./Runner" for Runner
-import "./utils/Ease.test" for EaseTests
+import "./runner" for Runner
+import "./utils/ease.test" for EaseTests
 
 class Game {
     static init() {
