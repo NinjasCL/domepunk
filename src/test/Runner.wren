@@ -12,6 +12,10 @@ class Runner {
     run(Class.name, Class.all)
   }
 
+  static all(tests) {
+    tests.each{|Test| Runner.run(Test)}
+  }
+
   // This is the base runner method
   static run(name, tests) {
 
