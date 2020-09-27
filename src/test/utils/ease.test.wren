@@ -1,5 +1,5 @@
 import "dome" for Process
-import "./assert" for Assert
+import "./unit" for Assert
 import "../utils/ease" for Ease
 
 class EaseTests {

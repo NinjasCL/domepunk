@@ -1,14 +1,14 @@
-/**
- * Used to make assertions about values in test cases.
- * Loosely inspired on https://github.com/massiveinteractive/MassiveUnit/blob/master/src/massive/munit/Assert.hx
- * and https://github.com/EvanHahn/wren-please/blob/master/please.wren
- * @author Camilo Castro <camilo@ninjas.cl>
- */
+import "dome" for Process
+// These are some classes
+// For doing TDD with Wren and Dome
+// Used to make assertions about values in test cases.
+// Loosely inspired on https://github.com/massiveinteractive/MassiveUnit/blob/master/src/massive/munit/Assert.hx
+// and https://github.com/EvanHahn/wren-please/blob/master/please.wren
+// @author Camilo Castro <camilo@ninjas.cl>
+
 class Assert {
 
-    /**
-    * The incremented number of assertions made during the execution of a set of tests.
-    */
+    // The incremented number of assertions made during the execution of a set of tests.
     static count { 0 }
     static count=(value){}
 
@@ -34,6 +34,7 @@ class Assert {
         }
     }
 
+    // Based on https://github.com/EvanHahn/wren-please/blob/master/please.wren
     static checkDeepEqual(a, b) {
       if (a == b) {
         return true
@@ -144,7 +145,7 @@ class Assert {
     static isNotNan(item) {
       return Assert.isNotNan(item, "%(item) is NaN")
     }
-    
+
     static isNotNan(item, message) {
       Assert.isNum(item)
       Assert.count = Assert.count + 1
@@ -414,4 +415,51 @@ class Assert {
     static isNotSystem(item, message) {
         return Assert.isNotType(item, System, message)
     }
+}
+
+// Use this for Running Tests
+// In Game.init() method
+class Runner {
+  static run(Class) {
+    run(Class.name, Class.all)
+  }
+
+  // This is the base runner method
+  // TODO: Replace System.print with a proper logger
+  static run(name, tests) {
+
+    System.print("\n🔥 Running Tests for: %(name)")
+
+    var total = tests.count
+    var count = 0
+    var error = null
+
+    tests.each{ |test|
+
+      count = count + 1
+      System.write("> Test ")
+
+      if(test is List) {
+        System.write("(%(count)/%(total)) %(test[0])")
+        error = test[1].try()
+      } else {
+        System.write("(%(count)/%(total))")
+        error = test.try()
+      }
+
+      if(error) {
+        System.print("\t❌")
+        Fiber.abort(error)
+      } else {
+        System.print("\t✅")
+      }
+    }
+
+    System.print("🎉 All Tests Completed for: %(name)")
+  }
+
+  static end() {
+    System.print("✨ Jobs Done!")
+    Process.exit()
+  }
 }
