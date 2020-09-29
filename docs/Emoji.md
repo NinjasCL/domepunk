@@ -26,31 +26,31 @@ System.print("Wren is %(Emoji.random)")
 
 ### API
 
-#### static func emojize(text:String) -> String
+#### `static func emojize(text:String) -> String`
 
 Will replace emoji tags to emojis.
 
 E.g. `:thumbsup:` to 👍
 
-#### static func demojize(text:String) -> String
+#### `static func demojize(text:String) -> String`
 
 It the reverse process to emojize. Transform emoji to emoji tags.
 
 E.g. 👍 to `:thumbsup:`
 
-#### static func forName(name:String) -> String
+#### `static func forName(name:String) -> String`
 
 It will return the emoji for the specified name.
 
-#### static func nameFor(emoji:String) -> String
+#### `static func nameFor(emoji:String) -> String`
 
 It will return the name for the specified emoji.
 
-#### static var random: String
+#### `static var random: String`
 
 Will return a random emoji.
 
-#### static var emojis: Map
+#### `static var emojis: Map`
 
 Will return all the available emoji tags and emojis.
 
@@ -65,7 +65,7 @@ To generate a new version of the emoji codes, Execute `make` inside _tools/emoji
 
 #### Testing
 
-The test file is found in _src/test/misc/emoji.test.wren_.
+The test file is found in [src/test/misc/emoji.test.wren](https://github.com/NinjasCL/domepunk/blob/main/src/test/misc/emoji.test.wren)
 Execute `make tests` to run all tests.
 
 ### Links
