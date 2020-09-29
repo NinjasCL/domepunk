@@ -4,25 +4,62 @@ import "random" for Random
 // Inspired on https://pypi.org/project/emoji/
 class Emoji {
 
-    static forName(name) {
-      var emoji = Emoji.names[name]
+    static random {
+      var rand = Random.new()
+      return rand.sample(Emoji.emojis.values.toList)
+    }
+
+    static forName(name, emojis) {
+
+      if (!name || name == "") {
+        return ""
+      }
+
+      var emoji = emojis[name]
       if (!emoji) {
         // maybe we should add ":"
         name = name.replace(":", "")
         name = ":%(name):"
-        emoji = Emoji.names[name]
+        emoji = emojis[name]
       }
+
       return emoji ? emoji : ""
+    }
+
+    static forName(name) {
+      var emojis = Emoji.emojis
+      return Emoji.forName(name, emojis)
+    }
+
+    static nameFor(emoji, emojis) {
+
+      if (!emoji || emoji == "") {
+        return ""
+      }
+
+      var names = emojis.keys
+      for (name in names) {
+        if (emoji == emojis[name]) {
+          return name
+        }
+      }
+
+      return ""
+    }
+
+    static nameFor(emoji) {
+      var emojis = Emoji.emojis
+      return Emoji.nameFor(emoji, emojis)
     }
 
     // Wren does not have regex module
     // so we have to use poor man regex
     static emojize(string) {
-      if (!string) {
+      if (!string || string == "") {
         return ""
       }
 
-      var emojis = Emoji.names
+      var emojis = Emoji.emojis
       var matches = []
 
       for (name in emojis.keys) {
@@ -34,18 +71,36 @@ class Emoji {
       }
 
       for (name in matches) {
-        string = string.replace(name, emojis[name])
+        string = string.replace(name, Emoji.forName(name, emojis))
       }
 
       return string
     }
 
-    static random {
-      var rand = Random.new()
-      return rand.sample(Emoji.names.values.toList)
+    static demojize(string) {
+      if (!string || string == "") {
+        return ""
+      }
+
+      var emojis = Emoji.emojis
+      var matches = []
+
+      for (emoji in emojis.values) {
+        if (string.indexOf(emoji) > 0) {
+          if (!matches.contains(emoji)) {
+            matches.add(emoji)
+          }
+        }
+      }
+
+      for (emoji in matches) {
+        string = string.replace(emoji, Emoji.nameFor(emoji, emojis))
+      }
+
+      return string
     }
 
-    static names {{
+    static emojis {{
   ":woman_woman_girl_girl:": "👩‍👩‍👧‍👧",
   ":woman_woman_girl_boy:": "👩‍👩‍👧‍👦",
   ":woman_woman_boy_boy:": "👩‍👩‍👦‍👦",

@@ -10,6 +10,7 @@ class EmojiTests {
     Fiber.new {
       var emoji = Emoji.random
       Assert.isNotNull(emoji)
+      Assert.notEqual(emoji, "")
     }
   ]}
 
@@ -27,6 +28,7 @@ class EmojiTests {
       name = ":fakeemoji:"
       emoji = Emoji.forName(name)
       Assert.isNotNull(emoji)
+      Assert.equal(emoji, "")
     }
   ]}
 
@@ -39,9 +41,19 @@ class EmojiTests {
     }
   ]}
 
+  static thatDEmojizeWorks {[
+    "thatDEmojizeWorks",
+    Fiber.new {
+      var text = "I ❤️ ❤️ Kombucha :fakeemoji: 🍹"
+      var demojized = Emoji.demojize(text)
+      Assert.equal(demojized, "I :heart: :heart: Kombucha :fakeemoji: :tropical_drink:")
+    }
+  ]}
+
   static all {[
     thatRandomEmojiWorks,
     thatEmojiForNameWorks,
-    thatEmojizeWorks
+    thatEmojizeWorks,
+    thatDEmojizeWorks
   ]}
 }
