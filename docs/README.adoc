@@ -1,0 +1,3 @@
+# DomePunk
+
+This documentation is best viewed in the https://github.com/NinjasCL/domepunk/wiki[Project Wiki].
