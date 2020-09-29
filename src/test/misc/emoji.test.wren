@@ -19,11 +19,11 @@ class EmojiTests {
     Fiber.new {
       var name = ":heart:"
       var emoji = Emoji.forName(name)
-      Assert.equal(emoji, "❤️")
+      Assert.equal(emoji, "❤")
 
       name = "heart"
       emoji = Emoji.forName(name)
-      Assert.equal(emoji, "❤️")
+      Assert.equal(emoji, "❤")
 
       name = ":fakeemoji:"
       emoji = Emoji.forName(name)
@@ -35,9 +35,9 @@ class EmojiTests {
   static thatEmojiNameForWorks {[
     "thatEmojiNameForWorks",
     Fiber.new {
-      var emoji = "❤️"
+      var emoji = "❤"
       var name = Emoji.nameFor(emoji)
-      Assert.equal(name, ":heart:")
+      Assert.equal(name, ":red_heart:")
 
       emoji = ":fakeemoji:"
       name = Emoji.nameFor(emoji)
@@ -48,18 +48,19 @@ class EmojiTests {
   static thatEmojizeWorks {[
     "thatEmojizeWorks",
     Fiber.new {
-      var text = "I :heart: :heart: Kombucha :fakeemoji: :tropical_drink:"
+      var text = "I :heart: :red_heart_selector: Kombucha :fakeemoji: :tropical_drink:"
       var emojized = Emoji.emojize(text)
-      Assert.equal(emojized, "I ❤️ ❤️ Kombucha :fakeemoji: 🍹")
+      Assert.equal(emojized, "I ❤ ❤️ Kombucha :fakeemoji: 🍹")
     }
   ]}
 
-  static thatDEmojizeWorks {[
-    "thatDEmojizeWorks",
+  static thatDemojizeWorks {[
+    "thatDemojizeWorks",
     Fiber.new {
       var text = "I ❤️ ❤️ Kombucha :fakeemoji: 🍹"
       var demojized = Emoji.demojize(text)
-      Assert.equal(demojized, "I :heart: :heart: Kombucha :fakeemoji: :tropical_drink:")
+      //System.print(demojized)
+      Assert.equal(demojized, "I :red_heart:️ :red_heart:️ Kombucha :fakeemoji: :tropical_drink:")
     }
   ]}
 
@@ -68,6 +69,6 @@ class EmojiTests {
     thatEmojiForNameWorks,
     thatEmojiNameForWorks,
     thatEmojizeWorks,
-    thatDEmojizeWorks
+    thatDemojizeWorks
   ]}
 }

@@ -459,7 +459,7 @@ class Runner {
   }
 
   static end() {
-    System.print("✨ Jobs Done!")
+    System.print("\n✨ Jobs Done!")
     Process.exit()
   }
 }
