@@ -32,6 +32,19 @@ class EmojiTests {
     }
   ]}
 
+  static thatEmojiNameForWorks {[
+    "thatEmojiNameForWorks",
+    Fiber.new {
+      var emoji = "❤️"
+      var name = Emoji.nameFor(emoji)
+      Assert.equal(name, ":heart:")
+
+      emoji = ":fakeemoji:"
+      name = Emoji.nameFor(emoji)
+      Assert.equal(name, "")
+    }
+  ]}
+
   static thatEmojizeWorks {[
     "thatEmojizeWorks",
     Fiber.new {
@@ -53,6 +66,7 @@ class EmojiTests {
   static all {[
     thatRandomEmojiWorks,
     thatEmojiForNameWorks,
+    thatEmojiNameForWorks,
     thatEmojizeWorks,
     thatDEmojizeWorks
   ]}
