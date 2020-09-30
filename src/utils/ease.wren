@@ -1,3 +1,4 @@
+/** doc-disable */
 import "math" for Math
 /**
 * Static class with useful easer functions that can be used by Tweens.
@@ -19,7 +20,7 @@ class Ease {
 
     /**
     * Operation of in/out easers:
-    * 
+    *
     * in(t)
     *  return t
     * out(t)

@@ -1,16 +1,17 @@
+/** doc-disable */
 /**
 * Contains static key constants to be used by Input.
 * Based on https://raw.githubusercontent.com/useflashpunk/FlashPunk/master/net/flashpunk/utils/Key.as
 */
-class Key 
+class Key
 {
     static ANY { -1 }
-    
+
     static LEFT { 37 }
     static UP { 38 }
     static RIGHT { 39 }
     static DOWN { 40 }
-    
+
     static ENTER { 13 }
     static COMMAND { 15 }
     static CONTROL { 17 }
@@ -28,7 +29,7 @@ class Key
     static PAGE_UP { 33 }
     static LEFT_SQUARE_BRACKET { 219 }
     static RIGHT_SQUARE_BRACKET { 221 }
-    
+
     static A { 65 }
     static B { 66 }
     static C { 67 }
@@ -55,7 +56,7 @@ class Key
     static X { 88 }
     static Y { 89 }
     static Z { 90 }
-    
+
     static F1 { 112 }
     static F2 { 113 }
     static F3 { 114 }
@@ -71,7 +72,7 @@ class Key
     static F13 { 124 }
     static F14 { 125 }
     static F15 { 126 }
-    
+
     static DIGIT_0 { 48 }
     static DIGIT_1 { 49 }
     static DIGIT_2 { 50 }

@@ -19,7 +19,8 @@ def emojiList(items):
   return out
 
 def generateWrenCode():
-  out = """/*
+  out = """/** doc-disable */
+/*
 * This class is automatically generated with
 * tools/emoji/Makefile
 * Do not modify directly.

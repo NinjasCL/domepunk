@@ -1,5 +1,5 @@
 DOME_VERSION = 1.2.1
-.PHONY: test dm dl clean
+.PHONY: test dm dl clean docs
 
 dm dome-macos:
 	wget https://github.com/avivbeeri/dome/releases/download/v${DOME_VERSION}/dome-${DOME_VERSION}-macosx-x64.zip
@@ -21,3 +21,6 @@ c clean:
 
 t test:
 	./dome --debug src/test/main.test.wren
+
+d docs:
+	python3 ./tools/docs/__main__.py .
