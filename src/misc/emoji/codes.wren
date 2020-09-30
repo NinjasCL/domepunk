@@ -1,3 +1,4 @@
+/** doc-disable */
 /*
 * This class is automatically generated with
 * tools/emoji/Makefile
