@@ -1,6 +1,6 @@
 <!-- file: src/misc/emoji/emoji.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
-## [Class Emoji](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L5)
+## [Class Emoji](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L56)
 
 
 This simple lib will help you working with emojis in _Wren_.

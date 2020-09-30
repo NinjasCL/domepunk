@@ -21,7 +21,7 @@ CMD_DISABLE = "doc-disable"
 CMD_FILENAME = "doc-name:"
 
 def commandIsDisable(comment):
-  return comment.strip() == CMD_DISABLE
+  return comment.strip().startswith(CMD_DISABLE)
 
 def commandIsFilename(comment):
   return comment.strip().startswith(CMD_FILENAME)
@@ -31,7 +31,6 @@ def getFiles(path = None):
   # Use default path if not found
   path = path or dict(enumerate(sys.argv)).get(1) + "/" or "../../"
   files = glob.glob(f'{path}**/*.wren', recursive=True)
-
   return files
 
 def getFileContent(path):
@@ -128,7 +127,7 @@ def makeMarkdownFile(comments, file):
 
     # Headers
     if line.startswith("class "):
-      markdown += f"\n## {getHref(line.title(), clineno, url)}\n"
+      markdown += f"\n## {getHref(line.title(), llineno, url)}\n"
     else:
       if not apiHeaderPresent:
         markdown += "\n## API\n"
@@ -141,10 +140,11 @@ def makeMarkdownFile(comments, file):
     for char in content:
       buffer += char
       if char == "\n":
-        # strip leading spaces to have a proper markdown doc
+        # Strip leading spaces to have a proper markdown doc
         markdown += buffer[spaces:].rstrip() + char
         buffer = ""
 
+  # End parsing and save file
   name = f"{info}".lower().replace("/", "-").replace("\\", "-")
   if filename:
     name = filename
