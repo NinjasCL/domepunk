@@ -12,15 +12,19 @@ import sys
 import config
 from pathlib import Path
 
-"""
-commands = {
-    "doc-disable": "Avoid parsing this file",
-    "doc-name:<Filename>": "Sets the filename for the doc"
-}
-"""
+# Avoid parsing the file
+# e.g. /** doc-disable */
+CMD_DISABLE = "doc-disable"
+
+# Sets the filename for the doc
+# e.g /** doc-name: MyDoc */
+CMD_FILENAME = "doc-name:"
 
 def commandIsDisable(comment):
-  return comment.strip() == "doc-disable"
+  return comment.strip() == CMD_DISABLE
+
+def commandIsFilename(comment):
+  return comment.strip().startswith(CMD_FILENAME)
 
 def getFiles(path = None):
   # Safely get the first arg
@@ -30,7 +34,6 @@ def getFiles(path = None):
 
   return files
 
-
 def getFileContent(path):
   with open(path) as file:
     return file.read()
@@ -39,14 +42,12 @@ def getFileInfo(path):
   return Path(path)
 
 def getLineNumber(index, content):
-
   line = 1
   for pos, char in enumerate(content):
     if char == "\n":
       line += 1
     if index == pos:
       return line
-
   return None
 
 def getComments(content, file):
@@ -60,6 +61,7 @@ def getComments(content, file):
   startMatches = startCommentRegex.finditer(content)
   endCommentChar = "*/"
   openCurlyBraceChar = "{"
+  filename = None
 
   for startMatch in startMatches:
     start = startMatch.span()[1]
@@ -76,6 +78,10 @@ def getComments(content, file):
         if commandIsDisable(comment):
           return []
 
+        if commandIsFilename(comment):
+          filename = comment[comment.find(CMD_FILENAME) + len(CMD_FILENAME):].strip()
+          continue
+
         nextlineStart = end + len(endCommentChar)
         nextlineEnd = content.find(openCurlyBraceChar, nextlineStart)
         nextline = content[nextlineStart:nextlineEnd]
@@ -85,7 +91,7 @@ def getComments(content, file):
           (
             (comment, start, end, lineno),
             (nextline, nextlineStart, nextlineEnd, nextlineno),
-            (spaces)
+            (spaces, filename)
           )
         )
 
@@ -113,7 +119,7 @@ def makeMarkdownFile(comments, file):
 
   for index, comment in enumerate(comments):
     content, line, meta = comment
-    spaces = meta
+    spaces, filename = meta
 
     content, cstart, cend, clineno = content
     line, lstart, lend, llineno = line
@@ -139,7 +145,11 @@ def makeMarkdownFile(comments, file):
         markdown += buffer[spaces:].rstrip() + char
         buffer = ""
 
-  doc = f"{config.docs}/{info.name}.md"
+  name = f"{info}".lower().replace("/", "-").replace("\\", "-")
+  if filename:
+    name = filename
+
+  doc = f"{config.docs}/{name}.md"
   saveFile(doc, markdown)
 
 

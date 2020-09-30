@@ -1,6 +1,6 @@
+/** doc-name: emoji.wren */
 // Inspired on https://pypi.org/project/emoji/
 import "random" for Random
-
 /**
 This simple lib will help you working with emojis in _Wren_.
 Is inspired by the [Python Emoji Lib](https://pypi.org/project/emoji/).
