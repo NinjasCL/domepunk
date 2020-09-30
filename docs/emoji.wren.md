@@ -1,4 +1,5 @@
-
+<!-- file: src/misc/emoji/emoji.wren -->
+<!-- documentation automatically generated using domepunk/tools/doc -->
 ## [Class Emoji](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L5)
 
 

@@ -105,7 +105,8 @@ def makeMarkdownFile(comments, file):
   # print(info, info.name, info.stem, info.parent)
   url = f"https://{config.repo}/{config.branch}/{info}"
 
-  markdown = ""
+  markdown = f"""<!-- file: {info} -->
+<!-- documentation automatically generated using domepunk/tools/doc -->"""
 
   apiHeaderPresent = False
   headerIndex = 0
