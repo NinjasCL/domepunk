@@ -2,7 +2,8 @@
 
 import "random" for Random
 
-/**
+/** doc-header
+## Emoji Lib
 This simple lib will help you working with emojis in _Wren_.
 Is inspired by the [Python Emoji Lib](https://pypi.org/project/emoji/).
 
@@ -53,6 +54,10 @@ To the folks of _Python_ emoji for its wonderful lib.
 
 - Taehoon Kim / [@carpedm20](http://carpedm20.github.io/about/)
 - Kevin Wurster / [@geowurster](http://twitter.com/geowurster/)
+*/
+
+/**
+Holds the emoji list and methods for working with them.
 */
 class Emoji {
 

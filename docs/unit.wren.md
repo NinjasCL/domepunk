@@ -1,14 +1,16 @@
 <!-- file: src/test/unit.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
 ## Unit testing
+
 These are some classes
 For doing TDD with Wren and Dome
 Used to make assertions about values in test cases.
 Loosely inspired on [Assert.hx](https://github.com/massiveinteractive/MassiveUnit/blob/master/src/massive/munit/Assert.hx)
 and [Please.wren](https://github.com/EvanHahn/wren-please/blob/master/please.wren)
+
 ---
 
-## [Class Runner](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L32)
+## [Class Runner](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L34)
 
 
 This is a simple test runner. It will execute the test lifecycle
@@ -30,7 +32,7 @@ class Game {
 
 ## API
 
-### [static run(Class)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L39)
+### [static run(Class)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L41)
 
 
 It runs all the tests contained in the test Class.
@@ -38,20 +40,20 @@ It runs all the tests contained in the test Class.
 - Signature: `static func run(Class:Class) -> Void`
 - Throws: `Fiber.abort(error)` if test fails.
 
-### [static end()](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L51)
+### [static end()](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L53)
 
 
 Ends the testing process and quits the engine.
 - Signature: `static func end() -> Void`
 
-## [Class Assert](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L95)
+## [Class Assert](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L97)
 
 
 Assertion class provides methods that throws `Fiber.abort` on failure.
 
 ## API
 
-### [static equal(a, b)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L108)
+### [static equal(a, b)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L110)
 
 
 Assert that two variables have the same value
@@ -60,7 +62,7 @@ Assert that two variables have the same value
 - Parameter b: The second variable.
 - Throws: `Fiber.abort("%(a) is not equal to %(b)")`
 
-## [Class ExampleTest](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L538)
+## [Class ExampleTest](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L540)
 
 
 This is an example test to demostrate the creation of a new test suite.
@@ -89,33 +91,33 @@ class ExampleTest {
 
 ## API
 
-### [static describe](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L544)
+### [static describe](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L546)
 
 
 Optional description of the test suite.
 It defaults to the class name if not provided.
 - Signature: `static var describe:String? = "%(Class)"`
 
-### [static all](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L551)
+### [static all](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L553)
 
 
 Required static list of all the test methods that should be
 executed in this test suite.
 - Signature: `static var all:List`
 
-### [static setup()](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L557)
+### [static setup()](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L559)
 
 
 Optional method that is called before running the test suite.
 - Signature: `static func setup() -> Void`
 
-### [static teardown()](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L563)
+### [static teardown()](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L565)
 
 
 Optional method that is called after running the test suite.
 - Signature: `static func teardown() -> Void`
 
-### [static thatExampleTestWorks](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L572)
+### [static thatExampleTestWorks](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L574)
 
 
 Every test should return at least a `Fiber.new{}` object
