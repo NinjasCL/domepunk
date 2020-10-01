@@ -63,7 +63,7 @@ Only one command per line is supported.
 
 This command will disable parsing the file.
 
-### `/** doc-name: MyFilename */`
+#### `/** doc-name: MyFilename */`
 
 This command will overwrite the filename of the generated markdown file.
 By default _WrenDoc_ uses the following format:

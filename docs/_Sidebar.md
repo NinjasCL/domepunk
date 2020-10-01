@@ -1,6 +1,6 @@
 ### Tools
 
-[**Doc Generator**](https://github.com/NinjasCL/domepunk/wiki/tools.wrendoc)
+[**WrenDoc**](https://github.com/NinjasCL/domepunk/wiki/tools.wrendoc)
 
 ### Misc
 
