@@ -11,3 +11,4 @@ from extracting ideas.
 - https://github.com/bulletphysics/bullet3
 - https://github.com/love2d/love
 - https://github.com/pythonarcade/arcade
+- https://github.com/simple-statistics/simple-statistics

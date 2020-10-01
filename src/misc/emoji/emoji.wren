@@ -1,6 +1,7 @@
 /** doc-name: emoji.wren */
-// Inspired on https://pypi.org/project/emoji/
+
 import "random" for Random
+
 /**
 This simple lib will help you working with emojis in _Wren_.
 Is inspired by the [Python Emoji Lib](https://pypi.org/project/emoji/).
@@ -55,23 +56,37 @@ To the folks of _Python_ emoji for its wonderful lib.
 */
 class Emoji {
 
+    // Mark: - Public Static Vars
+
     /**
     Will return all the available emoji tags and emojis.
-
-    Signature:
-      - `static var emojis: Map`
+    - Since: 1.0.0
+    - Signature: `static var emojis: Map`
     */
     static emojis {Codes.all}
 
     /**
     Will return a random emoji.
-
-    Signature:
-      - `static var random: String`
+    - Since: 1.0.0
+    - Signature: `static var random: String`
     */
     static random {
       var rand = Random.new()
       return rand.sample(Emoji.emojis.values.toList)
+    }
+
+    // Mark: - Public Static Methods
+
+    /**
+    It will return the emoji for the specified name.
+    - Since: 1.0.0
+    - Signature: `static func forName(name:String) -> String`
+    - Parameter name: The name tag for the emoji.
+    - Returns: An emoji string if the tag is found. Empty string if no name tag is found.
+    */
+    static forName(name) {
+      var emojis = Emoji.emojis
+      return Emoji.forName(name, emojis)
     }
 
     static forName(name, emojis) {
@@ -92,15 +107,16 @@ class Emoji {
       return emoji ? emoji : ""
     }
 
-    /**
-    It will return the emoji for the specified name.
-
-    Signature:
-      - `static func forName(name:String) -> String`
+    /*
+    It will return the name for the specified emoji.
+    - Since: 1.0.0
+    - Signature: `static func nameFor(emoji:String) -> String`
+    - Parameter emoji: The emoji string for search the name tag.
+    - Returns: An name string if the emoji is found. Empty string if no emoji was found.
     */
-    static forName(name) {
+    static nameFor(emoji) {
       var emojis = Emoji.emojis
-      return Emoji.forName(name, emojis)
+      return Emoji.nameFor(emoji, emojis)
     }
 
     static nameFor(emoji, emojis) {
@@ -119,24 +135,14 @@ class Emoji {
       return ""
     }
 
-    /*
-    It will return the name for the specified emoji.
-
-    Signature:
-      - `static func nameFor(emoji:String) -> String`
-    */
-    static nameFor(emoji) {
-      var emojis = Emoji.emojis
-      return Emoji.nameFor(emoji, emojis)
-    }
-
     /**
     Will replace emoji tags to emojis.
 
     E.g. `:thumbsup:` to 👍
-
-    Signature:
-      - `static func emojize(text:String) -> String`
+    - Since: 1.0.0
+    - Signature: `static func emojize(text:String) -> String`
+    - Parameter string: The string that it will replace tags with emojis.
+    - Returns: The same string but with the name tags replaced by emojis.
     */
     static emojize(string) {
 
@@ -169,9 +175,10 @@ class Emoji {
     It the reverse process to emojize. Transform emoji to emoji tags.
 
     E.g. 👍 to `:thumbsup:`
-
-    Signature:
-      - `static func demojize(text:String) -> String`
+    - Since: 1.0.0
+    - Signature: `static func demojize(text:String) -> String`
+    - Parameter string: The string that it will replace the emojis for name tags.
+    - Returns: The same string but with emojis replaced with name tags.
     */
     static demojize(string) {
       if (!string || string == "") {

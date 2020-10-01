@@ -1,6 +1,6 @@
 <!-- file: src/misc/emoji/emoji.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
-## [Class Emoji](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L56)
+## [Class Emoji](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L57)
 
 
 This simple lib will help you working with emojis in _Wren_.
@@ -56,46 +56,47 @@ To the folks of _Python_ emoji for its wonderful lib.
 
 ## API
 
-### [static emojis](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L64)
+### [static emojis](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L66)
 
 
 Will return all the available emoji tags and emojis.
+- Since: 1.0.0
+- Signature: `static var emojis: Map`
 
-Signature:
-  - `static var emojis: Map`
-
-### [static random](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L72)
+### [static random](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L73)
 
 
 Will return a random emoji.
+- Since: 1.0.0
+- Signature: `static var random: String`
 
-Signature:
-  - `static var random: String`
-
-### [static forName(name)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L101)
+### [static forName(name)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L87)
 
 
 It will return the emoji for the specified name.
+- Since: 1.0.0
+- Signature: `static func forName(name:String) -> String`
+- Parameter name: The name tag for the emoji.
+- Returns: An emoji string if the tag is found. Empty string if no name tag is found.
 
-Signature:
-  - `static func forName(name:String) -> String`
-
-### [static emojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L141)
+### [static emojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L147)
 
 
 Will replace emoji tags to emojis.
 
 E.g. `:thumbsup:` to 👍
+- Since: 1.0.0
+- Signature: `static func emojize(text:String) -> String`
+- Parameter string: The string that it will replace tags with emojis.
+- Returns: The same string but with the name tags replaced by emojis.
 
-Signature:
-  - `static func emojize(text:String) -> String`
-
-### [static demojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L176)
+### [static demojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L183)
 
 
 It the reverse process to emojize. Transform emoji to emoji tags.
 
 E.g. 👍 to `:thumbsup:`
-
-Signature:
-  - `static func demojize(text:String) -> String`
+- Since: 1.0.0
+- Signature: `static func demojize(text:String) -> String`
+- Parameter string: The string that it will replace the emojis for name tags.
+- Returns: The same string but with emojis replaced with name tags.
