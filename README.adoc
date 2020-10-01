@@ -11,7 +11,7 @@
 
 Utility libs for usage with https://github.com/avivbeeri/dome[Dome Game Engine]. Inspired by https://github.com/useflashpunk/FlashPunk[Flash Punk], https://github.com/HaxePunk/HaxePunk[Haxe Punk] and others.
 
-https://ninjas.cl[image:https://img.shields.io/badge/Ninjas-CL-green.svg?style=flat-square[Ninjas.cl]] https://www.mozilla.org/en-US/MPL/2.0/[image:https://img.shields.io/github/license/ninjascl/domepunk.svg?style=flat-square[MPL v2]] https://github.com/NinjasCL/domepunk/actions?query=workflow%3A%22Execute+Tests+Suite%22[image:https://img.shields.io/github/workflow/status/ninjascl/domepunk/tests.svg?style=flat-square[Tests]]
+https://ninjas.cl[image:https://img.shields.io/badge/Ninjas-CL-green.svg?style=flat-square[Ninjas.cl]] https://www.mozilla.org/en-US/MPL/2.0/[image:https://img.shields.io/github/license/ninjascl/domepunk.svg?style=flat-square[MPL v2]] https://github.com/NinjasCL/domepunk/actions?query=workflow%3A%22Execute+Tests+Suite%22[image:https://img.shields.io/github/workflow/status/ninjascl/domepunk/Execute%20Tests%20Suite?label=tests&style=flat-square[Tests]]
 
 toc::[]
 
