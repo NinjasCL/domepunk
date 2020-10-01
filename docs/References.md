@@ -10,3 +10,4 @@ from extracting ideas.
 - https://github.com/matthewp/robot
 - https://github.com/bulletphysics/bullet3
 - https://github.com/love2d/love
+- https://github.com/pythonarcade/arcade
