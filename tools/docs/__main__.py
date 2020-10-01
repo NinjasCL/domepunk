@@ -21,11 +21,16 @@ CMD_DISABLE = "doc-disable"
 # e.g /** doc-name: MyDoc */
 CMD_FILENAME = "doc-name:"
 
+CMD_HEADER = "doc-header"
+
 def commandIsDisable(comment):
   return comment.strip().startswith(CMD_DISABLE)
 
 def commandIsFilename(comment):
   return comment.strip().startswith(CMD_FILENAME)
+
+def commandIsHeader(comment):
+  return comment.strip().startswith(CMD_HEADER)
 
 def getPath(path = None):
   # Safely get the first arg
@@ -69,6 +74,7 @@ def getComments(content, file):
   endCommentChar = "*/"
   openCurlyBraceChar = "{"
   filename = None
+  header = ""
 
   for startMatch in startMatches:
     start = startMatch.span()[1]
@@ -89,6 +95,10 @@ def getComments(content, file):
           filename = comment[comment.find(CMD_FILENAME) + len(CMD_FILENAME):].strip()
           continue
 
+        if commandIsHeader(comment):
+          header = comment[comment.find(CMD_HEADER) + len(CMD_HEADER):]
+          continue
+
         nextlineStart = end + len(endCommentChar)
         nextlineEnd = content.find(openCurlyBraceChar, nextlineStart)
         nextline = content[nextlineStart:nextlineEnd]
@@ -98,7 +108,7 @@ def getComments(content, file):
           (
             (comment, start, end, lineno),
             (nextline, nextlineStart, nextlineEnd, nextlineno),
-            (spaces, filename)
+            (spaces, filename, header)
           )
         )
 
@@ -122,11 +132,15 @@ def makeMarkdownFile(comments, file):
 <!-- documentation automatically generated using domepunk/tools/doc -->"""
 
   apiHeaderPresent = False
-  headerIndex = 0
+  addedHeaderContent = False
 
   for index, comment in enumerate(comments):
     content, line, meta = comment
-    spaces, filename = meta
+    spaces, filename, header = meta
+
+    if not addedHeaderContent:
+      markdown += header
+      addedHeaderContent = True
 
     content, cstart, cend, clineno = content
     line, lstart, lend, llineno = line
@@ -135,6 +149,7 @@ def makeMarkdownFile(comments, file):
 
     # Headers
     classKeyword = "class"
+
     if line.startswith(f"{classKeyword} "):
       title = f"{classKeyword.title()}" + line[len(classKeyword):]
       markdown += f"\n## {getHref(title, llineno, url)}\n"
@@ -143,7 +158,6 @@ def makeMarkdownFile(comments, file):
       if not apiHeaderPresent:
         markdown += "\n## API\n"
         apiHeaderPresent = True
-
       markdown += f"\n### {getHref(line, llineno, url)}\n"
 
     # Write comment contents to the markdown file

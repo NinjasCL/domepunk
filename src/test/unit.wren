@@ -1,13 +1,96 @@
 /** doc-name: unit.wren */
-
 import "dome" for Process
 
-/**
+/** doc-header
+## Unit testing
 These are some classes
 For doing TDD with Wren and Dome
 Used to make assertions about values in test cases.
 Loosely inspired on [Assert.hx](https://github.com/massiveinteractive/MassiveUnit/blob/master/src/massive/munit/Assert.hx)
 and [Please.wren](https://github.com/EvanHahn/wren-please/blob/master/please.wren)
+---
+*/
+
+/**
+  This is a simple test runner. It will execute the test lifecycle
+  of _setup_, _execution_ and _teardown_ for each Test Suite.
+
+  ### Example
+  ```js
+  import "./unit" for Runner
+  import "./misc/emoji.test" for EmojiTests
+
+  class Game {
+      static init() {
+        // Add your tests here
+        Runner.run(EmojiTests)
+        Runner.end()
+      }
+  }
+  ```
+*/
+class Runner {
+  /**
+  It runs all the tests contained in the test Class.
+  - Parameter Class: A class which adopts the test suite spec.
+  - Signature: `static func run(Class:Class) -> Void`
+  - Throws: `Fiber.abort(error)` if test fails.
+  */
+  static run(Class) {
+    Fiber.new { Class.setup() }.try()
+    var describe = "%(Class)"
+    Fiber.new { describe = Class.describe }.try()
+    run(describe, Class.all)
+    Fiber.new { Class.teardown() }.try()
+  }
+
+  /**
+  Ends the testing process and quits the engine.
+  - Signature: `static func end() -> Void`
+  */
+  static end() {
+    System.print("\n✨ Jobs Done!")
+    Process.exit()
+  }
+
+  // This is the base runner method
+  // TODO: Replace System.print with a proper logger
+  static run(describe, tests) {
+
+    System.print("\n🔥 Running Tests for: %(describe)")
+
+    var total = tests.count
+    var count = 0
+    var error = null
+
+    tests.each{ |test|
+
+      count = count + 1
+      System.write("> ")
+
+      // Run and inject Assert class to every test
+      if(test is List) {
+        System.write("(%(count)/%(total)) %(test[0])")
+        error = Fiber.new { test[1].call(Assert) }.try()
+      } else {
+        System.write("(%(count)/%(total))")
+        error = Fiber.new { test.call(Assert) }.try()
+      }
+
+      if(error) {
+        System.print("\t❌")
+        Fiber.abort(error)
+      } else {
+        System.print("\t✅")
+      }
+    }
+
+    System.print("🎉 All Tests Completed for: %(name)")
+  }
+}
+
+/**
+Assertion class provides methods that throws `Fiber.abort` on failure.
 */
 class Assert {
 
@@ -490,82 +573,4 @@ class ExampleTest {
     "description of the individual test",
     Fiber.new {|assert|}
   ]}
-}
-
-/**
-  This is a simple test runner. It will execute the test lifecycle
-  of _setup_, _execution_ and _teardown_ for each Test Suite.
-
-  ### Example
-  ```js
-  import "./unit" for Runner
-  import "./misc/emoji.test" for EmojiTests
-
-  class Game {
-      static init() {
-        // Add your tests here
-        Runner.run(EmojiTests)
-        Runner.end()
-      }
-  }
-  ```
-*/
-class Runner {
-  /**
-  It runs all the tests contained in the test Class.
-  - Parameter Class: A class which adopts the test suite spec.
-  - Signature: `static func run(Class:Class) -> Void`
-  - Throws: `Fiber.abort(error)` if test fails.
-  */
-  static run(Class) {
-    Fiber.new { Class.setup() }.try()
-    var describe = "%(Class)"
-    Fiber.new { describe = Class.describe }.try()
-    run(describe, Class.all)
-    Fiber.new { Class.teardown() }.try()
-  }
-
-  /**
-  Ends the testing process and quits the engine.
-  - Signature: `static func end() -> Void`
-  */
-  static end() {
-    System.print("\n✨ Jobs Done!")
-    Process.exit()
-  }
-
-  // This is the base runner method
-  // TODO: Replace System.print with a proper logger
-  static run(describe, tests) {
-
-    System.print("\n🔥 Running Tests for: %(describe)")
-
-    var total = tests.count
-    var count = 0
-    var error = null
-
-    tests.each{ |test|
-
-      count = count + 1
-      System.write("> ")
-
-      // Run and inject Assert class to every test
-      if(test is List) {
-        System.write("(%(count)/%(total)) %(test[0])")
-        error = Fiber.new { test[1].call(Assert) }.try()
-      } else {
-        System.write("(%(count)/%(total))")
-        error = Fiber.new { test.call(Assert) }.try()
-      }
-
-      if(error) {
-        System.print("\t❌")
-        Fiber.abort(error)
-      } else {
-        System.print("\t✅")
-      }
-    }
-
-    System.print("🎉 All Tests Completed for: %(name)")
-  }
 }

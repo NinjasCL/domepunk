@@ -59,16 +59,25 @@ A small [configuration file](https://github.com/NinjasCL/domepunk/blob/main/tool
 There are some special comments that could be used at the beginning of the file.
 Only one command per line is supported.
 
-#### `/** doc-disable */`
+- `/** doc-disable */`: This command will disable parsing the file.
 
-This command will disable parsing the file.
+- `/** doc-name: MyFilename */`: This command will overwrite the filename of the generated markdown file. By default _WrenDoc_ uses the following format:
 
-#### `/** doc-name: MyFilename */`
+```python
+# e.g src-misc-emoji-emoji.wren.md
+f"{pathToFile}".lower().strip().replace("/", "-").replace("\\", "-") + ".md"`
+```
 
-This command will overwrite the filename of the generated markdown file.
-By default _WrenDoc_ uses the following format:
+- `/** doc-header */`: This is a special comment that will append its contents on the header of the document.
 
-- `f"{pathToFile}".lower().strip().replace("/", "-").replace("\\", "-") + ".md"` e.g.: `src-misc-emoji-emoji.wren.md`
+Example:
+
+```js
+/** doc-header
+This markdown will append before any other comment.
+Useful for giving context.
+*/
+```
 
 ---
 
@@ -359,3 +368,7 @@ as well as `MARK:` comments in _Wren_ code going forward.
 - [NSHipster Swift Documentation](https://nshipster.com/swift-documentation/)
 - [Swift header documentation in Xcode 7](https://ericasadun.com/2015/06/14/swift-header-documentation-in-xcode-7/)
 - [Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/)
+
+```
+
+```
