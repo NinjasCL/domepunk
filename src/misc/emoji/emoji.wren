@@ -54,6 +54,8 @@ To the folks of _Python_ emoji for its wonderful lib.
 
 - Taehoon Kim / [@carpedm20](http://carpedm20.github.io/about/)
 - Kevin Wurster / [@geowurster](http://twitter.com/geowurster/)
+
+---
 */
 
 /**
