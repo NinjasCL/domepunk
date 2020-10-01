@@ -26,10 +26,17 @@ def commandIsDisable(comment):
 def commandIsFilename(comment):
   return comment.strip().startswith(CMD_FILENAME)
 
-def getFiles(path = None):
+def getPath(path = None):
   # Safely get the first arg
   # Use default path if not found
   path = path or dict(enumerate(sys.argv)).get(1) + "/" or "../../"
+  return path
+
+def getDocPath(path = None):
+  return f"{getPath(path)}{config.docs}"
+
+def getFiles(path = None):
+  path = getPath(path)
   files = glob.glob(f'{path}**/*.wren', recursive=True)
   return files
 
@@ -145,21 +152,27 @@ def makeMarkdownFile(comments, file):
         buffer = ""
 
   # End parsing and save file
-  name = f"{info}".lower().replace("/", "-").replace("\\", "-")
+  name = f"{info}".lower().strip().replace("/", "-").replace("\\", "-")
   if filename:
     name = filename
 
-  doc = f"{config.docs}/{name}.md"
+  doc = f"{getDocPath()}/{name}.md"
   saveFile(doc, markdown)
 
 
 def main():
   files = getFiles()
+  total = 0
+  pending = 0
   for file in files:
     content = getFileContent(file)
     comments = getComments(content, file)
-    if len(comments) > 0:
+    pending = len(comments)
+    if pending > 0:
+      total += pending
       makeMarkdownFile(comments, file)
+
+  print(f"✨ Jobs Done!: found {len(files)} files. parsed {total} comments. docs saved in `{getDocPath()}`")
 
 if __name__ == "__main__":
   main()
