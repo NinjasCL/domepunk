@@ -432,16 +432,23 @@ This is an example test to demostrate the creation of a new test suite.
 Is not required to be child of this class. This is just an example.
 ```js
 class ExampleTest {
-  static describe { "optional description of the test suite" }
+  /// Required property that stores all the tests to run
   static all {[thatExampleTestWorks]}
-  static setup() {}
-  static teardown() {}
+
+  /// Individual test. Can be any name.
+  /// Could return a List or a single Fiber.
   static thatExampleTestWorks {[
     "description of the individual test",
     Fiber.new {|assert|
       // Run your tests here.
     }
   ]}
+
+  /// Optional methods and properties
+  /// They can be omited from the test suite
+  static describe { "optional description of the test suite" }
+  static setup() {}
+  static teardown() {}
 }
 ```
 */
