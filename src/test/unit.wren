@@ -1,17 +1,27 @@
-import "dome" for Process
-// These are some classes
-// For doing TDD with Wren and Dome
-// Used to make assertions about values in test cases.
-// Loosely inspired on https://github.com/massiveinteractive/MassiveUnit/blob/master/src/massive/munit/Assert.hx
-// and https://github.com/EvanHahn/wren-please/blob/master/please.wren
-// @author Camilo Castro <camilo@ninjas.cl>
+/** doc-name: unit.wren */
 
+import "dome" for Process
+
+/**
+These are some classes
+For doing TDD with Wren and Dome
+Used to make assertions about values in test cases.
+Loosely inspired on [Assert.hx](https://github.com/massiveinteractive/MassiveUnit/blob/master/src/massive/munit/Assert.hx)
+and [Please.wren](https://github.com/EvanHahn/wren-please/blob/master/please.wren)
+*/
 class Assert {
 
     // The incremented number of assertions made during the execution of a set of tests.
     static count { 0 }
     static count=(value){}
 
+    /**
+    Assert that two variables have the same value
+    - Signature: `static func equal(a:Any, b:Any) -> Void`
+    - Parameter a: The first variable.
+    - Parameter b: The second variable.
+    - Throws: `Fiber.abort("%(a) is not equal to %(b)")`
+    */
     static equal(a, b) {
         return Assert.equal(a, b, "%(a) is not equal to %(b)")
     }
@@ -417,18 +427,111 @@ class Assert {
     }
 }
 
-// Use this for Running Tests
-// In Game.init() method
+/**
+This is an example test to demostrate the creation of a new test suite.
+Is not required to be child of this class. This is just an example.
+```js
+class ExampleTest {
+  static describe { "optional description of the test suite" }
+  static all {[thatExampleTestWorks]}
+  static setup() {}
+  static teardown() {}
+  static thatExampleTestWorks {[
+    "description of the individual test",
+    Fiber.new {|assert|
+      // Run your tests here.
+    }
+  ]}
+}
+```
+*/
+class ExampleTest {
+  /**
+  Optional description of the test suite.
+  It defaults to the class name if not provided.
+  - Signature: `static var describe:String? = "%(Class)"`
+  */
+  static describe { "optional description of the test suite" }
+
+  /**
+  Required static list of all the test methods that should be
+  executed in this test suite.
+  - Signature: `static var all:List`
+  */
+  static all {[thatExampleTestWorks]}
+
+  /**
+  Optional method that is called before running the test suite.
+  - Signature: `static func setup() -> Void`
+  */
+  static setup() {}
+
+  /**
+  Optional method that is called after running the test suite.
+  - Signature: `static func teardown() -> Void`
+  */
+  static teardown() {}
+
+  /**
+  Every test should return at least a `Fiber.new{}` object
+  to make the test assertions.
+  assert object is automatically injected
+  by the test runner
+  - Signature: `static var thatExampleTestWorks:List`
+  */
+  static thatExampleTestWorks {[
+    "description of the individual test",
+    Fiber.new {|assert|}
+  ]}
+}
+
+/**
+  This is a simple test runner. It will execute the test lifecycle
+  of _setup_, _execution_ and _teardown_ for each Test Suite.
+
+  ### Example
+  ```js
+  import "./unit" for Runner
+  import "./misc/emoji.test" for EmojiTests
+
+  class Game {
+      static init() {
+        // Add your tests here
+        Runner.run(EmojiTests)
+        Runner.end()
+      }
+  }
+  ```
+*/
 class Runner {
+  /**
+  It runs all the tests contained in the test Class.
+  - Parameter Class: A class which adopts the test suite spec.
+  - Signature: `static func run(Class:Class) -> Void`
+  - Throws: `Fiber.abort(error)` if test fails.
+  */
   static run(Class) {
-    run(Class.name, Class.all)
+    Fiber.new { Class.setup() }.try()
+    var describe = "%(Class)"
+    Fiber.new { describe = Class.describe }.try()
+    run(describe, Class.all)
+    Fiber.new { Class.teardown() }.try()
+  }
+
+  /**
+  Ends the testing process and quits the engine.
+  - Signature: `static func end() -> Void`
+  */
+  static end() {
+    System.print("\n✨ Jobs Done!")
+    Process.exit()
   }
 
   // This is the base runner method
   // TODO: Replace System.print with a proper logger
-  static run(name, tests) {
+  static run(describe, tests) {
 
-    System.print("\n🔥 Running Tests for: %(name)")
+    System.print("\n🔥 Running Tests for: %(describe)")
 
     var total = tests.count
     var count = 0
@@ -437,14 +540,15 @@ class Runner {
     tests.each{ |test|
 
       count = count + 1
-      System.write("> Test ")
+      System.write("> ")
 
+      // Run and inject Assert class to every test
       if(test is List) {
         System.write("(%(count)/%(total)) %(test[0])")
-        error = test[1].try()
+        error = Fiber.new { test[1].call(Assert) }.try()
       } else {
         System.write("(%(count)/%(total))")
-        error = test.try()
+        error = Fiber.new { test.call(Assert) }.try()
       }
 
       if(error) {
@@ -456,10 +560,5 @@ class Runner {
     }
 
     System.print("🎉 All Tests Completed for: %(name)")
-  }
-
-  static end() {
-    System.print("\n✨ Jobs Done!")
-    Process.exit()
   }
 }

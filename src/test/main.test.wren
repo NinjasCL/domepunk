@@ -5,7 +5,7 @@ import "./misc/emoji.test" for EmojiTests
 class Game {
     static init() {
       // Add your tests here
-      Runner.run(EaseTests)
+      //Runner.run(EaseTests)
       Runner.run(EmojiTests)
 
       Runner.end()

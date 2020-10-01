@@ -134,8 +134,11 @@ def makeMarkdownFile(comments, file):
     line = line.strip()
 
     # Headers
-    if line.startswith("class "):
-      markdown += f"\n## {getHref(line.title(), llineno, url)}\n"
+    classKeyword = "class"
+    if line.startswith(f"{classKeyword} "):
+      title = f"{classKeyword.title()}" + line[len(classKeyword):]
+      markdown += f"\n## {getHref(title, llineno, url)}\n"
+      apiHeaderPresent = False
     else:
       if not apiHeaderPresent:
         markdown += "\n## API\n"
