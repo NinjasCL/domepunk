@@ -1,4 +1,4 @@
-## Wren Documentation Generator (_WrenDoc_)
+## [Wren Documentation Generator (_WrenDoc_)](https://github.com/NinjasCL/domepunk/tree/main/tools/docs)
 
 Code structure and organization is a matter of pride for developers.
 Clear and consistent code signifies clear and consistent thought.

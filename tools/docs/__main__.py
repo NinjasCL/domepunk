@@ -1,4 +1,5 @@
 """
+# WrenDoc
 This is a simple documentation generator.
 The idea is to parse wren files and look for
 markdown style comments (/** */).
