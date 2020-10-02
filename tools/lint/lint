@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Example Usage: ./tools/lint/lint src/test/misc/emoji.test.wren
+
+# https://stackoverflow.com/a/2757938
+LINT_PATH=`dirname "$0"`
+DOME="$LINT_PATH/../../dome"
+TEMP=`(python3 "$LINT_PATH/__main__.py" $1)`
+
+$DOME --debug "$LINT_PATH/$TEMP"
+
+rm -f "$LINT_PATH/$TEMP"

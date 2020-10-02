@@ -4,3 +4,4 @@ dome
 main.wren
 __pycache__
 *.pyc
+*.temp.wren
