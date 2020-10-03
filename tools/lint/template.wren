@@ -23,6 +23,7 @@ files added in the larger work.
 */
 import "dome" for Process
 import "io" for FileSystem
+import "./wrenalyzer"
 
 class Game {
   static init() {

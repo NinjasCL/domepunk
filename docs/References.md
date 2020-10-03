@@ -12,3 +12,6 @@ from extracting ideas.
 - https://github.com/love2d/love
 - https://github.com/pythonarcade/arcade
 - https://github.com/simple-statistics/simple-statistics
+- https://github.com/Vladar4/nimgame2
+- https://github.com/liquid600pgm/rapid
+- https://github.com/tweenjs/tween.js

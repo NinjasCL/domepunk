@@ -17,7 +17,7 @@ class EmojiTests {
     Fiber.new { |assert|
       var emoji = Emoji.random
       assert.isNotNull(emoji)
-      assert.notEqual(emoji, "")
+      assert.isNotEqual(emoji, "")
     }
   ]}
 
