@@ -130,7 +130,7 @@ Assertion class provides methods that throws `Fiber.abort` on failure.
 
 
 Terminates the execution by throwing a Fiber.abort()
-- Signature: `static abort(message:String)
+- Signature: `static abort(message:String)`
 - Parameter message: The message that will show in the abort.
 - Throws: `Fiber.abort(message)`
 
