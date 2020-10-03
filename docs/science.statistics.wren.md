@@ -1,13 +1,23 @@
 <!-- file: src/science/statistics.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
+
 ## Statistics
+
 A _Wren_ implementation of descriptive, regression, and inference statistics.
 Implemented in literate _Wren_ with no dependencies.
 Ported from: [JavaScript Simple Statistics](https://github.com/simple-statistics/simple-statistics).
 
+```js
+import "./science/statistics" for Statistica
+
+// Class shorthand is Ss
+import "./science/statistics" for Ss
+```
+
+
 ## API
 
-### [static epsilon](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L50)
+### [static epsilon](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L60)
 
 
 We use `ε`, epsilon, as a stopping criterion when we want to iterate
@@ -47,7 +57,23 @@ while ((x_new - x_old).abs > ss.epsilon) {
 System.print("Local minimum occurs at %(x_new)")
 ```
 
-### [static sum(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L73)
+### [static sumsi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L76)
+
+
+The simple [sum](https://en.wikipedia.org/wiki/Summation) of a list
+is the result of adding all numbers together, starting from zero.
+
+This runs on `O(n)`, linear time in respect to the list
+
+#### Example
+```js
+Ss.sumsi([1, 2, 3]) // => 6
+```
+- Signature: `static func sumsi(values:List) -> Num`
+- Parameter values: input
+- Returns: sum of all input numbers
+
+### [static sum(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L115)
 
 
 Our default sum is the [Kahan-Babuska algorithm](https://pdfs.semanticscholar.org/1760/7d467cda1d0277ad272deb2113533131dc09.pdf).

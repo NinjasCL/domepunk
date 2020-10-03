@@ -1,9 +1,19 @@
 /** doc-name: science.statistics.wren */
 /** doc-header
+
 ## Statistics
+
 A _Wren_ implementation of descriptive, regression, and inference statistics.
 Implemented in literate _Wren_ with no dependencies.
 Ported from: [JavaScript Simple Statistics](https://github.com/simple-statistics/simple-statistics).
+
+```js
+import "./science/statistics" for Statistica
+
+// Class shorthand is Ss
+import "./science/statistics" for Ss
+```
+
 */
 class Statistics {
 
@@ -50,6 +60,38 @@ class Statistics {
   static epsilon {0.0001}
 
   /**
+  The simple [sum](https://en.wikipedia.org/wiki/Summation) of a list
+  is the result of adding all numbers together, starting from zero.
+
+  This runs on `O(n)`, linear time in respect to the list
+
+  #### Example
+  ```js
+  Ss.sumsi([1, 2, 3]) // => 6
+  ```
+  - Signature: `static func sumsi(values:List) -> Num`
+  - Parameter values: input
+  - Returns: sum of all input numbers
+  */
+  static sumsi(values) {
+    // If is a single number then return the number
+    if (values is Num) {
+      return values
+    }
+
+    // If the List is empty, we needn't bother computing its sum
+    if (!(values is List) || values.count == 0) {
+        return 0
+    }
+
+    var sum = 0
+    values.each { |value|
+      sum = sum + value
+    }
+    return sum
+  }
+
+  /**
   Our default sum is the [Kahan-Babuska algorithm](https://pdfs.semanticscholar.org/1760/7d467cda1d0277ad272deb2113533131dc09.pdf).
   This method is an improvement over the classical
   [Kahan summation algorithm](https://en.wikipedia.org/wiki/Kahan_summation_algorithm).
@@ -73,7 +115,7 @@ class Statistics {
   static sum(values) {
     // If is a single number then return the number
     if (values is Num) {
-      return x
+      return values
     }
 
     // If the List is empty, we needn't bother computing its sum
