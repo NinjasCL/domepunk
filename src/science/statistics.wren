@@ -8,7 +8,7 @@ Implemented in literate _Wren_ with no dependencies.
 Ported from: [JavaScript Simple Statistics](https://github.com/simple-statistics/simple-statistics).
 
 ```js
-import "./science/statistics" for Statistica
+import "./science/statistics" for Statistics
 
 // Class shorthand is Ss
 import "./science/statistics" for Ss
