@@ -5,6 +5,7 @@ class UnitTests {
 
   static all {[
     testThatFailureWorks,
+    testThatSuccessWorks,
     testThatEqualWorks,
     testThatNotEqualWorks,
     testThatNullWorks,
