@@ -108,6 +108,66 @@ class Runner {
     Fiber.new { Class.teardown() }.try()
   }
 
+  // This is the base runner method
+  // TODO: Replace System.print with a proper logger
+  static run(describe, tests) {
+
+    System.print("\n🔥 Running Tests for: %(describe)")
+
+    var error = null
+    var exec = Fn.new {|test, message|
+      System.write("> " + message)
+      error = null
+      error = Fiber.new { test.call(Assert) }.try()
+      if(error) {
+        System.print("\t❌")
+        Fiber.abort(error)
+      } else {
+        System.print("\t✅")
+      }
+    }
+
+    // Calculate total tests
+    var total = 0
+    tests.each { |test|
+      if (test is List) {
+        if (test.count > 0 && test[0] is List) {
+          test.each {
+            total = total + 1
+          }
+        } else {
+          total = total + 1
+        }
+      } else {
+        total = total + 1
+      }
+    }
+
+    var count = 0
+    tests.each{ |test|
+
+      // Run and inject Assert class to every test
+      if(test is List) {
+        if (test.count > 0 && test[0] is List) {
+          // Get total first
+          total = test.count + tests.count - 1
+          for(innerTest in  test) {
+            count = count + 1
+            exec.call(innerTest[1], "(%(count)/%(total)) %(innerTest[0])")
+          }
+        } else {
+          count = count + 1
+          exec.call(test[1], "(%(count)/%(total)) %(test[0])")
+        }
+      } else {
+        count = count + 1
+        exec.call(test, "(%(count)/%(total))")
+      }
+    }
+
+    System.print("🎉 All Tests Completed for: %(describe)")
+  }
+
   /**
   Ends the testing process and optionally executes a end block.
   - Example:
@@ -129,41 +189,6 @@ class Runner {
 
   static end() {
     Runner.end(null)
-  }
-
-  // This is the base runner method
-  // TODO: Replace System.print with a proper logger
-  static run(describe, tests) {
-
-    System.print("\n🔥 Running Tests for: %(describe)")
-
-    var total = tests.count
-    var count = 0
-    var error = null
-
-    tests.each{ |test|
-
-      count = count + 1
-      System.write("> ")
-
-      // Run and inject Assert class to every test
-      if(test is List) {
-        System.write("(%(count)/%(total)) %(test[0])")
-        error = Fiber.new { test[1].call(Assert) }.try()
-      } else {
-        System.write("(%(count)/%(total))")
-        error = Fiber.new { test.call(Assert) }.try()
-      }
-
-      if(error) {
-        System.print("\t❌")
-        Fiber.abort(error)
-      } else {
-        System.print("\t✅")
-      }
-    }
-
-    System.print("🎉 All Tests Completed for: %(name)")
   }
 }
 

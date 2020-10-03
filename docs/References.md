@@ -15,3 +15,5 @@ from extracting ideas.
 - https://github.com/Vladar4/nimgame2
 - https://github.com/liquid600pgm/rapid
 - https://github.com/tweenjs/tween.js
+- https://github.com/josdejong/mathjs
+- https://github.com/jasondavies/science.js
