@@ -117,7 +117,6 @@ class Runner {
     var error = null
     var exec = Fn.new {|test, message|
       System.write("> " + message)
-      error = null
       error = Fiber.new { test.call(Assert) }.try()
       if(error) {
         System.print("\t❌")
@@ -144,16 +143,13 @@ class Runner {
     }
 
     var count = 0
+    // Run and inject Assert class to every test
     tests.each{ |test|
-
-      // Run and inject Assert class to every test
       if(test is List) {
         if (test.count > 0 && test[0] is List) {
-          // Get total first
-          total = test.count + tests.count - 1
-          for(innerTest in  test) {
+          test.each {|inner|
             count = count + 1
-            exec.call(innerTest[1], "(%(count)/%(total)) %(innerTest[0])")
+            exec.call(inner[1], "(%(count)/%(total)) %(inner[0])")
           }
         } else {
           count = count + 1
