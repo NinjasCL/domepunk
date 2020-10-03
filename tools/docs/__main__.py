@@ -152,7 +152,7 @@ def makeMarkdownFile(comments, file):
 
     if line.startswith(f"{classKeyword} "):
       title = f"{classKeyword.title()}" + line[len(classKeyword):]
-      markdown += f"\n## {getHref(title, llineno, url)}\n"
+      markdown += f"\n---\n## {getHref(title, llineno, url)}\n"
       apiHeaderPresent = False
     else:
       if not apiHeaderPresent:

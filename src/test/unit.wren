@@ -10,8 +10,6 @@ For doing TDD with Wren and Dome
 Used to make assertions about values in test cases.
 Loosely inspired on [Assert.hx](https://github.com/massiveinteractive/MassiveUnit/blob/master/src/massive/munit/Assert.hx)
 and [Please.wren](https://github.com/EvanHahn/wren-please/blob/master/please.wren)
-
----
 */
 
 /**

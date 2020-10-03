@@ -52,30 +52,30 @@ To the folks of _Python_ emoji for its wonderful lib.
 - Taehoon Kim / [@carpedm20](http://carpedm20.github.io/about/)
 - Kevin Wurster / [@geowurster](http://twitter.com/geowurster/)
 
----
 
-## [Class Emoji](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L64)
+---
+## [Class Emoji](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L63)
 
 
 Holds the emoji list and methods for working with them.
 
 ## API
 
-### [static emojis](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L73)
+### [static emojis](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L72)
 
 
 Will return all the available emoji tags and emojis.
 - Since: 1.0.0
 - Signature: `static var emojis: Map`
 
-### [static random](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L80)
+### [static random](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L79)
 
 
 Will return a random emoji.
 - Since: 1.0.0
 - Signature: `static var random: String`
 
-### [static forName(name)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L94)
+### [static forName(name)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L93)
 
 
 It will return the emoji for the specified name.
@@ -84,7 +84,7 @@ It will return the emoji for the specified name.
 - Parameter name: The name tag for the emoji.
 - Returns: An emoji string if the tag is found. Empty string if no name tag is found.
 
-### [static emojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L154)
+### [static emojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L153)
 
 
 Will replace emoji tags to emojis.
@@ -95,7 +95,7 @@ E.g. `:thumbsup:` to 👍
 - Parameter string: The string that it will replace tags with emojis.
 - Returns: The same string but with the name tags replaced by emojis.
 
-### [static demojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L190)
+### [static demojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L189)
 
 
 It the reverse process to emojize. Transform emoji to emoji tags.
