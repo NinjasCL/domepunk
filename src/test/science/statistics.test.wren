@@ -20,18 +20,20 @@ class StatisticsTests {
 
   // MARK: Sum
   static testThatSumWorks {[
-    ["Ss.sum() can get the sum of two numbers",
-    Fiber.new{ |assert|
-      assert.equal(Ss.sum([1,2]), 3)
-    }],
-    ["Ss.sum() the sum of no numbers is zero",
+    "Ss.sum()", [
+      ["can get the sum of two numbers",
       Fiber.new{ |assert|
-        assert.equal(Ss.sum([]), 0)
-    }]
+        assert.equal(Ss.sum([1,2]), 3)
+      }],
+      ["the sum of no numbers is zero",
+        Fiber.new{ |assert|
+          assert.equal(Ss.sum([]), 0)
+      }]
+    ]
   ]}
 
   static testThatSumSimpleWorks {[
-    ["Ss.sumsi() can get the sum of a list of numbers",
+    "Ss.sumsi() can get the sum of a list of numbers",
     Fiber.new{ |assert|
 
       var sum = Ss.sumsi([1, 2])
@@ -80,6 +82,6 @@ class StatisticsTests {
       ])
 
       assert.equal(sum.round, 15)
-    }]
+    }
   ]}
 }

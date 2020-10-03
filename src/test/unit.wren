@@ -48,6 +48,20 @@ class ExampleTest {
     }]
   ]}
 
+  /// Multi Fiber Test with Group Description
+  static testThatSumWorks2 {[
+    "Ss.sum()", [
+      ["can get the sum of two numbers",
+      Fiber.new{ |assert|
+        assert.equal(Ss.sum([1,2]), 3)
+      }],
+      ["the sum of no numbers is zero",
+        Fiber.new{ |assert|
+          assert.equal(Ss.sum([]), 0)
+      }]
+    ]
+  ]}
+
   /// Optional methods and properties
   /// They can be omited from the test suite
   static describe { "optional description of the test suite" }
@@ -167,16 +181,27 @@ class Runner {
     // Run and inject Assert class to every test
     tests.each{ |test|
       if(test is List) {
+        // Support multi {[["test name", Fiber], ["test name2", Fiber2]]}
         if (test.count > 0 && test[0] is List) {
           test.each {|inner|
             count = count + 1
             exec.call(inner[1], "(%(count)/%(total)) %(inner[0])")
           }
         } else {
-          count = count + 1
-          exec.call(test[1], "(%(count)/%(total)) %(test[0])")
+          // Support multi {["test group name", [["test name", Fiber], ["test name2", Fiber2]]]}
+          if (test[0] is String && test[1] is List) {
+            test[1].each {|inner|
+              count = count + 1
+              exec.call(inner[1], "(%(count)/%(total)) %(test[0]) %(inner[0])")
+            }
+          } else {
+            // Suport single {["test name", Fiber]}
+            count = count + 1
+            exec.call(test[1], "(%(count)/%(total)) %(test[0])")
+          }
         }
       } else {
+        // Support simple {Fiber}
         count = count + 1
         exec.call(test, "(%(count)/%(total))")
       }

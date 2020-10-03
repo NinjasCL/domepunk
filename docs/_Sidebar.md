@@ -1,3 +1,7 @@
+### Science
+
+[**Statistics**](https://github.com/NinjasCL/domepunk/wiki/science.statistics.wren)
+
 ### Unit Testing
 
 [**Assert**](https://github.com/NinjasCL/domepunk/wiki/test.unit.wren)
