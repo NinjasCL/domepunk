@@ -62,7 +62,7 @@ Holds the emoji list and methods for working with them.
 */
 class Emoji {
 
-    // Mark: - Public Static Vars
+    // MARK: - Public Static Vars
 
     /**
     Will return all the available emoji tags and emojis.
@@ -81,7 +81,7 @@ class Emoji {
       return rand.sample(Emoji.emojis.values.toList)
     }
 
-    // Mark: - Public Static Methods
+    // MARK: - Public Static Methods
 
     /**
     It will return the emoji for the specified name.
