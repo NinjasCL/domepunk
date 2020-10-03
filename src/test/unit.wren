@@ -135,18 +135,6 @@ class Runner {
 
     System.print("\n🔥 Running Tests for: %(describe)")
 
-    var error = null
-    var exec = Fn.new {|test, message|
-      System.write("> " + message)
-      error = Fiber.new { test.call(Assert) }.try()
-      if(error) {
-        System.print("\t❌")
-        Fiber.abort(error)
-      } else {
-        System.print("\t✅")
-      }
-    }
-
     // Calculate total tests
     var total = 0
     tests.each { |test|
@@ -163,6 +151,18 @@ class Runner {
       }
     }
 
+    var error = null
+    var exec = Fn.new {|test, message|
+      System.write("> " + message)
+      error = Fiber.new { test.call(Assert) }.try()
+      if(error) {
+        System.print("\t❌")
+        Fiber.abort(error)
+      } else {
+        System.print("\t✅")
+      }
+    }
+
     var count = 0
     // Run and inject Assert class to every test
     tests.each{ |test|
@@ -170,7 +170,6 @@ class Runner {
         if (test.count > 0 && test[0] is List) {
           test.each {|inner|
             count = count + 1
-
             exec.call(inner[1], "(%(count)/%(total)) %(inner[0])")
           }
         } else {

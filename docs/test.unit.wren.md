@@ -92,7 +92,7 @@ Every test should return at least a `Fiber.new{}` object
 to make the test assertions.
 assert object is automatically injected
 by the test runner
-- Signature: `static var thatExampleTestWorks:List`
+- Signature: `static var thatExampleTestWorks:<Fiber|List>`
 
 ---
 ## [Class Runner](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L117)
@@ -153,7 +153,7 @@ Assertion class provides methods that throws `Fiber.abort` on failure.
 Terminates the execution by throwing a Fiber.abort()
 - Signature: `static abort(message:String)`
 - Parameter message: The message that will show in the abort.
-- Throws: `Fiber.abort(message)`
+- Throws: `Fiber.abort(message)` on assertion error.
 
 ### [static equal(a, b, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L241)
 
@@ -163,7 +163,7 @@ Assert that two variables have the same value
 - Parameter a: The first variable.
 - Parameter b: The second variable.
 - Parameter message: Optional mesage to show on assertion error.
-- Throws: `Fiber.abort("%(a) is not equal to %(b)")`
+- Throws: `Fiber.abort("%(a) is not equal to %(b)")` on assertion error.
 
 ### [static isNotEqual(a, b, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L260)
 
@@ -173,40 +173,78 @@ Assert that two variables have the different values
 - Parameter a: The first variable.
 - Parameter b: The second variable.
 - Parameter message: Optional mesage to show on assertion error.
-- Throws: `Fiber.abort("%(a) is equal to %(b)")`
+- Throws: `Fiber.abort("%(a) is equal to %(b)")` on assertion error.
 
-### [static isNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L280)
+### [static isKind(value, Kind, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L281)
+
+
+Verifies that the value belongs to a certain kind of class.
+- Signature: `static func isKind(value:Any, Kind:Class, message:String?) -> Void`
+- Parameter value: The value that will be checked.
+- Parameter Kind: The Class that would be checked against the value.
+- Parameter message: Optional parameter with a message to show on assertion error.
+- Throws: `Fiber.abort()` on assertion error.
+
+### [static isNotKind(value, Kind, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L300)
+
+
+Verifies that the value not belongs to a certain kind of class.
+- Signature: `static func isNotKind(value:Any, Kind:Class, message:String?) -> Void`
+- Parameter value: The value that will be checked.
+- Parameter Kind: The Class that would be checked against the value.
+- Parameter message: Optional parameter with a message to show on assertion error.
+- Throws: `Fiber.abort()` on assertion error.
+
+### [static isNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L318)
 
 
 Assert that a value is null.
 - Signature: `static func isNull(value:Any, message:String?) -> Void`
 - Parameter value: The value that would be checked.
 - Parameter message: Optional message to show on assertion error.
-- Throws: `Fiber.abort()`
+- Throws: `Fiber.abort()` on assertion error.
 
-### [static isNotNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L295)
+### [static isNotNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L333)
 
 
 Assert that a value is not null.
 - Signature: `static func isNull(value:Any, message:String?) -> Void`
 - Parameter value: The value that would be checked.
 - Parameter message: Optional message to show on assertion error.
-- Throws: `Fiber.abort()`
+- Throws: `Fiber.abort()` on assertion error.
 
-### [static failure(block, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L312)
+### [static isString(value, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L348)
+
+
+Asserts that a value is kind of String.
+- Signature: `static func isString(value:Any, message:String?) -> Void`
+- Parameter value: A value to check.
+- Parameter message: Optional message to show on assertion error.
+- Throws: `Fiber.abort()` on assertion error.
+
+### [static isNotString(value, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L363)
+
+
+Asserts that a value is not kind of String.
+- Signature: `static func isString(value:Any, message:String?) -> Void`
+- Parameter value: A value to check.
+- Parameter message: Optional message to show on assertion error.
+- Throws: `Fiber.abort()` on assertion error.
+
+### [static failure(block, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L380)
 
 
 Assert that a block of code (Fiber or Fn) fails (Throws Fiber.abort()).
 - Signature: `static func fail<T:Fiber|Fn>(block:T, message:String?) -> Void`
 - Parameter value: The value that would be checked.
 - Parameter message: Optional message to show on assertion error.
-- Throws: `Fiber.abort()`
+- Throws: `Fiber.abort()` on assertion error.
 
-### [static success(block, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L329)
+### [static success(block, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L397)
 
 
 Assert that a block of code (Fiber or Fn) succeeds (not fails) (Not throws Fiber.abort()).
 - Signature: `static func fail<T:Fiber|Fn>(block:T, message:String?) -> Void`
 - Parameter value: The value that would be checked.
 - Parameter message: Optional message to show on assertion error.
-- Throws: `Fiber.abort()`
+- Throws: `Fiber.abort()` on assertion error.

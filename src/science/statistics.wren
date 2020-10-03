@@ -64,40 +64,38 @@ class Statistics {
 
   #### Example:
   ```js
-  sum([1, 2, 3]) // => 6
+  Ss.sum([1, 2]) // => 3
   ```
-  - Signature: `static func sum(x:List) -> Num`
-  - Parameter x: input
+  - Signature: `static func sum(values:List) -> Num`
+  - Parameter values: input
   - Returns: sum of all input numbers
   */
-  static sum(x) {
+  static sum(values) {
     // If is a single number then return the number
-    if (x is Num) {
+    if (values is Num) {
       return x
     }
 
     // If the List is empty, we needn't bother computing its sum
-    if (!(x is List) || x.count == 0) {
+    if (!(values is List) || values.count == 0) {
         return 0
     }
 
-    // Initializing the sum as the first number in the List
-    var sum = x[0]
+    // Initializing the sum
+    var sum = 0
 
     // Keeping track of the floating-point error correction
     var correction = 0
     var transition = 0
 
-    x.each{|item|
-
-      transition = sum + item
-
+    values.each{|value|
+      transition = sum + value
       // Here we need to update the correction in a different fashion
       // if the new absolute value is greater than the absolute sum
-      if (sum.abs >= item.abs) {
-          correction = correction + sum - transition + item
+      if (sum.abs >= value.abs) {
+          correction = correction + sum - transition + value
       } else {
-          correction = correction + item - transition + sum
+          correction = correction + value - transition + sum
       }
       sum = transition
     }

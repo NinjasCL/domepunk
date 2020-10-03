@@ -47,7 +47,7 @@ while ((x_new - x_old).abs > ss.epsilon) {
 System.print("Local minimum occurs at %(x_new)")
 ```
 
-### [static sum(x)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L73)
+### [static sum(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L73)
 
 
 Our default sum is the [Kahan-Babuska algorithm](https://pdfs.semanticscholar.org/1760/7d467cda1d0277ad272deb2113533131dc09.pdf).
@@ -64,8 +64,8 @@ This runs on `O(n)`, linear time in respect to the List.
 
 #### Example:
 ```js
-sum([1, 2, 3]) // => 6
+Ss.sum([1, 2]) // => 3
 ```
-- Signature: `static func sum(x:List) -> Num`
-- Parameter x: input
+- Signature: `static func sum(values:List) -> Num`
+- Parameter values: input
 - Returns: sum of all input numbers
