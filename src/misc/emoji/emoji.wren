@@ -1,4 +1,4 @@
-/** doc-name: emoji.wren */
+/** doc-name: misc.emoji.wren */
 
 import "random" for Random
 

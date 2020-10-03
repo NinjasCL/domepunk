@@ -1,6 +1,6 @@
 ### Unit Testing
 
-[**Assert**](https://github.com/NinjasCL/domepunk/wiki/unit.wren)
+[**Assert**](https://github.com/NinjasCL/domepunk/wiki/test.unit.wren)
 
 ### Tools
 
@@ -8,4 +8,4 @@
 
 ### Misc
 
-[**Emoji**](https://github.com/NinjasCL/domepunk/wiki/emoji.wren)
+[**Emoji**](https://github.com/NinjasCL/domepunk/wiki/misc.emoji.wren)

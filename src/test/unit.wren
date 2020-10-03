@@ -1,4 +1,4 @@
-/** doc-name: unit.wren */
+/** doc-name: test.unit.wren */
 
 /** doc-header
 ## Unit testing

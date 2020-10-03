@@ -1,8 +1,13 @@
-<!-- file: src/math/statistics/statistics.wren -->
+<!-- file: src/science/statistics.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
+## Statistics
+A _Wren_ implementation of descriptive, regression, and inference statistics.
+Implemented in literate _Wren_ with no dependencies.
+Ported from: [JavaScript Simple Statistics](https://github.com/simple-statistics/simple-statistics).
+
 ## API
 
-### [static epsilon](https://github.com/ninjascl/domepunk/blob/main/src/math/statistics/statistics.wren#L44)
+### [static epsilon](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L50)
 
 
 We use `ε`, epsilon, as a stopping criterion when we want to iterate
@@ -29,8 +34,6 @@ var stepSize = 0.01
 var fDerivative = Fn.new { |x|
   return 4 * x.pow(3) - 9 * x.pow(2)
 }
-
-var epsilon = 0.0001
 
 // The loop runs until the difference between the previous
 // value and the current value is smaller than epsilon - a rough

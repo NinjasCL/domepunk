@@ -1,6 +1,14 @@
-/** doc-name: statistics.wren */
-// ported from https://github.com/simple-statistics/simple-statistics
+/** doc-name: science.statistics.wren */
+/** doc-header
+## Statistics
+A _Wren_ implementation of descriptive, regression, and inference statistics.
+Implemented in literate _Wren_ with no dependencies.
+Ported from: [JavaScript Simple Statistics](https://github.com/simple-statistics/simple-statistics).
+*/
 class Statistics {
+
+  // MARK: - Static Properties
+
   /**
   We use `ε`, epsilon, as a stopping criterion when we want to iterate
   until we're "close enough". Epsilon is a very small number: for
@@ -27,8 +35,6 @@ class Statistics {
     return 4 * x.pow(3) - 9 * x.pow(2)
   }
 
-  var epsilon = 0.0001
-
   // The loop runs until the difference between the previous
   // value and the current value is smaller than epsilon - a rough
   // meaure of 'close enough'
@@ -47,3 +53,4 @@ class Statistics {
 
 // Typealias
 var ss = Statistics
+var epsilon = ss.epsilon
