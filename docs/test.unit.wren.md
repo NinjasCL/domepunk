@@ -9,7 +9,7 @@ Loosely inspired on [Assert.hx](https://github.com/massiveinteractive/MassiveUni
 and [Please.wren](https://github.com/EvanHahn/wren-please/blob/master/please.wren)
 
 ---
-## [Class ExampleTest](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L38)
+## [Class ExampleTest](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L59)
 
 
 This is an example test to demostrate the creation of a new test suite.
@@ -20,12 +20,33 @@ class ExampleTest {
   static all {[thatExampleTestWorks]}
 
   /// Individual test. Can be any name.
-  /// Could return a List or a single Fiber.
-  static thatExampleTestWorks {[
-    "description of the individual test",
+  /// Could return a List, List of List or a Single Fiber.
+
+  /// Single Fiber Test
+  static thatExampleTestWorks {
     Fiber.new {|assert|
       // Run your tests here.
     }
+  }
+
+  /// Single Fiber Test with Description
+  static testThatEpsilonExists {[
+    "epsilon value exists",
+    Fiber.new { |assert|
+      assert.isNotNull(Ss.epsilon)
+    }
+  ]}
+
+  /// Multi Fiber Test with Description
+  static testThatSumWorks {[
+    ["can get the sum of two numbers",
+    Fiber.new{ |assert|
+      assert.equal(Ss.sum([1,2]), 3)
+    }],
+    ["the sum of no numbers is zero",
+      Fiber.new{ |assert|
+        assert.equal(Ss.sum([]), 0)
+    }]
   ]}
 
   /// Optional methods and properties
@@ -38,33 +59,33 @@ class ExampleTest {
 
 ## API
 
-### [static describe](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L44)
+### [static describe](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L65)
 
 
 Optional description of the test suite.
 It defaults to the class name if not provided.
 - Signature: `static var describe:String? = "%(Class)"`
 
-### [static all](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L51)
+### [static all](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L72)
 
 
 Required static list of all the test methods that should be
 executed in this test suite.
 - Signature: `static var all:List`
 
-### [static setup()](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L57)
+### [static setup()](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L78)
 
 
 Optional method that is called before running the test suite.
 - Signature: `static func setup() -> Void`
 
-### [static teardown()](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L63)
+### [static teardown()](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L84)
 
 
 Optional method that is called after running the test suite.
 - Signature: `static func teardown() -> Void`
 
-### [static thatExampleTestWorks](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L72)
+### [static thatExampleTestWorks](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L93)
 
 
 Every test should return at least a `Fiber.new{}` object
@@ -74,7 +95,7 @@ by the test runner
 - Signature: `static var thatExampleTestWorks:List`
 
 ---
-## [Class Runner](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L96)
+## [Class Runner](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L117)
 
 
 This is a simple test runner. It will execute the test lifecycle
@@ -96,7 +117,7 @@ class Game {
 
 ## API
 
-### [static run(Class)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L103)
+### [static run(Class)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L124)
 
 
 It runs all the tests contained in the test Class.
@@ -104,7 +125,7 @@ It runs all the tests contained in the test Class.
 - Signature: `static func run(Class:Class) -> Void`
 - Throws: `Fiber.abort(error)` if test fails.
 
-### [static end(exit)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L123)
+### [static end(exit)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L200)
 
 
 Ends the testing process and optionally executes a end block.
@@ -119,14 +140,14 @@ Ends the testing process and optionally executes a end block.
 - Parameter exit: An optional block that is executed at the end of the process.
 
 ---
-## [Class Assert](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L173)
+## [Class Assert](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L215)
 
 
 Assertion class provides methods that throws `Fiber.abort` on failure.
 
 ## API
 
-### [static abort(message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L187)
+### [static abort(message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L229)
 
 
 Terminates the execution by throwing a Fiber.abort()
@@ -134,7 +155,7 @@ Terminates the execution by throwing a Fiber.abort()
 - Parameter message: The message that will show in the abort.
 - Throws: `Fiber.abort(message)`
 
-### [static equal(a, b, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L199)
+### [static equal(a, b, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L241)
 
 
 Assert that two variables have the same value
@@ -144,7 +165,7 @@ Assert that two variables have the same value
 - Parameter message: Optional mesage to show on assertion error.
 - Throws: `Fiber.abort("%(a) is not equal to %(b)")`
 
-### [static isNotEqual(a, b, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L218)
+### [static isNotEqual(a, b, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L260)
 
 
 Assert that two variables have the different values
@@ -154,7 +175,7 @@ Assert that two variables have the different values
 - Parameter message: Optional mesage to show on assertion error.
 - Throws: `Fiber.abort("%(a) is equal to %(b)")`
 
-### [static isNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L238)
+### [static isNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L280)
 
 
 Assert that a value is null.
@@ -163,7 +184,7 @@ Assert that a value is null.
 - Parameter message: Optional message to show on assertion error.
 - Throws: `Fiber.abort()`
 
-### [static isNotNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L253)
+### [static isNotNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L295)
 
 
 Assert that a value is not null.
@@ -172,7 +193,7 @@ Assert that a value is not null.
 - Parameter message: Optional message to show on assertion error.
 - Throws: `Fiber.abort()`
 
-### [static failure(block, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L270)
+### [static failure(block, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L312)
 
 
 Assert that a block of code (Fiber or Fn) fails (Throws Fiber.abort()).
@@ -181,7 +202,7 @@ Assert that a block of code (Fiber or Fn) fails (Throws Fiber.abort()).
 - Parameter message: Optional message to show on assertion error.
 - Throws: `Fiber.abort()`
 
-### [static success(block, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L287)
+### [static success(block, message)](https://github.com/ninjascl/domepunk/blob/main/src/test/unit.wren#L329)
 
 
 Assert that a block of code (Fiber or Fn) succeeds (not fails) (Not throws Fiber.abort()).

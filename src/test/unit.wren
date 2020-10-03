@@ -19,12 +19,33 @@ class ExampleTest {
   static all {[thatExampleTestWorks]}
 
   /// Individual test. Can be any name.
-  /// Could return a List or a single Fiber.
-  static thatExampleTestWorks {[
-    "description of the individual test",
+  /// Could return a List, List of List or a Single Fiber.
+
+  /// Single Fiber Test
+  static thatExampleTestWorks {
     Fiber.new {|assert|
       // Run your tests here.
     }
+  }
+
+  /// Single Fiber Test with Description
+  static testThatEpsilonExists {[
+    "epsilon value exists",
+    Fiber.new { |assert|
+      assert.isNotNull(Ss.epsilon)
+    }
+  ]}
+
+  /// Multi Fiber Test with Description
+  static testThatSumWorks {[
+    ["can get the sum of two numbers",
+    Fiber.new{ |assert|
+      assert.equal(Ss.sum([1,2]), 3)
+    }],
+    ["the sum of no numbers is zero",
+      Fiber.new{ |assert|
+        assert.equal(Ss.sum([]), 0)
+    }]
   ]}
 
   /// Optional methods and properties
@@ -67,7 +88,7 @@ class ExampleTest {
   to make the test assertions.
   assert object is automatically injected
   by the test runner
-  - Signature: `static var thatExampleTestWorks:List`
+  - Signature: `static var thatExampleTestWorks:<Fiber|List>`
   */
   static thatExampleTestWorks {[
     "description of the individual test",
@@ -149,6 +170,7 @@ class Runner {
         if (test.count > 0 && test[0] is List) {
           test.each {|inner|
             count = count + 1
+
             exec.call(inner[1], "(%(count)/%(total)) %(inner[0])")
           }
         } else {
@@ -203,7 +225,7 @@ class Assert {
     Terminates the execution by throwing a Fiber.abort()
     - Signature: `static abort(message:String)`
     - Parameter message: The message that will show in the abort.
-    - Throws: `Fiber.abort(message)`
+    - Throws: `Fiber.abort(message)` on assertion error.
     */
     static abort(message) {
       return Fiber.abort(message)
@@ -215,11 +237,11 @@ class Assert {
     - Parameter a: The first variable.
     - Parameter b: The second variable.
     - Parameter message: Optional mesage to show on assertion error.
-    - Throws: `Fiber.abort("%(a) is not equal to %(b)")`
+    - Throws: `Fiber.abort("%(a) is not equal to %(b)")` on assertion error.
     */
     static equal(a, b, message) {
         Assert.count = Assert.count + 1
-        if(a != b) {
+        if (a != b) {
             return Assert.abort(message)
         }
     }
@@ -234,11 +256,11 @@ class Assert {
     - Parameter a: The first variable.
     - Parameter b: The second variable.
     - Parameter message: Optional mesage to show on assertion error.
-    - Throws: `Fiber.abort("%(a) is equal to %(b)")`
+    - Throws: `Fiber.abort("%(a) is equal to %(b)")` on assertion error.
     */
     static isNotEqual(a, b, message) {
         Assert.count = Assert.count + 1
-        if(a == b) {
+        if (a == b) {
             return Assert.abort(message)
         }
     }
@@ -250,11 +272,49 @@ class Assert {
     // MARK - Type assertions
 
     /**
+    Verifies that the value belongs to a certain kind of class.
+    - Signature: `static func isKind(value:Any, Kind:Class, message:String?) -> Void`
+    - Parameter value: The value that will be checked.
+    - Parameter Kind: The Class that would be checked against the value.
+    - Parameter message: Optional parameter with a message to show on assertion error.
+    - Throws: `Fiber.abort()` on assertion error.
+    */
+    static isKind(value, Kind, message) {
+        Assert.count = Assert.count + 1
+        if (!(value is Kind)) {
+          return Fiber.abort(message)
+        }
+    }
+
+    static isKind(value, Kind) {
+        return Assert.isKind(value, Kind, "%(value) is not of type %(Kind)")
+    }
+
+    /**
+    Verifies that the value not belongs to a certain kind of class.
+    - Signature: `static func isNotKind(value:Any, Kind:Class, message:String?) -> Void`
+    - Parameter value: The value that will be checked.
+    - Parameter Kind: The Class that would be checked against the value.
+    - Parameter message: Optional parameter with a message to show on assertion error.
+    - Throws: `Fiber.abort()` on assertion error.
+    */
+    static isNotKind(value, Kind, message) {
+        Assert.count = Assert.count + 1
+        if (value is Kind) {
+          return Fiber.abort(message)
+        }
+    }
+
+    static isNotKind(value, Kind) {
+        return Assert.isNotKind(value, Kind, "%(value) is of type %(Kind)")
+    }
+
+    /**
     Assert that a value is null.
     - Signature: `static func isNull(value:Any, message:String?) -> Void`
     - Parameter value: The value that would be checked.
     - Parameter message: Optional message to show on assertion error.
-    - Throws: `Fiber.abort()`
+    - Throws: `Fiber.abort()` on assertion error.
     */
     static isNull(value, message) {
         return Assert.equal(value, null, message)
@@ -269,7 +329,7 @@ class Assert {
     - Signature: `static func isNull(value:Any, message:String?) -> Void`
     - Parameter value: The value that would be checked.
     - Parameter message: Optional message to show on assertion error.
-    - Throws: `Fiber.abort()`
+    - Throws: `Fiber.abort()` on assertion error.
     */
     static isNotNull(value, message) {
         return Assert.isNotEqual(value, null, message)
@@ -279,14 +339,44 @@ class Assert {
         return Assert.isNotEqual(value, null)
     }
 
-    // MARK - Convenience assertions
+    /**
+    Asserts that a value is kind of String.
+    - Signature: `static func isString(value:Any, message:String?) -> Void`
+    - Parameter value: A value to check.
+    - Parameter message: Optional message to show on assertion error.
+    - Throws: `Fiber.abort()` on assertion error.
+    */
+    static isString(value, message) {
+        return Assert.isKind(value, String, message)
+    }
+
+    static isString(value) {
+        return Assert.isKind(value, String)
+    }
+
+    /**
+    Asserts that a value is not kind of String.
+    - Signature: `static func isString(value:Any, message:String?) -> Void`
+    - Parameter value: A value to check.
+    - Parameter message: Optional message to show on assertion error.
+    - Throws: `Fiber.abort()` on assertion error.
+    */
+    static isNotString(value, message) {
+        return Assert.isNotKind(value, String, message)
+    }
+
+    static isNotString(value) {
+        return Assert.isNotKind(value, String)
+    }
+
+    // MARK - Block assertions
 
     /**
     Assert that a block of code (Fiber or Fn) fails (Throws Fiber.abort()).
     - Signature: `static func fail<T:Fiber|Fn>(block:T, message:String?) -> Void`
     - Parameter value: The value that would be checked.
     - Parameter message: Optional message to show on assertion error.
-    - Throws: `Fiber.abort()`
+    - Throws: `Fiber.abort()` on assertion error.
     */
 
     static failure(block, message) {
@@ -303,7 +393,7 @@ class Assert {
     - Signature: `static func fail<T:Fiber|Fn>(block:T, message:String?) -> Void`
     - Parameter value: The value that would be checked.
     - Parameter message: Optional message to show on assertion error.
-    - Throws: `Fiber.abort()`
+    - Throws: `Fiber.abort()` on assertion error.
     */
     static success(block, message) {
       var error = Fiber.new { block.call() }.try()
@@ -408,28 +498,6 @@ class Assert {
     //   return Assert.equal(error, Null, message)
     // }
 
-    // static isClass(item, Class) {
-    //     return Assert.isClass(item, Class, "%(item) is not of type %(Class)")
-    // }
-
-    // static isClass(item, Class, message) {
-    //     Assert.count = Assert.count + 1
-    //     if(!(item is Class)) {
-    //       return Fiber.abort(message)
-    //     }
-    // }
-
-    // static isNotClass(item, Class) {
-    //     return Assert.isNotClass(item, Class, "%(item) is of type %(Class)")
-    // }
-
-    // static isNotClass(item, Class, message) {
-    //     Assert.count = Assert.count + 1
-    //     if(item is Class) {
-    //       return Fiber.abort(message)
-    //     }
-    // }
-
     // static isNan(item) {
     //   return Assert.isNan(item, "%(item) is not NaN")
     // }
@@ -515,22 +583,6 @@ class Assert {
 
     // static isNotNum(item, message) {
     //     return Assert.isNotType(item, Num, message)
-    // }
-
-    // static isString(item) {
-    //     return Assert.isType(item, String)
-    // }
-
-    // static isString(item, message) {
-    //     return Assert.isType(item, String, message)
-    // }
-
-    // static isNotString(item) {
-    //     return Assert.isNotType(item, String)
-    // }
-
-    // static isNotString(item, message) {
-    //     return Assert.isNotType(item, String, message)
     // }
 
     // static isMap(item) {

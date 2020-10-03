@@ -6,10 +6,19 @@ class UnitTests {
   static all {[
     testThatFailureWorks,
     testThatSuccessWorks,
+
     testThatEqualWorks,
     testThatNotEqualWorks,
+
     testThatNullWorks,
-    testThatNotNullWorks
+    testThatNotNullWorks,
+
+    testThatKindWorks,
+    testThatIsNotKindWorks,
+
+    testThatIsStringWorks,
+    testThatIsNotStringWorks
+
   ]}
 
   static testThatFailureWorks {[
@@ -92,6 +101,55 @@ class UnitTests {
         assert.isNotNull(1)
         assert.isNotNull([])
         assert.isNotNull({"a":"b"})
+      }
+    }
+  ]}
+
+  static testThatKindWorks{[
+    "testThatKindWorks",
+    Fiber.new { |assert|
+      assert.failure {
+        assert.isKind("a", Num)
+        assert.isKind(true, String)
+      }
+    }
+  ]}
+
+  static testThatIsNotKindWorks{[
+    "testThatIsNotKindWorks",
+    Fiber.new { |assert|
+      assert.failure {
+        assert.isNotKind("a", String)
+        assert.isNotKind(true, Bool)
+      }
+    }
+  ]}
+
+  static testThatIsStringWorks{[
+    "testThatIsStringWorks",
+    Fiber.new { |assert|
+      assert.failure {
+        assert.isString(1)
+        assert.isString(true)
+      }
+
+      assert.success {
+        assert.isString("asb")
+      }
+    }
+  ]}
+
+  static testThatIsNotStringWorks{[
+    "testThatIsNotStringWorks",
+    Fiber.new { |assert|
+      assert.failure {
+        assert.isNotString("a")
+      }
+
+      assert.success {
+        assert.isNotString(true)
+        assert.isNotString(1)
+        assert.isNotString(null)
       }
     }
   ]}

@@ -86,20 +86,19 @@ class Statistics {
 
     // Keeping track of the floating-point error correction
     var correction = 0
+    var transition = 0
 
-    var transition
+    x.each{|item|
 
-    for (item in x) {
       transition = sum + item
 
       // Here we need to update the correction in a different fashion
       // if the new absolute value is greater than the absolute sum
-      if (sum.abs >= (item).abs) {
+      if (sum.abs >= item.abs) {
           correction = correction + sum - transition + item
       } else {
           correction = correction + item - transition + sum
       }
-
       sum = transition
     }
 

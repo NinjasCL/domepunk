@@ -22,7 +22,7 @@ Below is an example of using epsilon in [gradient descent](https://en.wikipedia.
 where we're trying to find a local minimum of a function's derivative,
 given by the `fDerivative` method.
 
-### Example
+#### Example
 ```js
 // From calculation, we expect that the local minimum occurs at x=9/4
 var x_old = 0
@@ -46,3 +46,26 @@ while ((x_new - x_old).abs > ss.epsilon) {
 // Local minimum occurs at 2.2496600165701
 System.print("Local minimum occurs at %(x_new)")
 ```
+
+### [static sum(x)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L73)
+
+
+Our default sum is the [Kahan-Babuska algorithm](https://pdfs.semanticscholar.org/1760/7d467cda1d0277ad272deb2113533131dc09.pdf).
+This method is an improvement over the classical
+[Kahan summation algorithm](https://en.wikipedia.org/wiki/Kahan_summation_algorithm).
+It aims at computing the sum of a list of numbers while correcting for
+floating-point errors. Traditionally, sums are calculated as many
+successive additions, each one with its own floating-point roundoff. These
+losses in precision add up as the number of numbers increases. This alternative
+algorithm is more accurate than the simple way of calculating sums by simple
+addition.
+
+This runs on `O(n)`, linear time in respect to the List.
+
+#### Example:
+```js
+sum([1, 2, 3]) // => 6
+```
+- Signature: `static func sum(x:List) -> Num`
+- Parameter x: input
+- Returns: sum of all input numbers

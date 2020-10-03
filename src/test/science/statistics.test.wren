@@ -19,7 +19,7 @@ class StatisticsTests {
   static testThatSumWorks {[
     ["can get the sum of two numbers",
     Fiber.new{ |assert|
-      assert.equal(Ss.sum([1,2]), 4)
+      assert.equal(Ss.sum([1,2]), 3)
     }],
     ["the sum of no numbers is zero",
       Fiber.new{ |assert|
