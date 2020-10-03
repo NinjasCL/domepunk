@@ -8,7 +8,7 @@ Implemented in literate _Wren_ with no dependencies.
 Ported from: [JavaScript Simple Statistics](https://github.com/simple-statistics/simple-statistics).
 
 ```js
-import "./science/statistics" for Statistica
+import "./science/statistics" for Statistics
 
 // Class shorthand is Ss
 import "./science/statistics" for Ss
@@ -57,23 +57,7 @@ while ((x_new - x_old).abs > ss.epsilon) {
 System.print("Local minimum occurs at %(x_new)")
 ```
 
-### [static sumsi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L76)
-
-
-The simple [sum](https://en.wikipedia.org/wiki/Summation) of a list
-is the result of adding all numbers together, starting from zero.
-
-This runs on `O(n)`, linear time in respect to the list
-
-#### Example
-```js
-Ss.sumsi([1, 2, 3]) // => 6
-```
-- Signature: `static func sumsi(values:List) -> Num`
-- Parameter values: input
-- Returns: sum of all input numbers
-
-### [static sum(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L115)
+### [static sum(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L85)
 
 
 Our default sum is the [Kahan-Babuska algorithm](https://pdfs.semanticscholar.org/1760/7d467cda1d0277ad272deb2113533131dc09.pdf).
@@ -93,5 +77,21 @@ This runs on `O(n)`, linear time in respect to the List.
 Ss.sum([1, 2]) // => 3
 ```
 - Signature: `static func sum(values:List) -> Num`
+- Parameter values: input
+- Returns: sum of all input numbers
+
+### [static sumsi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L133)
+
+
+The simple [sum](https://en.wikipedia.org/wiki/Summation) of a list
+is the result of adding all numbers together, starting from zero.
+
+This runs on `O(n)`, linear time in respect to the list
+
+#### Example
+```js
+Ss.sumsi([1, 2, 3]) // => 6
+```
+- Signature: `static func sumsi(values:List) -> Num`
 - Parameter values: input
 - Returns: sum of all input numbers
