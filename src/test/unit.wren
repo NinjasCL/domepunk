@@ -1,7 +1,5 @@
 /** doc-name: unit.wren */
 
-import "dome" for Process
-
 /** doc-header
 ## Unit testing
 
@@ -111,12 +109,26 @@ class Runner {
   }
 
   /**
-  Ends the testing process and quits the engine.
-  - Signature: `static func end() -> Void`
+  Ends the testing process and optionally executes a end block.
+  - Example:
+  ```js
+    import "dome" for Process
+    Runner.end {
+      Process.exit()
+    }
+  ```
+  - Signature: `static func end<T:Fiber|Fn>(exit:T?) -> Void`
+  - Parameter exit: An optional block that is executed at the end of the process.
   */
-  static end() {
+  static end(exit) {
     System.print("\n✨ Jobs Done!")
-    Process.exit()
+    if (exit) {
+      exit.call()
+    }
+  }
+
+  static end() {
+    Runner.end(null)
   }
 
   // This is the base runner method

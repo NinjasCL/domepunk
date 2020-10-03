@@ -1,3 +1,4 @@
+import "dome" for Process
 import "./unit" for Runner
 import "./test/unit.test" for UnitTests
 import "./misc/emoji.test" for EmojiTests
@@ -8,6 +9,8 @@ class Game {
       Runner.run(UnitTests)
       Runner.run(EmojiTests)
 
-      Runner.end()
+      Runner.end {
+        Process.exit()
+      }
     }
 }
