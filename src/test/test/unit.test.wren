@@ -4,10 +4,41 @@ class UnitTests {
   static describe {"test/unit.wren"}
 
   static all {[
+    testThatFailureWorks,
     testThatEqualWorks,
     testThatNotEqualWorks,
     testThatNullWorks,
     testThatNotNullWorks
+  ]}
+
+  static testThatFailureWorks {[
+    "testThatFailureWorks",
+    Fiber.new { |assert|
+      assert.failure {
+        assert.success("This is not a fiber or function")
+      }
+
+      assert.success {
+        assert.failure {
+          assert.equal(true, false)
+        }
+      }
+    }
+  ]}
+
+  static testThatSuccessWorks {[
+    "testThatSuccessWorks",
+    Fiber.new { |assert|
+      assert.success {
+        assert.failure("This is not a fiber or function")
+      }
+
+      assert.failure {
+        assert.success {
+          assert.equal(true, false)
+        }
+      }
+    }
   ]}
 
   static testThatEqualWorks {[

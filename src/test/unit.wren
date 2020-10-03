@@ -15,6 +15,71 @@ and [Please.wren](https://github.com/EvanHahn/wren-please/blob/master/please.wre
 */
 
 /**
+This is an example test to demostrate the creation of a new test suite.
+Is not required to be child of this class. This is just an example.
+```js
+class ExampleTest {
+  /// Required property that stores all the tests to run
+  static all {[thatExampleTestWorks]}
+
+  /// Individual test. Can be any name.
+  /// Could return a List or a single Fiber.
+  static thatExampleTestWorks {[
+    "description of the individual test",
+    Fiber.new {|assert|
+      // Run your tests here.
+    }
+  ]}
+
+  /// Optional methods and properties
+  /// They can be omited from the test suite
+  static describe { "optional description of the test suite" }
+  static setup() {}
+  static teardown() {}
+}
+```
+*/
+class ExampleTest {
+  /**
+  Optional description of the test suite.
+  It defaults to the class name if not provided.
+  - Signature: `static var describe:String? = "%(Class)"`
+  */
+  static describe { "optional description of the test suite" }
+
+  /**
+  Required static list of all the test methods that should be
+  executed in this test suite.
+  - Signature: `static var all:List`
+  */
+  static all {[thatExampleTestWorks]}
+
+  /**
+  Optional method that is called before running the test suite.
+  - Signature: `static func setup() -> Void`
+  */
+  static setup() {}
+
+  /**
+  Optional method that is called after running the test suite.
+  - Signature: `static func teardown() -> Void`
+  */
+  static teardown() {}
+
+  /**
+  Every test should return at least a `Fiber.new{}` object
+  to make the test assertions.
+  assert object is automatically injected
+  by the test runner
+  - Signature: `static var thatExampleTestWorks:List`
+  */
+  static thatExampleTestWorks {[
+    "description of the individual test",
+    Fiber.new {|assert|}
+  ]}
+}
+
+/**
   This is a simple test runner. It will execute the test lifecycle
   of _setup_, _execution_ and _teardown_ for each Test Suite.
 
@@ -564,69 +629,4 @@ class Assert {
     // static isNotSystem(item, message) {
     //     return Assert.isNotType(item, System, message)
     // }
-}
-
-/**
-This is an example test to demostrate the creation of a new test suite.
-Is not required to be child of this class. This is just an example.
-```js
-class ExampleTest {
-  /// Required property that stores all the tests to run
-  static all {[thatExampleTestWorks]}
-
-  /// Individual test. Can be any name.
-  /// Could return a List or a single Fiber.
-  static thatExampleTestWorks {[
-    "description of the individual test",
-    Fiber.new {|assert|
-      // Run your tests here.
-    }
-  ]}
-
-  /// Optional methods and properties
-  /// They can be omited from the test suite
-  static describe { "optional description of the test suite" }
-  static setup() {}
-  static teardown() {}
-}
-```
-*/
-class ExampleTest {
-  /**
-  Optional description of the test suite.
-  It defaults to the class name if not provided.
-  - Signature: `static var describe:String? = "%(Class)"`
-  */
-  static describe { "optional description of the test suite" }
-
-  /**
-  Required static list of all the test methods that should be
-  executed in this test suite.
-  - Signature: `static var all:List`
-  */
-  static all {[thatExampleTestWorks]}
-
-  /**
-  Optional method that is called before running the test suite.
-  - Signature: `static func setup() -> Void`
-  */
-  static setup() {}
-
-  /**
-  Optional method that is called after running the test suite.
-  - Signature: `static func teardown() -> Void`
-  */
-  static teardown() {}
-
-  /**
-  Every test should return at least a `Fiber.new{}` object
-  to make the test assertions.
-  assert object is automatically injected
-  by the test runner
-  - Signature: `static var thatExampleTestWorks:List`
-  */
-  static thatExampleTestWorks {[
-    "description of the individual test",
-    Fiber.new {|assert|}
-  ]}
 }
