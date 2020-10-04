@@ -105,10 +105,9 @@ Ss.sumsi([1, 2, 3]) // => 6
 - Throws: `Fiber.abort()` if the values are not numeric.
 - Returns: sum of all input numbers
 
-### [static mean(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L190)
+### [static mean(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L194)
 
 
-<span id="ss-static-mean"></span>
 The mean, _also known as average_,
 is the sum of all values over the number of values.
 This is a [measure of central tendency](https://en.wikipedia.org/wiki/Central_tendency):
@@ -116,13 +115,18 @@ a method of finding a typical or central value of a set of numbers.
 
 This runs on `O(n)`, linear time in respect to the array
 
-- Example: `Ss.mean([1, 2]) // => 1.5`
+#### Example
+
+```js
+Ss.mean([1, 2]) // => 1.5
+```
+
 - Since: 1.0.0
 - Parameter values: sample of one or more data points
 - Throws: `Fiber.abort()` if the the length of values is less than one
 - Returns: mean
 
-### [static meansi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L224)
+### [static meansi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L232)
 
 
 The mean, _also known as average_,
@@ -132,11 +136,15 @@ a method of finding a typical or central value of a set of numbers.
 
 The simple mean uses the successive addition method internally
 to calculate it's result. Errors in floating-point addition are
-not accounted for, so if precision is required, the standard [mean](#ss-static-mean)
+not accounted for, so if precision is required, the standard [mean](#static-meanvalues)
 method should be used instead.
 
 This runs on `O(n)`, linear time in respect to the array
-- Example: `Ss.mean([0, 10]) // => 5`
+#### Example
+```js
+Ss.mean([0, 10]) // => 5
+````
+
 - Since: 1.0.0
 - Parameter values: sample of one or more data points
 - Throws: `Fiber.abort()` if the the length of values is less than one

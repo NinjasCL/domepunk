@@ -173,7 +173,6 @@ class Statistics {
   }
 
   /**
-  <span id="ss-static-mean"></span>
   The mean, _also known as average_,
   is the sum of all values over the number of values.
   This is a [measure of central tendency](https://en.wikipedia.org/wiki/Central_tendency):
@@ -181,7 +180,12 @@ class Statistics {
 
   This runs on `O(n)`, linear time in respect to the array
 
-  - Example: `Ss.mean([1, 2]) // => 1.5`
+  #### Example
+
+  ```js
+  Ss.mean([1, 2]) // => 1.5
+  ```
+
   - Since: 1.0.0
   - Parameter values: sample of one or more data points
   - Throws: `Fiber.abort()` if the the length of values is less than one
@@ -211,11 +215,15 @@ class Statistics {
 
   The simple mean uses the successive addition method internally
   to calculate it's result. Errors in floating-point addition are
-  not accounted for, so if precision is required, the standard [mean](#ss-static-mean)
+  not accounted for, so if precision is required, the standard [mean](#static-meanvalues)
   method should be used instead.
 
   This runs on `O(n)`, linear time in respect to the array
-  - Example: `Ss.mean([0, 10]) // => 5`
+  #### Example
+  ```js
+  Ss.mean([0, 10]) // => 5
+  ````
+
   - Since: 1.0.0
   - Parameter values: sample of one or more data points
   - Throws: `Fiber.abort()` if the the length of values is less than one
