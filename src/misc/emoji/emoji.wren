@@ -59,6 +59,10 @@ To the folks of _Python_ emoji for its wonderful lib.
 
 /**
 Holds the emoji list and methods for working with them.
+```js
+import "./misc/emoji" for Emoji
+```
+- Since: 1.0.0
 */
 class Emoji {
 

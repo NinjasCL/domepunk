@@ -6,14 +6,15 @@
 A _Wren_ implementation of descriptive, regression, and inference statistics.
 Implemented in literate _Wren_ with no dependencies.
 Ported from: [JavaScript Simple Statistics](https://github.com/simple-statistics/simple-statistics).
-
+*/
+/**
 ```js
 import "./science/statistics" for Statistics
 
 // Class shorthand is Ss
 import "./science/statistics" for Ss
 ```
-
+- Since: 1.0.0
 */
 class Statistics {
 
@@ -56,6 +57,7 @@ class Statistics {
   // Local minimum occurs at 2.2496600165701
   System.print("Local minimum occurs at %(x_new)")
   ```
+  - Since: 1.0.0
   */
   static epsilon {0.0001}
 
@@ -78,8 +80,10 @@ class Statistics {
   ```js
   Ss.sum([1, 2]) // => 3
   ```
-  - Signature: `static func sum(values:List) -> Num`
+  - Since: 1.0.0
+  - Signature: `static func sum(values:List<Num>) -> Num`
   - Parameter values: input
+  - Throws: `Fiber.abort()` if the values are not numeric.
   - Returns: sum of all input numbers
   */
   static sum(values) {
@@ -93,14 +97,25 @@ class Statistics {
         return 0
     }
 
+    if(values.count <= 1) {
+      return values[0]
+    }
+
     // Initializing the sum
-    var sum = 0
+    var sum = values[0]
 
     // Keeping track of the floating-point error correction
     var correction = 0
     var transition = 0
 
-    values.each{|value|
+    // We already took the first value
+    // So we need to sum the rest
+    values[1..-1].each{|value|
+
+      if (!(value is Num)) {
+        Fiber.abort("%(value) is not a number. All values should be numbers")
+      }
+
       transition = sum + value
       // Here we need to update the correction in a different fashion
       // if the new absolute value is greater than the absolute sum
@@ -126,8 +141,10 @@ class Statistics {
   ```js
   Ss.sumsi([1, 2, 3]) // => 6
   ```
-  - Signature: `static func sumsi(values:List) -> Num`
+  - Since: 1.0.0
+  - Signature: `static func sumsi(values:List<Num>) -> Num`
   - Parameter values: input
+  - Throws: `Fiber.abort()` if the values are not numeric.
   - Returns: sum of all input numbers
   */
   static sumsi(values) {
@@ -141,15 +158,80 @@ class Statistics {
         return 0
     }
 
-    var sum = 0
-    values.each { |value|
+    if(values.count <= 1) {
+      return values[0]
+    }
+
+    var sum = values[0]
+    values[1..-1].each { |value|
+      if (!(value is Num)) {
+        Fiber.abort("%(value) is not a number. All values should be numbers")
+      }
       sum = sum + value
     }
     return sum
   }
+
+  /**
+  <span id="ss-static-mean"></span>
+  The mean, _also known as average_,
+  is the sum of all values over the number of values.
+  This is a [measure of central tendency](https://en.wikipedia.org/wiki/Central_tendency):
+  a method of finding a typical or central value of a set of numbers.
+
+  This runs on `O(n)`, linear time in respect to the array
+
+  - Example: `Ss.mean([1, 2]) // => 1.5`
+  - Since: 1.0.0
+  - Parameter values: sample of one or more data points
+  - Throws: `Fiber.abort()` if the the length of values is less than one
+  - Returns: mean
+ */
+  static mean(values) {
+      if (values is Num) {
+        return values
+      }
+      // The mean of no numbers is null
+      if (!(values is List) || values.count == 0) {
+          return Fiber.abort("`mean` requires at least one data point")
+      }
+
+      var sum = Statistics.sum(values)
+      var count = values.count
+      var result = sum / count
+
+      return result
+  }
+
+  /**
+  The mean, _also known as average_,
+  is the sum of all values over the number of values.
+  This is a [measure of central tendency](https://en.wikipedia.org/wiki/Central_tendency):
+  a method of finding a typical or central value of a set of numbers.
+
+  The simple mean uses the successive addition method internally
+  to calculate it's result. Errors in floating-point addition are
+  not accounted for, so if precision is required, the standard [mean](#ss-static-mean)
+  method should be used instead.
+
+  This runs on `O(n)`, linear time in respect to the array
+  - Example: `Ss.mean([0, 10]) // => 5`
+  - Since: 1.0.0
+  - Parameter values: sample of one or more data points
+  - Throws: `Fiber.abort()` if the the length of values is less than one
+  - Returns: mean
+ */
+  static meansi(values) {
+      if (values is Num) {
+        return values
+      }
+      // The mean of no numbers is null
+      if (!(values is List) || values.count == 0) {
+          return Fiber.abort("`mean simple` requires at least one data point")
+      }
+      return (Statistics.sumsi(values) / values.count)
+  }
 }
 
 // MARK: - Type aliases
-// MARK: Variables
 var Ss = Statistics
-var epsilon = Ss.epsilon

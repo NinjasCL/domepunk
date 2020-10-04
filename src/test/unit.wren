@@ -127,10 +127,12 @@ class ExampleTest {
       }
   }
   ```
+  - Since: 1.0.0
 */
 class Runner {
   /**
   It runs all the tests contained in the test Class.
+  - Since: 1.0.0
   - Parameter Class: A class which adopts the test suite spec.
   - Signature: `static func run(Class:Class) -> Void`
   - Throws: `Fiber.abort(error)` if test fails.
@@ -151,59 +153,84 @@ class Runner {
 
     // Calculate total tests
     var total = 0
-    tests.each { |test|
-      if (test is List) {
-        if (test.count > 0 && test[0] is List) {
-          test.each {
-            total = total + 1
+    tests.each{ |test|
+      if(test is List) {
+        if (test.count > 1) {
+          // Support multi {[["test name", Fiber], ["test name2", Fiber2]]}
+          if (test[0] is List) {
+            test.each {|inner|
+              if ((inner is List) && inner.count > 1) {
+                total = total + 1
+              }
+            }
+          } else {
+            // Support multi grouped
+            // {["test group name", [["test name", Fiber], ["test name2", Fiber2]]]}
+            if (test[0] is String && test[1] is List) {
+              test[1].each {|inner|
+                if ((inner is List) && inner.count > 1) {
+                  total = total + 1
+                }
+              }
+            } else {
+              // Suport single {["test name", Fiber]}
+              total = total + 1
+            }
           }
-        } else {
-          total = total + 1
         }
       } else {
+        // Support simple {Fiber}
         total = total + 1
       }
     }
 
     var error = null
     var exec = Fn.new {|test, message|
-      System.write("> " + message)
+      var out = message
       error = Fiber.new { test.call(Assert) }.try()
       if(error) {
-        System.print("\t❌")
+        out = "❌ " + out
         Fiber.abort(error)
       } else {
-        System.print("\t✅")
+        out = "✅ " + out
       }
+      System.print(out)
     }
 
     var count = 0
     // Run and inject Assert class to every test
     tests.each{ |test|
       if(test is List) {
-        // Support multi {[["test name", Fiber], ["test name2", Fiber2]]}
-        if (test.count > 0 && test[0] is List) {
-          test.each {|inner|
-            count = count + 1
-            exec.call(inner[1], "(%(count)/%(total)) %(inner[0])")
-          }
-        } else {
-          // Support multi {["test group name", [["test name", Fiber], ["test name2", Fiber2]]]}
-          if (test[0] is String && test[1] is List) {
-            test[1].each {|inner|
-              count = count + 1
-              exec.call(inner[1], "(%(count)/%(total)) %(test[0]) %(inner[0])")
+        if (test.count > 1) {
+          // Support multi {[["test name", Fiber], ["test name2", Fiber2]]}
+          if (test[0] is List) {
+            test.each {|inner|
+              if ((inner is List) && inner.count > 1) {
+                count = count + 1
+                exec.call(inner[1], "(%(count)/%(total)): %(inner[0])")
+              }
             }
           } else {
-            // Suport single {["test name", Fiber]}
-            count = count + 1
-            exec.call(test[1], "(%(count)/%(total)) %(test[0])")
+            // Support multi grouped
+            // {["test group name", [["test name", Fiber], ["test name2", Fiber2]]]}
+            if (test[0] is String && test[1] is List) {
+              test[1].each {|inner|
+                if ((inner is List) && inner.count > 1) {
+                  count = count + 1
+                  exec.call(inner[1], "(%(count)/%(total)) %(test[0]): %(inner[0])")
+                }
+              }
+            } else {
+              // Suport single {["test name", Fiber]}
+              count = count + 1
+              exec.call(test[1], "(%(count)/%(total)): %(test[0])")
+            }
           }
         }
       } else {
         // Support simple {Fiber}
         count = count + 1
-        exec.call(test, "(%(count)/%(total))")
+        exec.call(test, "(%(count)/%(total)):")
       }
     }
 
@@ -219,6 +246,7 @@ class Runner {
       Process.exit()
     }
   ```
+  - Since: 1.0.0
   - Signature: `static func end<T:Fiber|Fn>(exit:T?) -> Void`
   - Parameter exit: An optional block that is executed at the end of the process.
   */
@@ -236,6 +264,10 @@ class Runner {
 
 /**
 Assertion class provides methods that throws `Fiber.abort` on failure.
+```js
+import "./test/unit" for Assert
+```
+- Since: 1.0.0
 */
 class Assert {
 
@@ -247,6 +279,7 @@ class Assert {
 
     /**
     Terminates the execution by throwing a Fiber.abort()
+    - Since: 1.0.0
     - Signature: `static abort(message:String)`
     - Parameter message: The message that will show in the abort.
     - Throws: `Fiber.abort(message)` on assertion error.
@@ -257,6 +290,7 @@ class Assert {
 
     /**
     Assert that two variables have the same value
+    - Since: 1.0.0
     - Signature: `static func equal(a:Any, b:Any, message:String?) -> Void`
     - Parameter a: The first variable.
     - Parameter b: The second variable.
@@ -276,6 +310,7 @@ class Assert {
 
     /**
     Assert that two variables have the different values
+    - Since: 1.0.0
     - Signature: `static func notEqual(a:Any, b:Any, message:String?) -> Void`
     - Parameter a: The first variable.
     - Parameter b: The second variable.
@@ -297,6 +332,7 @@ class Assert {
 
     /**
     Verifies that the value belongs to a certain kind of class.
+    - Since: 1.0.0
     - Signature: `static func isKind(value:Any, Kind:Class, message:String?) -> Void`
     - Parameter value: The value that will be checked.
     - Parameter Kind: The Class that would be checked against the value.
@@ -316,6 +352,7 @@ class Assert {
 
     /**
     Verifies that the value not belongs to a certain kind of class.
+    - Since: 1.0.0
     - Signature: `static func isNotKind(value:Any, Kind:Class, message:String?) -> Void`
     - Parameter value: The value that will be checked.
     - Parameter Kind: The Class that would be checked against the value.
@@ -335,6 +372,7 @@ class Assert {
 
     /**
     Assert that a value is null.
+    - Since: 1.0.0
     - Signature: `static func isNull(value:Any, message:String?) -> Void`
     - Parameter value: The value that would be checked.
     - Parameter message: Optional message to show on assertion error.
@@ -350,6 +388,7 @@ class Assert {
 
     /**
     Assert that a value is not null.
+    - Since: 1.0.0
     - Signature: `static func isNull(value:Any, message:String?) -> Void`
     - Parameter value: The value that would be checked.
     - Parameter message: Optional message to show on assertion error.
@@ -365,6 +404,7 @@ class Assert {
 
     /**
     Asserts that a value is kind of String.
+    - Since: 1.0.0
     - Signature: `static func isString(value:Any, message:String?) -> Void`
     - Parameter value: A value to check.
     - Parameter message: Optional message to show on assertion error.
@@ -380,6 +420,7 @@ class Assert {
 
     /**
     Asserts that a value is not kind of String.
+    - Since: 1.0.0
     - Signature: `static func isString(value:Any, message:String?) -> Void`
     - Parameter value: A value to check.
     - Parameter message: Optional message to show on assertion error.
@@ -397,12 +438,12 @@ class Assert {
 
     /**
     Assert that a block of code (Fiber or Fn) fails (Throws Fiber.abort()).
+    - Since: 1.0.0
     - Signature: `static func fail<T:Fiber|Fn>(block:T, message:String?) -> Void`
     - Parameter value: The value that would be checked.
     - Parameter message: Optional message to show on assertion error.
     - Throws: `Fiber.abort()` on assertion error.
     */
-
     static failure(block, message) {
       var error = Fiber.new { block.call() }.try()
       return Assert.isNotNull(error, "%(message) | error: %(error)")
@@ -414,6 +455,7 @@ class Assert {
 
     /**
     Assert that a block of code (Fiber or Fn) succeeds (not fails) (Not throws Fiber.abort()).
+    - Since: 1.0.0
     - Signature: `static func fail<T:Fiber|Fn>(block:T, message:String?) -> Void`
     - Parameter value: The value that would be checked.
     - Parameter message: Optional message to show on assertion error.

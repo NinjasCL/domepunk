@@ -7,17 +7,21 @@ A _Wren_ implementation of descriptive, regression, and inference statistics.
 Implemented in literate _Wren_ with no dependencies.
 Ported from: [JavaScript Simple Statistics](https://github.com/simple-statistics/simple-statistics).
 
+---
+## [Class Statistics](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L19)
+
+
 ```js
 import "./science/statistics" for Statistics
 
 // Class shorthand is Ss
 import "./science/statistics" for Ss
 ```
-
+- Since: 1.0.0
 
 ## API
 
-### [static epsilon](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L60)
+### [static epsilon](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L62)
 
 
 We use `ε`, epsilon, as a stopping criterion when we want to iterate
@@ -56,8 +60,9 @@ while ((x_new - x_old).abs > ss.epsilon) {
 // Local minimum occurs at 2.2496600165701
 System.print("Local minimum occurs at %(x_new)")
 ```
+- Since: 1.0.0
 
-### [static sum(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L85)
+### [static sum(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L89)
 
 
 Our default sum is the [Kahan-Babuska algorithm](https://pdfs.semanticscholar.org/1760/7d467cda1d0277ad272deb2113533131dc09.pdf).
@@ -76,11 +81,13 @@ This runs on `O(n)`, linear time in respect to the List.
 ```js
 Ss.sum([1, 2]) // => 3
 ```
-- Signature: `static func sum(values:List) -> Num`
+- Since: 1.0.0
+- Signature: `static func sum(values:List<Num>) -> Num`
 - Parameter values: input
+- Throws: `Fiber.abort()` if the values are not numeric.
 - Returns: sum of all input numbers
 
-### [static sumsi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L133)
+### [static sumsi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L150)
 
 
 The simple [sum](https://en.wikipedia.org/wiki/Summation) of a list
@@ -92,6 +99,45 @@ This runs on `O(n)`, linear time in respect to the list
 ```js
 Ss.sumsi([1, 2, 3]) // => 6
 ```
-- Signature: `static func sumsi(values:List) -> Num`
+- Since: 1.0.0
+- Signature: `static func sumsi(values:List<Num>) -> Num`
 - Parameter values: input
+- Throws: `Fiber.abort()` if the values are not numeric.
 - Returns: sum of all input numbers
+
+### [static mean(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L190)
+
+
+<span id="ss-static-mean"></span>
+The mean, _also known as average_,
+is the sum of all values over the number of values.
+This is a [measure of central tendency](https://en.wikipedia.org/wiki/Central_tendency):
+a method of finding a typical or central value of a set of numbers.
+
+This runs on `O(n)`, linear time in respect to the array
+
+- Example: `Ss.mean([1, 2]) // => 1.5`
+- Since: 1.0.0
+- Parameter values: sample of one or more data points
+- Throws: `Fiber.abort()` if the the length of values is less than one
+- Returns: mean
+
+### [static meansi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L224)
+
+
+The mean, _also known as average_,
+is the sum of all values over the number of values.
+This is a [measure of central tendency](https://en.wikipedia.org/wiki/Central_tendency):
+a method of finding a typical or central value of a set of numbers.
+
+The simple mean uses the successive addition method internally
+to calculate it's result. Errors in floating-point addition are
+not accounted for, so if precision is required, the standard [mean](#ss-static-mean)
+method should be used instead.
+
+This runs on `O(n)`, linear time in respect to the array
+- Example: `Ss.mean([0, 10]) // => 5`
+- Since: 1.0.0
+- Parameter values: sample of one or more data points
+- Throws: `Fiber.abort()` if the the length of values is less than one
+- Returns: mean
