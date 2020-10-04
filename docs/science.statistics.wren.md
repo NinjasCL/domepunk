@@ -77,7 +77,7 @@ addition.
 
 This runs on `O(n)`, linear time in respect to the List.
 
-#### Example:
+- Example:
 ```js
 Ss.sum([1, 2]) // => 3
 ```
@@ -95,7 +95,7 @@ is the result of adding all numbers together, starting from zero.
 
 This runs on `O(n)`, linear time in respect to the list
 
-#### Example
+- Example:
 ```js
 Ss.sumsi([1, 2, 3]) // => 6
 ```
@@ -115,7 +115,7 @@ a method of finding a typical or central value of a set of numbers.
 
 This runs on `O(n)`, linear time in respect to the array
 
-#### Example
+- Example:
 
 ```js
 Ss.mean([1, 2]) // => 1.5
@@ -126,7 +126,7 @@ Ss.mean([1, 2]) // => 1.5
 - Throws: `Fiber.abort()` if the the length of values is less than one
 - Returns: mean
 
-### [static meansi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L232)
+### [static meansi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L228)
 
 
 The mean, _also known as average_,
@@ -140,7 +140,7 @@ not accounted for, so if precision is required, the standard [mean](#static-mean
 method should be used instead.
 
 This runs on `O(n)`, linear time in respect to the array
-#### Example
+- Example:
 ```js
 Ss.mean([0, 10]) // => 5
 ````

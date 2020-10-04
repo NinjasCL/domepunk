@@ -76,7 +76,7 @@ class Statistics {
 
   This runs on `O(n)`, linear time in respect to the List.
 
-  #### Example:
+  - Example:
   ```js
   Ss.sum([1, 2]) // => 3
   ```
@@ -137,7 +137,7 @@ class Statistics {
 
   This runs on `O(n)`, linear time in respect to the list
 
-  #### Example
+  - Example:
   ```js
   Ss.sumsi([1, 2, 3]) // => 6
   ```
@@ -180,7 +180,7 @@ class Statistics {
 
   This runs on `O(n)`, linear time in respect to the array
 
-  #### Example
+  - Example:
 
   ```js
   Ss.mean([1, 2]) // => 1.5
@@ -215,7 +215,7 @@ class Statistics {
   method should be used instead.
 
   This runs on `O(n)`, linear time in respect to the array
-  #### Example
+  - Example:
   ```js
   Ss.mean([0, 10]) // => 5
   ````
