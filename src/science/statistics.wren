@@ -200,11 +200,7 @@ class Statistics {
           return Fiber.abort("`mean` requires at least one data point")
       }
 
-      var sum = Statistics.sum(values)
-      var count = values.count
-      var result = sum / count
-
-      return result
+      return Statistics.sum(values) / values.count
   }
 
   /**
@@ -237,7 +233,7 @@ class Statistics {
       if (!(values is List) || values.count == 0) {
           return Fiber.abort("`mean simple` requires at least one data point")
       }
-      return (Statistics.sumsi(values) / values.count)
+      return Statistics.sumsi(values) / values.count
   }
 }
 
