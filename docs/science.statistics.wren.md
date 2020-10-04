@@ -36,7 +36,7 @@ Below is an example of using epsilon in [gradient descent](https://en.wikipedia.
 where we're trying to find a local minimum of a function's derivative,
 given by the `fDerivative` method.
 
-#### Example
+- Example:
 ```js
 // From calculation, we expect that the local minimum occurs at x=9/4
 var x_old = 0
