@@ -3,6 +3,9 @@ class UnitTests {
 
   static describe {"test/unit.wren"}
 
+  // The precision to test float values
+  static epsilon {0.001}
+
   static all {[
     testThatFailureWorks,
     testThatSuccessWorks,
@@ -17,12 +20,18 @@ class UnitTests {
     testThatIsNotKindWorks,
 
     testThatIsStringWorks,
-    testThatIsNotStringWorks
+    testThatIsNotStringWorks,
+
+    testThatAboveWorks,
+    testThatBelowWorks,
+
+    testThatFloatEqualWorks,
+    testThatIsNotFloatEqualWorks
 
   ]}
 
   static testThatFailureWorks {[
-    "testThatFailureWorks",
+    "Assert.failure()",
     Fiber.new { |assert|
       assert.failure {
         assert.success("This is not a fiber or function")
@@ -37,7 +46,7 @@ class UnitTests {
   ]}
 
   static testThatSuccessWorks {[
-    "testThatSuccessWorks",
+    "Assert.success()",
     Fiber.new { |assert|
       assert.success {
         assert.failure("This is not a fiber or function")
@@ -52,7 +61,7 @@ class UnitTests {
   ]}
 
   static testThatEqualWorks {[
-    "testThatEqualWorks",
+    "Assert.equal()",
     Fiber.new { |assert|
       assert.failure {
         assert.equal(true, false)
@@ -64,7 +73,7 @@ class UnitTests {
   ]}
 
   static testThatNotEqualWorks {[
-    "testThatNotEqualWorks",
+    "Assert.isNotEqual()",
     Fiber.new { |assert|
       assert.failure {
         assert.isNotEqual(true, true)
@@ -76,7 +85,7 @@ class UnitTests {
   ]}
 
   static testThatNullWorks {[
-    "testThatNullWorks",
+    "Assert.isNull()",
     Fiber.new { |assert|
       assert.failure {
         assert.isNull(true)
@@ -88,7 +97,7 @@ class UnitTests {
   ]}
 
   static testThatNotNullWorks {[
-    "testThatNotNullWorks",
+    "Assert.isNotNull()",
     Fiber.new { |assert|
       assert.failure {
         assert.isNotNull(null)
@@ -106,7 +115,7 @@ class UnitTests {
   ]}
 
   static testThatKindWorks{[
-    "testThatKindWorks",
+    "Assert.isKind()",
     Fiber.new { |assert|
       assert.failure {
         assert.isKind("a", Num)
@@ -116,7 +125,7 @@ class UnitTests {
   ]}
 
   static testThatIsNotKindWorks{[
-    "testThatIsNotKindWorks",
+    "Assert.isNotKind()",
     Fiber.new { |assert|
       assert.failure {
         assert.isNotKind("a", String)
@@ -126,7 +135,7 @@ class UnitTests {
   ]}
 
   static testThatIsStringWorks{[
-    "testThatIsStringWorks",
+    "Assert.isString()",
     Fiber.new { |assert|
       assert.failure {
         assert.isString(1)
@@ -140,7 +149,7 @@ class UnitTests {
   ]}
 
   static testThatIsNotStringWorks{[
-    "testThatIsNotStringWorks",
+    "Assert.isNotString()",
     Fiber.new { |assert|
       assert.failure {
         assert.isNotString("a")
@@ -150,6 +159,62 @@ class UnitTests {
         assert.isNotString(true)
         assert.isNotString(1)
         assert.isNotString(null)
+      }
+    }
+  ]}
+
+  static testThatAboveWorks {[
+    "Assert.above()",
+    Fiber.new { |assert|
+      assert.failure {
+        assert.above(2, 4)
+        assert.above(2, 2)
+      }
+
+      assert.success {
+        assert.above(4, 2)
+      }
+    }
+  ]}
+
+  static testThatBelowWorks {[
+    "Assert.below()",
+    Fiber.new { |assert|
+      assert.failure {
+        assert.below(4, 2)
+        assert.below(4, 4)
+      }
+
+      assert.success {
+        assert.below(2, 4)
+      }
+    }
+  ]}
+
+  static testThatFloatEqualWorks {[
+    "Assert.floatEqual()",
+    Fiber.new {|assert|
+      assert.failure {
+        assert.floatEqual(0.1, 0.2, epsilon)
+        assert.floatEqual(3.2, 3.1, epsilon)
+      }
+
+      assert.success {
+        assert.floatEqual(1 - 0.9, 0.1, epsilon)
+      }
+    }
+  ]}
+
+  static testThatIsNotFloatEqualWorks {[
+    "Assert.isNotFloatEqual()",
+    Fiber.new { |assert|
+      assert.success {
+        assert.isNotFloatEqual(0.1, 0.2, epsilon)
+        assert.isNotFloatEqual(3.2, 3.1, epsilon)
+      }
+
+      assert.failure {
+        assert.isNotFloatEqual(1 - 0.9, 0.1, epsilon)
       }
     }
   ]}

@@ -280,7 +280,7 @@ class Assert {
     /**
     Terminates the execution by throwing a Fiber.abort()
     - Since: 1.0.0
-    - Signature: `static abort(message:String)`
+    - Signature: `static abort(message:String?) -> Void`
     - Parameter message: The message that will show in the abort.
     - Throws: `Fiber.abort(message)` on assertion error.
     */
@@ -288,44 +288,135 @@ class Assert {
       return Fiber.abort(message)
     }
 
+    static abort {
+      return Assert.abort("Assert was aborted.")
+    }
+
     /**
     Assert that two variables have the same value
     - Since: 1.0.0
-    - Signature: `static func equal(a:Any, b:Any, message:String?) -> Void`
-    - Parameter a: The first variable.
-    - Parameter b: The second variable.
+    - Signature: `static func equal(value:Any, expected:Any, message:String?) -> Void`
+    - Parameter value: The first variable.
+    - Parameter expected: The second variable.
     - Parameter message: Optional mesage to show on assertion error.
-    - Throws: `Fiber.abort("%(a) is not equal to %(b)")` on assertion error.
+    - Throws: `Fiber.abort()` on assertion error.
     */
-    static equal(a, b, message) {
+    static equal(value, expected, message) {
         Assert.count = Assert.count + 1
-        if (a != b) {
+        if (value != expected) {
             return Assert.abort(message)
         }
     }
 
-    static equal(a, b) {
-        return Assert.equal(a, b, "%(a) is not equal to %(b)")
+    static equal(value, expected) {
+        return Assert.equal(value, expected, "%(value) is not equal to %(expected)")
     }
 
     /**
     Assert that two variables have the different values
     - Since: 1.0.0
-    - Signature: `static func notEqual(a:Any, b:Any, message:String?) -> Void`
-    - Parameter a: The first variable.
-    - Parameter b: The second variable.
+    - Signature: `static func isNotEqual(value:Any, expected:Any, message:String?) -> Void`
+    - Parameter value: The first variable.
+    - Parameter expected: The second variable.
     - Parameter message: Optional mesage to show on assertion error.
-    - Throws: `Fiber.abort("%(a) is equal to %(b)")` on assertion error.
+    - Throws: `Fiber.abort()` on assertion error.
     */
-    static isNotEqual(a, b, message) {
+    static isNotEqual(value, expected, message) {
         Assert.count = Assert.count + 1
-        if (a == b) {
+        if (value == expected) {
             return Assert.abort(message)
         }
     }
 
-    static isNotEqual(a, b) {
-        return Assert.isNotEqual(a, b, "%(a) is equal to %(b)")
+    static isNotEqual(value, expected) {
+        return Assert.isNotEqual(value, expected, "%(value) is equal to %(expected)")
+    }
+
+    /**
+    Assert that two floating point variables have the same value.
+    This is needed due to Floating-Point arithmetic.
+    Thanks to _@Dr.Henwig_ at _Wren's Discord_ for the help.
+    - See: [Floating Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
+    - Since: 1.0.0
+    - Signature: `static func floatEqual(value:Num, expected:Num, message:String?) -> Void`
+    - Parameter value: The first variable.
+    - Parameter expected: The second variable.
+    - Parameter epsilon: The precision needed to consider values equal. e.g. 0.001
+    - Parameter message: Optional mesage to show on assertion error.
+    - Throws: `Fiber.abort()` on assertion error.
+    */
+    static floatEqual(value, expected, epsilon, message) {
+        Assert.count = Assert.count + 1
+        if (!((value - expected).abs <= epsilon)) {
+            return Assert.abort(message)
+        }
+    }
+
+    static floatEqual(value, expected, epsilon) {
+        return Assert.floatEqual(value, expected, epsilon, "%(value) is not equal to %(expected)")
+    }
+
+    /**
+    Assert that two floating point variables have different values.
+    This is needed due to Floating-Point arithmetic.
+    - See: [Floating Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
+    - Since: 1.0.0
+    - Signature: `static func isNotFloatEqual(value:Num, expected:Num, message:String?) -> Void`
+    - Parameter value: The first variable.
+    - Parameter expected: The second variable.
+    - Parameter epsilon: The precision needed to consider values equal. e.g. 0.001
+    - Parameter message: Optional mesage to show on assertion error.
+    - Throws: `Fiber.abort()` on assertion error.
+    */
+    static isNotFloatEqual(value, expected, epsilon, message) {
+        Assert.count = Assert.count + 1
+        if ((value - expected).abs <= epsilon) {
+            return Assert.abort(message)
+        }
+    }
+
+    static isNotFloatEqual(value, expected, epsilon) {
+        return Assert.isNotFloatEqual(value, expected, epsilon, "%(value) is equal to %(expected)")
+    }
+
+    /**
+    Assert that one variable is above the expected.
+    - Since: 1.0.0
+    - Signature: `static func above(value:Any, expected:Any, message:String?) -> Void`
+    - Parameter value: The first variable.
+    - Parameter expected: The second variable.
+    - Parameter message: Optional mesage to show on assertion error.
+    - Throws: `Fiber.abort()` on assertion error.
+    */
+    static above(value, expected, message) {
+        Assert.count = Assert.count + 1
+        if (value <= expected) {
+            return Assert.abort(message)
+        }
+    }
+
+    static above(value, expected) {
+        return Assert.above(value, expected, "%(value) is below %(expected)")
+    }
+
+    /**
+    Assert that one variable is below the expected.
+    - Since: 1.0.0
+    - Signature: `static func below(value:Any, expected:Any, message:String?) -> Void`
+    - Parameter value: The first variable.
+    - Parameter expected: The second variable.
+    - Parameter message: Optional mesage to show on assertion error.
+    - Throws: `Fiber.abort()` on assertion error.
+    */
+    static below(value, expected, message) {
+        Assert.count = Assert.count + 1
+        if (value >= expected) {
+            return Assert.abort(message)
+        }
+    }
+
+    static below(value, expected) {
+        return Assert.below(value, expected, "%(value) is above %(expected)")
     }
 
     // MARK - Type assertions
