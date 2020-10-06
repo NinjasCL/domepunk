@@ -35,7 +35,7 @@ class Probability {
         seed = Random.new()
       }
 
-      var entropy = seed.float(1, 100000000000)
+      var entropy = seed.int(0,0xffff)
       var result = 0
 
       for(i in 0..len) {
