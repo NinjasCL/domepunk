@@ -1,5 +1,5 @@
 import "random" for Random
-
+/** doc-name: science.probabilities.wren */
 /**
 Probability
 */
@@ -32,9 +32,9 @@ class Probability {
   }
 
   /**
+  How probable is the event not to happen?.
   The complement of an event is the subset of outcomes
   in the sample space that are not in the event. A complement is itself an event.
-  How probable is the event not to happen?.
   [Brilliant.org](https://brilliant.org/wiki/probability-by-complement/)
 
   - Since: 1.0.0

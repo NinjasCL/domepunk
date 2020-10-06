@@ -37,7 +37,7 @@ class Percentage {
   - Since: 1.0.0
   - Signature: `static func decode(number:Num) -> String`
   - Parameter value: A string or number to decode.
-  - Returns: A percentage including `%`.
+  - Returns: A number from 0 to 1.
   - Throws: `Fiber.abort()` if the value is not a number or string.
   */
   static decode(value) {
