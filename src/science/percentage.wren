@@ -10,6 +10,18 @@ import "./science/percentage" for Pct
 */
 class Percentage {
   /**
+  Holds the number one hundred
+  - Signature: `static var onehundred:Num = 100`
+  */
+  static onehundred {100}
+
+  /**
+  Hodls the number one
+  - Signature: `static var one:Num = 1.0`
+  */
+  static one {1.0}
+
+  /**
   Creates a new string from a given percentage number.
   - Example:
   ```js
@@ -25,7 +37,7 @@ class Percentage {
     if (!(number is Num)) {
       return Fiber.abort("%(number) must be a number")
     }
-    return "%(number * 100)\%"
+    return "%(number * onehundred)\%"
   }
 
   /**
@@ -47,7 +59,7 @@ class Percentage {
       }
     }
     value = "%(value)".trim("\%").trim()
-    return Num.fromString(value) / 100
+    return Num.fromString(value) / onehundred
   }
 }
 

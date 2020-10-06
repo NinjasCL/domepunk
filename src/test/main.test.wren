@@ -3,7 +3,7 @@ import "./unit" for Runner
 import "./test/unit.test" for UnitTests
 import "./misc/emoji.test" for EmojiTests
 import "./science/statistics.test" for StatisticsTests
-import "./science/probabilities.test" for ProbabilitiesTests
+import "./science/probability.test" for ProbabilityTests
 import "./science/percentage.test" for PercentageTests
 
 class Game {
@@ -12,7 +12,7 @@ class Game {
       Runner.run(UnitTests)
       Runner.run(EmojiTests)
       Runner.run(StatisticsTests)
-      Runner.run(ProbabilitiesTests)
+      Runner.run(ProbabilityTests)
       Runner.run(PercentageTests)
 
       Runner.end {
