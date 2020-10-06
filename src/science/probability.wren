@@ -1,6 +1,6 @@
 import "random" for Random
 
-/** doc-name: science.probabilities.wren */
+/** doc-name: science.probability.wren */
 /** doc-header
 Sometimes, especially in game development and in statistical applications,
 it's very handy to have an easy way of returning a value based on probabilities.
