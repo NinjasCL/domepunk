@@ -2,6 +2,8 @@ import "./src/misc/emoji" for Emoji
 import "./src/science/statistics" for Statistics
 import "./src/science/probability" for Probability
 import "./src/science/percentage" for Percentage
+import "./src/utils/fps" for Fps
+import "./src/utils/clock" for Clock
 
 import "dome" for Process, Window, Version
 import "io" for FileSystem
@@ -72,15 +74,23 @@ class Settings {
   }
 }
 
+var ClockShared = Clock.new()
+var FpsShared = Fps.new(Science, ClockShared)
+
 class DomePunk {
   static science {Science}
   static misc {Misc}
   static dome {Dome}
   static settings {Settings}
+  static fps {FpsShared}
+  static clock {ClockShared}
 
   static init() {}
   static update() {}
-  static draw(dt) {}
+  static draw(dt) {
+    clock.tick(dt)
+    // System.print(clock)
+  }
 }
 
 var DP = DomePunk
