@@ -86,10 +86,12 @@ class DomePunk {
   static clock {ClockShared}
 
   static init() {}
-  static update() {}
+  static update() {
+    clock.update()
+    System.print(clock)
+  }
   static draw(dt) {
     clock.tick(dt)
-    // System.print(clock)
   }
 }
 
