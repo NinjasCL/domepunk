@@ -78,12 +78,19 @@ class Emoji {
     /**
     Will return a random emoji.
     - Since: 1.0.0
-    - Signature: `static var random: String`
+    - Signature: `static func random(seed: Random?) -> String`
+    - Parameter seed: An _optional_ `Random.new()` instance.
+    - Returns: A random emoji string.
     */
-    static random {
+    static random(seed) {
       var rand = Random.new()
+      if (seed is Random) {
+        rand = seed
+      }
       return rand.sample(Emoji.emojis.values.toList)
     }
+
+    static random {Emoji.random(null)}
 
     // MARK: - Public Static Methods
 
