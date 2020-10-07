@@ -72,14 +72,16 @@ Will return all the available emoji tags and emojis.
 - Since: 1.0.0
 - Signature: `static var emojis: Map`
 
-### [static random](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L83)
+### [static random(seed)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L85)
 
 
 Will return a random emoji.
 - Since: 1.0.0
-- Signature: `static var random: String`
+- Signature: `static func random(seed: Random?) -> String`
+- Parameter seed: An _optional_ `Random.new()` instance.
+- Returns: A random emoji string.
 
-### [static forName(name)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L97)
+### [static forName(name)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L104)
 
 
 It will return the emoji for the specified name.
@@ -88,7 +90,7 @@ It will return the emoji for the specified name.
 - Parameter name: The name tag for the emoji.
 - Returns: An emoji string if the tag is found. Empty string if no name tag is found.
 
-### [static emojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L157)
+### [static emojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L164)
 
 
 Will replace emoji tags to emojis.
@@ -99,7 +101,7 @@ E.g. `:thumbsup:` to 👍
 - Parameter string: The string that it will replace tags with emojis.
 - Returns: The same string but with the name tags replaced by emojis.
 
-### [static demojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L193)
+### [static demojize(string)](https://github.com/ninjascl/domepunk/blob/main/src/misc/emoji/emoji.wren#L200)
 
 
 It the reverse process to emojize. Transform emoji to emoji tags.

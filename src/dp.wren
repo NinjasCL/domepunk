@@ -87,11 +87,12 @@ class DomePunk {
 
   static init() {}
   static update() {
-    clock.update()
+    clock.tick()
     System.print(clock)
   }
+
   static draw(dt) {
-    clock.tick(dt)
+    clock.dt = dt
   }
 }
 
