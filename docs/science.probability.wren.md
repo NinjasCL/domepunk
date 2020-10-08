@@ -1,11 +1,11 @@
-<!-- file: src/science/probability.wren -->
+<!-- file: domepunk/science/probability.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
 Sometimes, especially in game development and in statistical applications,
 it's very handy to have an easy way of returning a value based on probabilities.
 This library is inspired by [Probability.js](https://github.com/fschaefer/Probability.js).
 
 ---
-## [Class Probability](https://github.com/ninjascl/domepunk/blob/main/src/science/probability.wren#L19)
+## [Class Probability](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L19)
 
 
 Defines the main Probability methods.
@@ -19,7 +19,7 @@ import "./science/probability" for Pr
 
 ## API
 
-### [static prng (len, seed)](https://github.com/ninjascl/domepunk/blob/main/src/science/probability.wren#L29)
+### [static prng (len, seed)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L29)
 
 
 This is the core function for generating entropy.
@@ -30,7 +30,7 @@ Based on [Mattasher/probability-distributions](https://github.com/Mattasher/prob
 - Parameter seed: an instance of Random.new() with a seed to generate entropy
 - Returns: A pseduo random number between 0 and 1
 
-### [static seed(value)](https://github.com/ninjascl/domepunk/blob/main/src/science/probability.wren#L57)
+### [static seed(value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L57)
 
 
 The seed is a new instance of `Random.new()`. Here for convenience.
@@ -38,7 +38,7 @@ The seed is a new instance of `Random.new()`. Here for convenience.
 - Signature: `static func seed(value: String?) -> Random`
 - Parameter value: An _optional_ value used to generate a new instance of `Random.new()`.
 
-### [static complement(probability)](https://github.com/ninjascl/domepunk/blob/main/src/science/probability.wren#L71)
+### [static complement(probability)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L71)
 
 
 How probable is the event not to happen?.
@@ -51,7 +51,7 @@ in the sample space that are not in the event. A complement is itself an event.
 - Returns: The probability of the event not to happen.
 - Throws: `Fiber.abort()` if the probability is not a number
 
-### [static cdf(weights)](https://github.com/ninjascl/domepunk/blob/main/src/science/probability.wren#L85)
+### [static cdf(weights)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L85)
 
 
 The cumulative distribution function (CDF) of a
@@ -60,7 +60,7 @@ The advantage of the CDF is that it can be defined for any kind of random
 variable (discrete, continuous, and mixed).
 - See: [Probability Course](https://www.probabilitycourse.com/chapter3/3_2_1_cdf.php)
 
-### [static choose(options, seed)](https://github.com/ninjascl/domepunk/blob/main/src/science/probability.wren#L143)
+### [static choose(options, seed)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L143)
 
 
 Choose a value inside a Map based on probabilities.

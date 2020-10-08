@@ -1,8 +1,8 @@
 .PHONY: emoji update
 
 e emoji:
-	python3 . > ../../src/misc/emoji/codes.wren
-	cat ../../src/misc/emoji/*.wren > ../../src/misc/emoji.wren
+	python3 . > ../../domepunk/misc/emoji/codes.wren
+	cat ../../domepunk/misc/emoji/*.wren > ../../domepunk/misc/emoji.wren
 
 u update:
 	wget -O codes.py https://raw.githubusercontent.com/carpedm20/emoji/master/emoji/unicode_codes.py

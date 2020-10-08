@@ -1,4 +1,4 @@
-import "./src/dp" for Dp
+import "./domepunk/dp" for Dp
 
 class Game {
   static init() {

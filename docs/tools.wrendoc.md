@@ -64,7 +64,7 @@ Only one command per line is supported.
 - `/** doc-name: MyFilename */`: This command will overwrite the filename of the generated markdown file. By default _WrenDoc_ uses the following format:
 
 ```python
-# e.g src-misc-emoji-emoji.wren.md
+# e.g domepunk-misc-emoji-emoji.wren.md
 f"{pathToFile}".lower().strip().replace("/", "-").replace("\\", "-") + ".md"`
 ```
 

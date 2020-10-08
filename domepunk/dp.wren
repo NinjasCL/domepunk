@@ -1,9 +1,9 @@
-import "./src/misc/emoji" for Emoji
-import "./src/science/statistics" for Statistics
-import "./src/science/probability" for Probability
-import "./src/science/percentage" for Percentage
-import "./src/utils/fps" for Fps
-import "./src/utils/clock" for Clock
+import "./domepunk/misc/emoji" for Emoji
+import "./domepunk/science/statistics" for Statistics
+import "./domepunk/science/probability" for Probability
+import "./domepunk/science/percentage" for Percentage
+import "./domepunk/utils/fps" for Fps
+import "./domepunk/utils/clock" for Clock
 
 import "dome" for Process, Window, Version
 import "io" for FileSystem

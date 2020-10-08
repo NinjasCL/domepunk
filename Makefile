@@ -20,7 +20,7 @@ c clean:
 	rm -f main.wren
 
 t test:
-	./dome --debug src/test/main.test.wren
+	./dome --debug domepunk/test/main.test.wren
 
 d docs:
 	python3 ./tools/docs/__main__.py .

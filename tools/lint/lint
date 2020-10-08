@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Example Usage: ./tools/lint/lint src/test/misc/emoji.test.wren
+# Example Usage: ./tools/lint/lint domepunk/test/misc/emoji.test.wren
 
 # https://stackoverflow.com/a/2757938
 LINT_PATH=`dirname "$0"`

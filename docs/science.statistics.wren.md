@@ -1,4 +1,4 @@
-<!-- file: src/science/statistics.wren -->
+<!-- file: domepunk/science/statistics.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
 
 ## Statistics
@@ -8,7 +8,7 @@ Implemented in literate _Wren_ with no dependencies.
 Ported from: [JavaScript Simple Statistics](https://github.com/simple-statistics/simple-statistics).
 
 ---
-## [Class Statistics](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L19)
+## [Class Statistics](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/statistics.wren#L19)
 
 
 ```js
@@ -21,7 +21,7 @@ import "./science/statistics" for Ss
 
 ## API
 
-### [static epsilon](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L62)
+### [static epsilon](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/statistics.wren#L62)
 
 
 We use `ε`, epsilon, as a stopping criterion when we want to iterate
@@ -62,7 +62,7 @@ System.print("Local minimum occurs at %(x_new)")
 ```
 - Since: 1.0.0
 
-### [static sum(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L89)
+### [static sum(values)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/statistics.wren#L89)
 
 
 Our default sum is the [Kahan-Babuska algorithm](https://pdfs.semanticscholar.org/1760/7d467cda1d0277ad272deb2113533131dc09.pdf).
@@ -87,7 +87,7 @@ Ss.sum([1, 2]) // => 3
 - Throws: `Fiber.abort()` if the values are not numeric.
 - Returns: sum of all input numbers
 
-### [static sumsi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L150)
+### [static sumsi(values)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/statistics.wren#L150)
 
 
 The simple [sum](https://en.wikipedia.org/wiki/Summation) of a list
@@ -105,7 +105,7 @@ Ss.sumsi([1, 2, 3]) // => 6
 - Throws: `Fiber.abort()` if the values are not numeric.
 - Returns: sum of all input numbers
 
-### [static mean(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L194)
+### [static mean(values)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/statistics.wren#L194)
 
 
 The mean, _also known as average_,
@@ -126,7 +126,7 @@ Ss.mean([1, 2]) // => 1.5
 - Throws: `Fiber.abort()` if the the length of values is less than one
 - Returns: mean
 
-### [static meansi(values)](https://github.com/ninjascl/domepunk/blob/main/src/science/statistics.wren#L228)
+### [static meansi(values)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/statistics.wren#L228)
 
 
 The mean, _also known as average_,
