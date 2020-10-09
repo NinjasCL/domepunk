@@ -81,30 +81,30 @@ class ClockTests {
         }
       ],
       [
-        "print",
+        "string",
         Fiber.new {|assert|
           var clock = Clock.new()
-          assert.equal(clock.print, "00:00:00")
+          assert.equal(clock.toString, "00:00:00")
 
           for (i in 0..clock.unit) {
             clock.tick()
           }
 
-          assert.equal(clock.print, "00:00:01")
+          assert.equal(clock.toString, "00:00:01")
 
           var minute = clock.unit * clock.unit
           for (i in 0..minute) {
             clock.tick()
           }
 
-          assert.equal(clock.print, "00:01:00")
+          assert.equal(clock.toString, "00:01:00")
 
           var hour = minute * clock.unit
           for (i in 0..hour) {
             clock.tick()
           }
 
-          assert.equal(clock.print, "01:00:00")
+          assert.equal(clock.toString, "01:00:00")
         }
       ]
     ]

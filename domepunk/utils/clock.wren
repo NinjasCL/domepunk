@@ -9,6 +9,22 @@ class Clock {
   maxInt { Num.largest }
 
   /**
+  Initializes a new clock object.
+  - Signature: `constructor new() -> Clock`
+  - Since: 1.0.0
+  - Returns: A new instance of Clock
+  */
+  construct new() {
+    _ticks = 0
+    _dt = 0
+
+    _seconds = 0
+    _minutes = 0
+    _hours = 0
+    _epoch = System.clock
+  }
+
+  /**
   Number of ticks of the clock.
   - Since: 1.0.0
   - Signature: `var ticks:Num`
@@ -116,7 +132,7 @@ class Clock {
 
   /**
   Returns the number of seconds (including fractional seconds)
-  when the program was started.
+  when the clock was created.
   - Signature: `var epoch:Num`
   - Since: 1.0.0
   */
@@ -132,22 +148,6 @@ class Clock {
   clock {System.clock}
 
   /**
-  Initializes a new clock object.
-  - Signature: `constructor new() -> Clock`
-  - Since: 1.0.0
-  - Returns: A new instance of Clock
-  */
-  construct new() {
-    _ticks = 0
-    _dt = 0
-
-    _seconds = 0
-    _minutes = 0
-    _hours = 0
-    _epoch = System.clock
-  }
-
-  /**
   Increase ticks by 1.
   Use this function inside your _static update()_ method.
   - Signature: `func tick() -> Void`
@@ -157,7 +157,13 @@ class Clock {
     ticks = ticks + 1
   }
 
-  print {
+  /**
+  Returns the formatted clock string.
+  - Since: 1.0.0
+  - Example: `23:00:00`
+  - Signature: `static var string:String`
+  */
+  toString {
     var hh = "0%(hours)"
     if (hours > 9) {
       hh = "%(hours)"
@@ -176,7 +182,12 @@ class Clock {
     return "%(hh):%(mm):%(ss)"
   }
 
-  toString {{
+  /**
+  A debugging description of the clock instance.
+  - Since: 1.0.0
+  - Signature: `static var description:String`
+  */
+  description {{
     "ticks":ticks,
     "seconds":seconds,
     "minutes":minutes,
