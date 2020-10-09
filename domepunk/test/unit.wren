@@ -186,16 +186,18 @@ class Runner {
 
     var error = null
     var exec = Fn.new {|test, title, message|
-      var out = message
+      var out = "✅ " + message
+      var color = "\u001b[32m" // green
+      var colorReset = "\u001b[0m" // default
+
       error = Fiber.new { test.call(Assert) }.try()
       if(error) {
-        out = "❌ " + out + ": "
-        out = out + error
+        color = "\u001b[31m" // red
+        out = "❌ " + message + ": " + error
         //Fiber.abort(message + ": " + error)
-      } else {
-        out = "✅ " + out
       }
-      System.print(out)
+
+      System.print(color + out + colorReset)
     }
 
     var count = 0

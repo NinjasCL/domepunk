@@ -1,9 +1,11 @@
-import "./domepunk/misc/emoji" for Emoji
-import "./domepunk/science/statistics" for Statistics
-import "./domepunk/science/probability" for Probability
-import "./domepunk/science/percentage" for Percentage
-import "./domepunk/utils/fps" for Fps
-import "./domepunk/utils/clock" for Clock
+import "./misc/emoji" for Emoji
+import "./science/statistics" for Statistics
+import "./science/probability" for Probability
+import "./science/percentage" for Percentage
+import "./science/calculation" for Calculation
+
+import "./utils/fps" for Fps
+import "./utils/clock" for Clock
 
 import "dome" for Process, Window, Version
 import "io" for FileSystem
@@ -58,8 +60,9 @@ class Science {
   static statistics {Statistics}
   static probability {Probability}
   static percentage {Percentage}
-  static math {Math}
+  static calculation {Calculation}
   static vector {Vector}
+  static math {Math}
 }
 
 class Settings {

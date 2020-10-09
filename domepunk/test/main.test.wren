@@ -5,6 +5,8 @@ import "./misc/emoji.test" for EmojiTests
 import "./science/statistics.test" for StatisticsTests
 import "./science/probability.test" for ProbabilityTests
 import "./science/percentage.test" for PercentageTests
+import "./science/calculation.test" for CalculationTests
+
 import "./utils/clock.test" for ClockTests
 
 class Game {
@@ -15,6 +17,8 @@ class Game {
       Runner.run(StatisticsTests)
       Runner.run(ProbabilityTests)
       Runner.run(PercentageTests)
+      Runner.run(CalculationTests)
+
       Runner.run(ClockTests)
 
       Runner.end {
