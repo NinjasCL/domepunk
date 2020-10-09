@@ -185,12 +185,13 @@ class Runner {
     }
 
     var error = null
-    var exec = Fn.new {|test, message|
+    var exec = Fn.new {|test, title, message|
       var out = message
       error = Fiber.new { test.call(Assert) }.try()
       if(error) {
-        out = "❌ " + out
-        Fiber.abort(error)
+        out = "❌ " + out + ": "
+        out = out + error
+        //Fiber.abort(message + ": " + error)
       } else {
         out = "✅ " + out
       }
@@ -207,7 +208,7 @@ class Runner {
             test.each {|inner|
               if ((inner is List) && inner.count > 1) {
                 count = count + 1
-                exec.call(inner[1], "(%(count)/%(total)): %(inner[0])")
+                exec.call(inner[1], inner[0], "(%(count)/%(total)): %(inner[0])")
               }
             }
           } else {
@@ -217,20 +218,20 @@ class Runner {
               test[1].each {|inner|
                 if ((inner is List) && inner.count > 1) {
                   count = count + 1
-                  exec.call(inner[1], "(%(count)/%(total)) %(test[0]): %(inner[0])")
+                  exec.call(inner[1], inner[0], "(%(count)/%(total)) %(test[0]): %(inner[0])")
                 }
               }
             } else {
               // Suport single {["test name", Fiber]}
               count = count + 1
-              exec.call(test[1], "(%(count)/%(total)): %(test[0])")
+              exec.call(test[1], test[0], "(%(count)/%(total)): %(test[0])")
             }
           }
         }
       } else {
         // Support simple {Fiber}
         count = count + 1
-        exec.call(test, "(%(count)/%(total)):")
+        exec.call(test, "", "(%(count)/%(total)):")
       }
     }
 

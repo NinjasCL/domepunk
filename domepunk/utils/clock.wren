@@ -1,12 +1,12 @@
 /** doc-name: utils.clock */
 /**
-A simple Clock that counts ticks, seconds, minutes and hours
-since the start of the program.
+A simple Clock that counts ticks, seconds, minutes and hours.
+Use this in conjunction with the _static update()_ and _static draw(dt)_ of your _DOME_ Game class.
 - Since: 1.0.0
 */
 class Clock {
   unit { 60 }
-  maxInt { 0xffff }
+  maxInt { Num.largest }
 
   /**
   Number of ticks of the clock.
@@ -22,11 +22,11 @@ class Clock {
 
   ticks = (value) {
     _ticks = value
+    if (_ticks > 0 && _ticks % unit == 0) {
+      seconds = (_ticks / unit).floor
+    }
     if (_ticks > maxInt - 1) {
       _ticks = 0
-    }
-    if (_ticks > 0 && _ticks % unit == 0) {
-      seconds = seconds + 1
     }
   }
 
@@ -45,11 +45,12 @@ class Clock {
 
   seconds = (value) {
     _seconds = value
+    if (_seconds > 0 && _seconds % unit == 0) {
+      minutes = (_seconds / unit).floor
+    }
+
     if (_seconds > unit) {
       _seconds = 0
-    }
-    if (_seconds > 0 && _seconds % unit == 0) {
-      minutes = minutes + 1
     }
   }
 
@@ -68,11 +69,11 @@ class Clock {
 
   minutes = (value) {
     _minutes = value
+    if (_minutes > 0 && _minutes % unit == 0) {
+      hours = (_minutes / unit).floor
+    }
     if (_minutes > unit) {
       _minutes = 0
-    }
-    if (_minutes > 0 && _minutes % unit == 0) {
-      hours = hours + 1
     }
   }
 
@@ -92,12 +93,13 @@ class Clock {
   hours = (value) {
     _hours = value
     if (_hours > maxInt - 1) {
-      _hours = 0
+      _hours = maxInt
     }
   }
 
   /**
   The value last value obtained in `draw(dt)`.
+  Use this variable inside _static draw(dt)_ method.
   - Signature: `var dt:Num`
   - Since: 1.0.0
   */
@@ -146,12 +148,32 @@ class Clock {
   }
 
   /**
-  Increase ticks by 1
+  Increase ticks by 1.
+  Use this function inside your _static update()_ method.
   - Signature: `func tick() -> Void`
   - Since: 1.0.0
   */
   tick() {
     ticks = ticks + 1
+  }
+
+  print {
+    var hh = "0%(hours)"
+    if (hours > 9) {
+      hh = "%(hours)"
+    }
+
+    var mm = "0%(minutes)"
+    if (minutes > 9) {
+      mm = "%(minutes)"
+    }
+
+    var ss = "0%(seconds)"
+    if (seconds > 9) {
+      ss = "%(seconds)"
+    }
+
+    return "%(hh):%(mm):%(ss)"
   }
 
   toString {{

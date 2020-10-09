@@ -6,9 +6,9 @@
 * Modify misc/emoji/emoji.wren and rebuild with the Makefile tool
 */
 class Codes {
-  
+
   static all {{
-  
+
     ":1st_place_medal:": "🥇",
     ":2nd_place_medal:": "🥈",
     ":3rd_place_medal:": "🥉",
@@ -4687,9 +4687,9 @@ class Codes {
     ":regional_indicator_y:": "🇾",
     ":regional_indicator_z:": "🇿"
   }}
-  
+
 }
-  
+
 /** doc-name: emoji.wren */
 // Inspired on https://pypi.org/project/emoji/
 import "random" for Random
