@@ -71,7 +71,7 @@ class Settings {
     Window.title = value
   }
 
-  static resize(width, height) {
+  static size(width, height) {
     Window.resize(width, height)
     Canvas.resize(width, height)
   }
