@@ -1,12 +1,3 @@
-import "./misc/emoji" for Emoji
-import "./science/statistics" for Statistics
-import "./science/probability" for Probability
-import "./science/percentage" for Percentage
-import "./science/calculation" for Calculation
-
-import "./utils/fps" for Fps
-import "./utils/clock" for Clock
-
 import "dome" for Process, Window, Version
 import "io" for FileSystem
 import "random" for Random
@@ -16,11 +7,20 @@ import "input" for Keyboard, Mouse, GamePad
 import "math" for Math, Vector
 import "font" for Font
 
+import "domepunk/misc/emoji" for Emoji
+import "domepunk/science/statistics" for Statistics
+import "domepunk/science/probability" for Probability
+import "domepunk/science/percentage" for Percentage
+import "domepunk/science/calculation" for Calculation
+
+import "domepunk/utils/fps" for Fps
+import "domepunk/utils/clock" for Clock
+
 // MARK: - Dome
 class Input {
-  keyboard {Keyboard}
-  mouse {Mouse}
-  gamepad {GamePad}
+  static keyboard {Keyboard}
+  static mouse {Mouse}
+  static gamepad {GamePad}
 }
 
 class Audio {
@@ -91,7 +91,6 @@ class DomePunk {
   static init() {}
   static update() {
     clock.tick()
-    System.print(clock)
   }
 
   static draw(dt) {

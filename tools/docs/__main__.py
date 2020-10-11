@@ -43,7 +43,7 @@ def getDocPath(path = None):
 
 def getFiles(path = None):
   path = getPath(path)
-  files = glob.glob(f'{path}**/*.wren', recursive=True)
+  files = list(Path(path).glob('**/*.wren'))
   return files
 
 def getFileContent(path):
