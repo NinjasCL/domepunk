@@ -1,4 +1,4 @@
-/* Based on the https://processing.org/examples/interpolate.html example */
+/* Based on the https://p5js.org/examples/math-linear-interpolation.html example */
 
 import "domepunk/dp" for Dp
 
@@ -12,8 +12,11 @@ toward the cursor using the lerp() function * This is the same as the Easing und
 input only with lerp() instead.
 */
 class Game {
+  static name {"Linear Interpolation Demo"}
+
   static init() {
-    Dp.settings.resize(640,360)
+    Dp.settings.size(640,360)
+    Dp.settings.title = name
     Dp.init()
     __x = 0
     __y = 0
