@@ -5,7 +5,7 @@
 ++++
   <h1 align="center">🐦 Dome Punk🐓</h1>
   <p align="center">
-    <img domepunk="https://user-images.githubusercontent.com/292738/94819996-54788000-03d6-11eb-81e3-0d87fd7e9741.png" alt="Rooster Icon by Freepik https://www.flaticon.com/authors/freepik" style="width:30%;height:auto;">
+    <img src="https://user-images.githubusercontent.com/292738/94819996-54788000-03d6-11eb-81e3-0d87fd7e9741.png" alt="Rooster Icon by Freepik https://www.flaticon.com/authors/freepik" style="width:30%;height:auto;">
   </p>
 ++++
 
