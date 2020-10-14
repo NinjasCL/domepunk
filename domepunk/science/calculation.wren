@@ -30,7 +30,7 @@ class Calculation {
   /**
   Returns the next power of two that is equal to or bigger than the specified number.
   Adapted from [Starling](https://raw.githubusercontent.com/Gamua/Starling-Framework/v2.0/starling/src/starling/utils/MathUtil.as).
-  - See: https://en.wikipedia.org/wiki/Power_of_two#Fast_algorithm_to_check_if_a_positive_number_is_a_power_of_two
+  - See: [Power of Two](https://en.wikipedia.org/wiki/Power_of_two#Fast_algorithm_to_check_if_a_positive_number_is_a_power_of_two).
   - Since: 1.0.0
   - Signature: `static func nextpow(number:Num) -> Num`
   - Parameter number: The number to calculate the next power of two.

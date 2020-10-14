@@ -21,3 +21,4 @@ from extracting ideas.
 - https://github.com/Gamua/Sparrow-Framework
 - https://github.com/Gamua/Starling-Framework
 - https://github.com/luxeengine/luxe-alpha
+- https://github.com/jakesgordon/javascript-state-machine
