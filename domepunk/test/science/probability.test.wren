@@ -1,35 +1,20 @@
-import "../science/probability" for Pr
+import "random" for Random
+
+import "domepunk/science/probability" for Pr
 
 class ProbabilityTests {
   static describe {"science/probability.wren"}
 
   // Config: How many times repeat some tests
   static repeat {1000}
+
   // Precision to compare float values
   static epsilon {0.001}
 
   static all{[
-      testThatPrngWorks,
       testThatComplementWorks,
       testThatCDFWorks,
       testThatChooseWorks
-  ]}
-
-  static testThatPrngWorks {[
-    "Probabilities.prng()",
-    Fiber.new {|assert|
-      for (i in 1..repeat) {
-        var lowEntropyRandom = Pr.prng(1)
-        var number = lowEntropyRandom * 256
-        assert.above(number, -1)
-        assert.below(number, 256)
-      }
-
-      for(i in 1..repeat) {
-        assert.above(Pr.prng, 0)
-        assert.below(Pr.prng, 1)
-      }
-    }
   ]}
 
   static testThatComplementWorks {[
@@ -86,7 +71,7 @@ class ProbabilityTests {
       }
 
       assert.failure {
-        Pr.choose({"a":[]}, Pr.seed)
+        Pr.choose({"a":[]}, Random.new())
       }
 
       var counter = {
@@ -113,7 +98,7 @@ class ProbabilityTests {
       // it will always generate the same number because
       // the Random.new() seed is based on System time, and its likely
       // the same time would be returned each call.
-      var seed = Pr.seed
+      var seed = Random.new()
 
       var runs = 100
       for (i in 1..runs) {

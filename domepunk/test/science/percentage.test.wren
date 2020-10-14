@@ -1,4 +1,4 @@
-import "../science/percentage" for Pct
+import "domepunk/science/percentage" for Pct
 
 class PercentageTests {
   static describe {"science/percentage.wren"}

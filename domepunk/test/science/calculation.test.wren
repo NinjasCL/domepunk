@@ -1,4 +1,4 @@
-import "../science/calculation" for Calc
+import "domepunk/science/calculation" for Calc
 
 class CalculationTests {
   static describe {"science/calculation.wren"}

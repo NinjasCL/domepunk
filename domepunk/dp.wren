@@ -12,6 +12,7 @@ import "domepunk/science/statistics" for Statistics
 import "domepunk/science/probability" for Probability
 import "domepunk/science/percentage" for Percentage
 import "domepunk/science/calculation" for Calculation
+import "domepunk/science/random" for Prng
 
 import "domepunk/utils/fps" for Fps
 import "domepunk/utils/clock" for Clock
@@ -61,6 +62,7 @@ class Science {
   static probability {Probability}
   static percentage {Percentage}
   static calculation {Calculation}
+  static random {Prng}
   static vector {Vector}
   static math {Math}
 }

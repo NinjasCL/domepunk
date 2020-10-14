@@ -1,4 +1,4 @@
-import "../utils/clock" for Clock
+import "domepunk/utils/clock" for Clock
 
 class ClockTests {
   static describe {"utils/clock.wren"}

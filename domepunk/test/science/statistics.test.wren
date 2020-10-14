@@ -1,4 +1,5 @@
-import "../science/statistics" for Ss
+import "domepunk/science/statistics" for Ss
+
 class StatisticsTests {
   static describe {"science/statistics.wren"}
   static all{[

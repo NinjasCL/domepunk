@@ -1,5 +1,5 @@
 import "dome" for Process
-import "../misc/emoji" for Emoji
+import "domepunk/misc/emoji" for Emoji
 
 class EmojiTests {
   static describe { "misc/emoji.wren" }
