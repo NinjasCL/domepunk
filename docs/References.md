@@ -17,3 +17,7 @@ from extracting ideas.
 - https://github.com/tweenjs/tween.js
 - https://github.com/josdejong/mathjs
 - https://github.com/jasondavies/science.js
+- https://github.com/processing/p5.js
+- https://github.com/Gamua/Sparrow-Framework
+- https://github.com/Gamua/Starling-Framework
+- https://github.com/luxeengine/luxe-alpha
