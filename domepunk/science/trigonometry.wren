@@ -1,4 +1,4 @@
-/** doc-ignore */
+/** doc-disable */
 // This file is inspired on https://github.com/processing/p5.js/blob/1.1.9/src/math/trigonometry.js
 class Trigonometry {
 

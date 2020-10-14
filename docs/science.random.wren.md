@@ -1,14 +1,14 @@
 <!-- file: domepunk/science/random.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
 ---
-## [Class Prng](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/random.wren#L6)
+## [Class Prng](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/random.wren#L8)
 
 
 A class that helps with pseudo random number generation
 
 ## API
 
-### [static prng (len, seed)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/random.wren#L16)
+### [static prng (len, seed)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/random.wren#L18)
 
 
 This is a function for generating entropy.
@@ -19,7 +19,7 @@ Based on [Mattasher/probability-distributions](https://github.com/Mattasher/prob
 - Parameter seed: an instance of Random.new() with a seed to generate entropy
 - Returns: A pseduo random number between 0 and 1
 
-### [static seed (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/random.wren#L48)
+### [static seed (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/random.wren#L50)
 
 
 The seed is a new instance of `Random.new()`. Here for convenience.

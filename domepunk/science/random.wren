@@ -1,3 +1,5 @@
+/** doc-name: science.random.wren */
+
 import "random" for Random
 
 /**
