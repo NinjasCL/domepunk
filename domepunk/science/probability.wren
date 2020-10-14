@@ -104,7 +104,7 @@ class Probability {
   */
   static choose(options, seed) {
     if (!(seed is Random)) {
-      Fiber.abort("%(seed) must be created using `Random.new()` or `Probability.seed`")
+      Fiber.abort("%(seed) must be created using `Random.new()`")
     }
 
     if (!(options is Map)) {

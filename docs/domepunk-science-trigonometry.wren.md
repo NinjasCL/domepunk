@@ -1,0 +1,87 @@
+<!-- file: domepunk/science/trigonometry.wren -->
+<!-- documentation automatically generated using domepunk/tools/doc -->
+## API
+
+### [// This file is inspired on https://github.com/processing/p5.js/blob/1.1.9/src/math/trigonometry.js
+class Trigonometry](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/trigonometry.wren#L2)
+
+
+### [static HALF_PI](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/trigonometry.wren#L19)
+
+
+HALF_PI is a mathematical constant with the value
+1.57079632679489661923. It is half the ratio of the
+circumference of a circle to its diameter. It is useful in
+combination with the trigonometric functions <a href="#/p5/sin">sin()</a> and <a href="#/p5/cos">cos()</a>.
+@property {Number} HALF_PI
+@final
+@example
+<div><code>
+arc(50, 50, 80, 80, 0, HALF_PI);
+</code></div>
+@alt
+80x80 white quarter-circle with curve toward bottom right of canvas.
+
+### [static PI](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/trigonometry.wren#L35)
+
+
+PI is a mathematical constant with the value
+3.14159265358979323846. It is the ratio of the circumference
+of a circle to its diameter. It is useful in combination with
+the trigonometric functions <a href="#/p5/sin">sin()</a> and <a href="#/p5/cos">cos()</a>.
+@property {Number} PI
+@final
+@example
+<div><code>
+arc(50, 50, 80, 80, 0, PI);
+</code></div>
+@alt
+white half-circle with curve toward bottom of canvas.
+
+### [static QUARTER_PI](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/trigonometry.wren#L51)
+
+
+QUARTER_PI is a mathematical constant with the value 0.7853982.
+It is one quarter the ratio of the circumference of a circle to
+its diameter. It is useful in combination with the trigonometric
+functions <a href="#/p5/sin">sin()</a> and <a href="#/p5/cos">cos()</a>.
+@property {Number} QUARTER_PI
+@final
+@example
+<div><code>
+arc(50, 50, 80, 80, 0, QUARTER_PI);
+</code></div>
+@alt
+white eighth-circle rotated about 40 degrees with curve bottom right canvas.
+
+### [static TWO_PI](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/trigonometry.wren#L67)
+
+
+TWO_PI is a mathematical constant with the value
+6.28318530717958647693. It is twice the ratio of the
+circumference of a circle to its diameter. It is useful in
+combination with the trigonometric functions <a href="#/p5/sin">sin()</a> and <a href="#/p5/cos">cos()</a>.
+@property {Number} TWO_PI
+@final
+@example
+<div><code>
+arc(50, 50, 80, 80, 0, TWO_PI);
+</code></div>
+@alt
+80x80 white ellipse shape in center of canvas.
+
+### [static TAU](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/trigonometry.wren#L83)
+
+
+TAU is an alias for TWO_PI, a mathematical constant with the
+value 6.28318530717958647693. It is twice the ratio of the
+circumference of a circle to its diameter. It is useful in
+combination with the trigonometric functions <a href="#/p5/sin">sin()</a> and <a href="#/p5/cos">cos()</a>.
+@property {Number} TAU
+@final
+@example
+<div><code>
+arc(50, 50, 80, 80, 0, TAU);
+</code></div>
+@alt
+80x80 white ellipse shape in center of canvas.
