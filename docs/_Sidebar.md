@@ -10,6 +10,12 @@
 
 [**Assert**](https://github.com/NinjasCL/domepunk/wiki/test.unit.wren)
 
+### Utils
+
+[**Clock**](https://github.com/NinjasCL/domepunk/wiki/utils.clock.wren)
+
+[**Str**](https://github.com/NinjasCL/domepunk/wiki/utils.string.wren)
+
 ### Tools
 
 [**WrenDoc**](https://github.com/NinjasCL/domepunk/wiki/tools.wrendoc)

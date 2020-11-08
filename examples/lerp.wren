@@ -1,6 +1,9 @@
 /* Based on the https://p5js.org/examples/math-linear-interpolation.html example */
 
 import "domepunk/domepunk" for Dp
+import "domepunk/science/calculation" for Calc
+import "input" for Mouse
+import "graphics" for Canvas, Color
 
 /*
 Linear Interpolation.
@@ -29,14 +32,14 @@ class Game {
     // where 0.0 equal to the first point, 0.1 is very near the first point, 0.5
     // is half-way in between, etc.
     // Here we are moving 5% of the way to the mouse location each frame
-    __x = Dp.science.calculation.lerp(__x, Dp.dome.input.mouse.x, 0.05)
-    __y = Dp.science.calculation.lerp(__y, Dp.dome.input.mouse.y, 0.05)
+    __x = Calc.lerp(__x, Mouse.x, 0.05)
+    __y = Calc.lerp(__y, Mouse.y, 0.05)
   }
 
   static draw(dt) {
     Dp.draw(dt)
-    Dp.dome.graphics.canvas.cls()
-    Dp.dome.graphics.canvas.circlefill(__x, __y, 30, Dp.dome.graphics.color.white)
+    Canvas.cls()
+    Canvas.circlefill(__x, __y, 30, Color.white)
   }
 }
 

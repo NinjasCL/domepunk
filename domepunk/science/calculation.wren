@@ -56,18 +56,14 @@ class Calculation {
   Indicates if two float (Number) values are equal, give or take `epsilon`.
   Adapted from [Starling](https://raw.githubusercontent.com/Gamua/Starling-Framework/v2.0/starling/src/starling/utils/MathUtil.as).
   - Since: 1.0.0
-  - Signature: `static func equivalent(a:Num, b:Num, epsilon:Num? = 0.0001) -> Boolean`
+  - Signature: `static func equivalent(a:Num, b:Num, epsilon:Num = 0.0001) -> Boolean`
   - Parameter a: first number to check.
   - Parameter b: second number to check.
-  - Parameter epsilon: Optional value.
+  - Parameter epsilon: minimum difference between a and b.
   - Returns: true if a and b are equivalent.
   */
   static equivalent(a, b, epsilon) {
       return (a - epsilon < b) && (a + epsilon > b)
-  }
-
-  static equivalent(a, b) {
-    return Calculation.equivalent(a, b, 0.0001)
   }
 
   /**

@@ -8,6 +8,10 @@ import "domepunk/science/random" for Prng
 import "domepunk/utils/fps" for Fps
 import "domepunk/utils/clock" for Clock
 import "domepunk/utils/di" for Di
+import "domepunk/utils/string" for Str
+
+import "dome" for Window
+import "graphics" for Canvas
 
 // MARK: - Dome Punk
 class Misc {
@@ -20,8 +24,6 @@ class Science {
   static percentage {Percentage}
   static calculation {Calculation}
   static random {Prng}
-  static vector {Vector}
-  static math {Math}
 }
 
 class Settings {
@@ -30,9 +32,13 @@ class Settings {
     Window.title = value
   }
 
-  static size(width, height) {
-    Window.resize(width, height)
+  static size(width, height, scale) {
     Canvas.resize(width, height)
+    Window.resize(width * scale, height * scale)
+  }
+
+  static size(width, height) {
+    Settings.size(width, height, 1)
   }
 }
 
@@ -46,6 +52,7 @@ class DomePunk {
   static fps {FpsShared}
   static clock {ClockShared}
   static di {Di}
+  static string {Str}
 
   static init() {}
   static update() {

@@ -47,13 +47,13 @@ Adapted from [Starling](https://raw.githubusercontent.com/Gamua/Starling-Framewo
 Indicates if two float (Number) values are equal, give or take `epsilon`.
 Adapted from [Starling](https://raw.githubusercontent.com/Gamua/Starling-Framework/v2.0/starling/src/starling/utils/MathUtil.as).
 - Since: 1.0.0
-- Signature: `static func equivalent(a:Num, b:Num, epsilon:Num? = 0.0001) -> Boolean`
+- Signature: `static func equivalent(a:Num, b:Num, epsilon:Num = 0.0001) -> Boolean`
 - Parameter a: first number to check.
 - Parameter b: second number to check.
-- Parameter epsilon: Optional value.
+- Parameter epsilon: minimum difference between a and b.
 - Returns: true if a and b are equivalent.
 
-### [static max(a, b)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L82)
+### [static max(a, b)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L78)
 
 
 Returns the larger of the two values.
@@ -64,7 +64,7 @@ Adapted from [Starling](https://raw.githubusercontent.com/Gamua/Starling-Framewo
 - Parameter b: second number to check.
 - Returns: if a > b -> a, else b
 
-### [static min(a, b)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L95)
+### [static min(a, b)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L91)
 
 
 Returns the smaller of the two values.
@@ -75,7 +75,7 @@ Adapted from [Starling](https://raw.githubusercontent.com/Gamua/Starling-Framewo
 - Parameter b: second number to check.
 - Returns: if a < b -> a, else b
 
-### [static clamp(value, min, max)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L109)
+### [static clamp(value, min, max)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L105)
 
 
 Moves `value` into the range between `min<` and `max`.

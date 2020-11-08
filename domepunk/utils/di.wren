@@ -89,7 +89,7 @@ class Dependencies {
 
   static object (key) { stack[key] }
   static factory (key) { factories[key] }
-  static class (key) { classes[key] }
+  static kind (key) { classes[key] }
 }
 
 var DI = Dependencies

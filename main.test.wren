@@ -10,6 +10,7 @@ import "domepunk/test/science/calculation.test" for CalculationTests
 import "domepunk/test/science/random.test" for RandomTests
 
 import "domepunk/test/utils/clock.test" for ClockTests
+import "domepunk/test/utils/string.test" for StrTests
 
 class Game {
     static init() {
@@ -25,6 +26,9 @@ class Game {
       Runner.run(PercentageTests)
       Runner.run(CalculationTests)
       Runner.run(RandomTests)
+
+      // MARK: Util Tests
+      Runner.run(StrTests)
 
       // MARK: Misc Tests
       Runner.run(EmojiTests)

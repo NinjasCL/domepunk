@@ -215,7 +215,7 @@ Thanks to _@Dr.Henwig_ at _Wren's Discord_ for the help.
 - Parameter message: Optional mesage to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static isNotNearlyEqual(value, expected, epsilon, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L402)
+### [static isNotNearlyEqual(value, expected, epsilon, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L404)
 
 
 Assert that two floating point variables have different values.
@@ -229,7 +229,7 @@ This is needed due to Floating-Point arithmetic.
 - Parameter message: Optional mesage to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static above(value, expected, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L419)
+### [static above(value, expected, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L426)
 
 
 Assert that one variable is above the expected.
@@ -240,7 +240,7 @@ Assert that one variable is above the expected.
 - Parameter message: Optional mesage to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static below(value, expected, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L439)
+### [static below(value, expected, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L446)
 
 
 Assert that one variable is below the expected.
@@ -251,7 +251,7 @@ Assert that one variable is below the expected.
 - Parameter message: Optional mesage to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static isKind(value, Kind, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L461)
+### [static isKind(value, Kind, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L468)
 
 
 Verifies that the value belongs to a certain kind of class.
@@ -262,7 +262,7 @@ Verifies that the value belongs to a certain kind of class.
 - Parameter message: Optional parameter with a message to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static isNotKind(value, Kind, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L481)
+### [static isNotKind(value, Kind, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L488)
 
 
 Verifies that the value not belongs to a certain kind of class.
@@ -273,7 +273,7 @@ Verifies that the value not belongs to a certain kind of class.
 - Parameter message: Optional parameter with a message to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static isNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L500)
+### [static isNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L507)
 
 
 Assert that a value is null.
@@ -283,7 +283,7 @@ Assert that a value is null.
 - Parameter message: Optional message to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static isNotNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L516)
+### [static isNotNull(value, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L523)
 
 
 Assert that a value is not null.
@@ -293,7 +293,7 @@ Assert that a value is not null.
 - Parameter message: Optional message to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static isString(value, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L532)
+### [static isString(value, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L539)
 
 
 Asserts that a value is kind of String.
@@ -303,7 +303,7 @@ Asserts that a value is kind of String.
 - Parameter message: Optional message to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static isNotString(value, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L548)
+### [static isNotString(value, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L555)
 
 
 Asserts that a value is not kind of String.
@@ -313,7 +313,7 @@ Asserts that a value is not kind of String.
 - Parameter message: Optional message to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static failure(block, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L566)
+### [static failure(block, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L573)
 
 
 Assert that a block of code (Fiber or Fn) fails (Throws Fiber.abort()).
@@ -323,7 +323,7 @@ Assert that a block of code (Fiber or Fn) fails (Throws Fiber.abort()).
 - Parameter message: Optional message to show on assertion error.
 - Throws: `Fiber.abort()` on assertion error.
 
-### [static success(block, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L583)
+### [static success(block, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/test/unit.wren#L590)
 
 
 Assert that a block of code (Fiber or Fn) succeeds (not fails) (Not throws Fiber.abort()).
