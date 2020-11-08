@@ -1,6 +1,6 @@
 /* Based on the https://p5js.org/examples/math-linear-interpolation.html example */
 
-import "domepunk/dp" for Dp
+import "domepunk/domepunk" for Dp
 
 /*
 Linear Interpolation.
