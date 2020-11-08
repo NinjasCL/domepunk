@@ -342,7 +342,7 @@ class Assert {
     - See: [Floating Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
     - See: [Floating Point Guide](https://floating-point-gui.de/formats/fp/)
     - Since: 1.0.0
-    - Signature: `static func nearlyEqual(value:Num, expected:Num, message:String?) -> Void`
+    - Signature: `static func nearlyEqual(value:Num, expected:Num, epsilon:Num, message:String?) -> Void`
     - Parameter value: The first variable.
     - Parameter expected: The second variable.
     - Parameter epsilon: The precision needed to consider values equal. e.g. 0.001
@@ -394,7 +394,7 @@ class Assert {
     This is needed due to Floating-Point arithmetic.
     - See: [Floating Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
     - Since: 1.0.0
-    - Signature: `static func isNotNearlyEqual(value:Num, expected:Num, message:String?) -> Void`
+    - Signature: `static func isNotNearlyEqual(value:Num, expected:Num, epsilon:Num, message:String?) -> Void`
     - Parameter value: The first variable.
     - Parameter expected: The second variable.
     - Parameter epsilon: The precision needed to consider values equal. e.g. 0.001
