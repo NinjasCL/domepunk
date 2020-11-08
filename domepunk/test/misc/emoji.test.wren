@@ -14,7 +14,7 @@ class EmojiTests {
 
   static thatRandomEmojiWorks {[
     "thatRandomEmojiWorks",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       var emoji = Emoji.random
       assert.isNotNull(emoji)
       assert.isNotEqual(emoji, "")
@@ -23,7 +23,7 @@ class EmojiTests {
 
   static thatEmojiForNameWorks {[
     "thatEmojiForNameWorks",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       var name = ":heart:"
       var emoji = Emoji.forName(name)
       assert.equal(emoji, "❤")
@@ -41,7 +41,7 @@ class EmojiTests {
 
   static thatEmojiNameForWorks {[
     "thatEmojiNameForWorks",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       var emoji = "❤"
       var name = Emoji.nameFor(emoji)
       assert.equal(name, ":red_heart:")
@@ -54,7 +54,7 @@ class EmojiTests {
 
   static thatEmojizeWorks {[
     "thatEmojizeWorks",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       var text = "I :heart: :red_heart_selector: Kombucha :fakeemoji: :tropical_drink:"
       var emojized = Emoji.emojize(text)
       assert.equal(emojized, "I ❤ ❤️ Kombucha :fakeemoji: 🍹")
@@ -63,7 +63,7 @@ class EmojiTests {
 
   static thatDemojizeWorks {[
     "thatDemojizeWorks",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       var text = "I ❤️ ❤️ Kombucha :fakeemoji: 🍹"
       var demojized = Emoji.demojize(text)
       assert.equal(demojized, "I :red_heart:️ :red_heart:️ Kombucha :fakeemoji: :tropical_drink:")

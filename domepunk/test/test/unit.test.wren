@@ -25,14 +25,14 @@ class UnitTests {
     testThatAboveWorks,
     testThatBelowWorks,
 
-    testThatFloatEqualWorks,
-    testThatIsNotFloatEqualWorks
+    testThatNearlyEqualWorks,
+    testThatIsNotNearlyEqualWorks
 
   ]}
 
   static testThatFailureWorks {[
     "Assert.failure()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.success("This is not a fiber or function")
       }
@@ -47,7 +47,7 @@ class UnitTests {
 
   static testThatSuccessWorks {[
     "Assert.success()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.success {
         assert.failure("This is not a fiber or function")
       }
@@ -62,7 +62,7 @@ class UnitTests {
 
   static testThatEqualWorks {[
     "Assert.equal()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.equal(true, false)
         assert.equal(false, "")
@@ -74,7 +74,7 @@ class UnitTests {
 
   static testThatNotEqualWorks {[
     "Assert.isNotEqual()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.isNotEqual(true, true)
         assert.isNotEqual("a", "a")
@@ -86,7 +86,7 @@ class UnitTests {
 
   static testThatNullWorks {[
     "Assert.isNull()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.isNull(true)
         assert.isNull("abc")
@@ -98,7 +98,7 @@ class UnitTests {
 
   static testThatNotNullWorks {[
     "Assert.isNotNull()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.isNotNull(null)
       }
@@ -116,7 +116,7 @@ class UnitTests {
 
   static testThatKindWorks{[
     "Assert.isKind()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.isKind("a", Num)
         assert.isKind(true, String)
@@ -126,7 +126,7 @@ class UnitTests {
 
   static testThatIsNotKindWorks{[
     "Assert.isNotKind()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.isNotKind("a", String)
         assert.isNotKind(true, Bool)
@@ -136,7 +136,7 @@ class UnitTests {
 
   static testThatIsStringWorks{[
     "Assert.isString()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.isString(1)
         assert.isString(true)
@@ -150,7 +150,7 @@ class UnitTests {
 
   static testThatIsNotStringWorks{[
     "Assert.isNotString()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.isNotString("a")
       }
@@ -165,7 +165,7 @@ class UnitTests {
 
   static testThatAboveWorks {[
     "Assert.above()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.above(2, 4)
         assert.above(2, 2)
@@ -179,7 +179,7 @@ class UnitTests {
 
   static testThatBelowWorks {[
     "Assert.below()",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.failure {
         assert.below(4, 2)
         assert.below(4, 4)
@@ -191,30 +191,30 @@ class UnitTests {
     }
   ]}
 
-  static testThatFloatEqualWorks {[
-    "Assert.floatEqual()",
-    Fiber.new {|assert|
+  static testThatNearlyEqualWorks {[
+    "Assert.nearlyEqual()",
+    Fn.new {|assert|
       assert.failure {
-        assert.floatEqual(0.1, 0.2, epsilon)
-        assert.floatEqual(3.2, 3.1, epsilon)
+        assert.nearlyEqual(0.1, 0.2, epsilon)
+        assert.nearlyEqual(3.2, 3.1, epsilon)
       }
 
       assert.success {
-        assert.floatEqual(1 - 0.9, 0.1, epsilon)
+        assert.nearlyEqual(1 - 0.9, 0.1, epsilon)
       }
     }
   ]}
 
-  static testThatIsNotFloatEqualWorks {[
-    "Assert.isNotFloatEqual()",
-    Fiber.new { |assert|
+  static testThatIsNotNearlyEqualWorks {[
+    "Assert.isNotNearlyEqual()",
+    Fn.new { |assert|
       assert.success {
-        assert.isNotFloatEqual(0.1, 0.2, epsilon)
-        assert.isNotFloatEqual(3.2, 3.1, epsilon)
+        assert.isNotNearlyEqual(0.1, 0.2, epsilon)
+        assert.isNotNearlyEqual(3.2, 3.1, epsilon)
       }
 
       assert.failure {
-        assert.isNotFloatEqual(1 - 0.9, 0.1, epsilon)
+        assert.isNotNearlyEqual(1 - 0.9, 0.1, epsilon)
       }
     }
   ]}

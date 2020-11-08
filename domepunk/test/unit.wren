@@ -23,7 +23,7 @@ class ExampleTest {
 
   /// Single Fiber Test
   static thatExampleTestWorks {
-    Fiber.new {|assert|
+    Fn.new {|assert|
       // Run your tests here.
     }
   }
@@ -31,7 +31,7 @@ class ExampleTest {
   /// Single Fiber Test with Description
   static testThatEpsilonExists {[
     "epsilon value exists",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.isNotNull(Ss.epsilon)
     }
   ]}
@@ -39,11 +39,11 @@ class ExampleTest {
   /// Multi Fiber Test with Description
   static testThatSumWorks {[
     ["can get the sum of two numbers",
-    Fiber.new{ |assert|
+    Fn.new{ |assert|
       assert.equal(Ss.sum([1,2]), 3)
     }],
     ["the sum of no numbers is zero",
-      Fiber.new{ |assert|
+      Fn.new{ |assert|
         assert.equal(Ss.sum([]), 0)
     }]
   ]}
@@ -52,11 +52,11 @@ class ExampleTest {
   static testThatSumWorks2 {[
     "Ss.sum()", [
       ["can get the sum of two numbers",
-      Fiber.new{ |assert|
+      Fn.new{ |assert|
         assert.equal(Ss.sum([1,2]), 3)
       }],
       ["the sum of no numbers is zero",
-        Fiber.new{ |assert|
+        Fn.new{ |assert|
           assert.equal(Ss.sum([]), 0)
       }]
     ]
@@ -98,7 +98,7 @@ class ExampleTest {
   static teardown() {}
 
   /**
-  Every test should return at least a `Fiber.new{}` object
+  Every test should return at least a `Fn.new{}` object
   to make the test assertions.
   assert object is automatically injected
   by the test runner
@@ -106,7 +106,7 @@ class ExampleTest {
   */
   static thatExampleTestWorks {[
     "description of the individual test",
-    Fiber.new {|assert|}
+    Fn.new {|assert|}
   ]}
 }
 
@@ -340,23 +340,53 @@ class Assert {
     This is needed due to Floating-Point arithmetic.
     Thanks to _@Dr.Henwig_ at _Wren's Discord_ for the help.
     - See: [Floating Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
+    - See: [Floating Point Guide](https://floating-point-gui.de/formats/fp/)
     - Since: 1.0.0
-    - Signature: `static func floatEqual(value:Num, expected:Num, message:String?) -> Void`
+    - Signature: `static func nearlyEqual(value:Num, expected:Num, message:String?) -> Void`
     - Parameter value: The first variable.
     - Parameter expected: The second variable.
     - Parameter epsilon: The precision needed to consider values equal. e.g. 0.001
     - Parameter message: Optional mesage to show on assertion error.
     - Throws: `Fiber.abort()` on assertion error.
     */
-    static floatEqual(value, expected, epsilon, message) {
+    static nearlyEqual(value, expected, epsilon, message) {
         Assert.count = Assert.count + 1
-        if (!((value - expected).abs <= epsilon)) {
-            return Assert.abort(message)
+
+        // Adapted from https://floating-point-gui.de/errors/comparison/
+        var valueAbs = value.abs
+        var expectedAbs = expected.abs
+        var diff = (value - expected).abs
+
+        // shortcut, handles infinities
+        if (value == expected) {
+          return true
         }
+
+        // a or b is zero or both are extremely close to it
+        // relative error is less meaningful here
+        if (valueAbs == 0 || expectedAbs == 0 || (valueAbs + expectedAbs) < Num.smallest) {
+          if (diff < (epsilon * Num.smallest)) {
+            return true
+          }
+
+          return Assert.abort(message)
+        }
+
+        // diff / Math.min((absA + absB), Float.MAX_VALUE) < epsilon
+        var min = (valueAbs + expectedAbs)
+        if (min > Num.largest - 1) {
+          min = Num.largest
+        }
+
+        if (diff / min < epsilon) {
+          return true
+        }
+
+        return Assert.abort(message)
     }
 
-    static floatEqual(value, expected, epsilon) {
-        return Assert.floatEqual(value, expected, epsilon, "%(value) is not equal to %(expected)")
+    static nearlyEqual(value, expected, epsilon) {
+        return Assert.nearlyEqual(value, expected, epsilon, "%(value) is not nearly equal to %(expected)")
     }
 
     /**
@@ -364,22 +394,24 @@ class Assert {
     This is needed due to Floating-Point arithmetic.
     - See: [Floating Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
     - Since: 1.0.0
-    - Signature: `static func isNotFloatEqual(value:Num, expected:Num, message:String?) -> Void`
+    - Signature: `static func isNotNearlyEqual(value:Num, expected:Num, message:String?) -> Void`
     - Parameter value: The first variable.
     - Parameter expected: The second variable.
     - Parameter epsilon: The precision needed to consider values equal. e.g. 0.001
     - Parameter message: Optional mesage to show on assertion error.
     - Throws: `Fiber.abort()` on assertion error.
     */
-    static isNotFloatEqual(value, expected, epsilon, message) {
-        Assert.count = Assert.count + 1
-        if ((value - expected).abs <= epsilon) {
-            return Assert.abort(message)
+    static isNotNearlyEqual(value, expected, epsilon, message) {
+        // We check if the nearlyEqual throws error. That means the numbers are not nearly equal.
+        var error = Fiber.new {Assert.nearlyEqual(value, expected, epsilon, message)}.try()
+        if(error && error is String) {
+          return true
         }
+        return Assert.abort(message)
     }
 
-    static isNotFloatEqual(value, expected, epsilon) {
-        return Assert.isNotFloatEqual(value, expected, epsilon, "%(value) is equal to %(expected)")
+    static isNotNearlyEqual(value, expected, epsilon) {
+        return Assert.isNotNearlyEqual(value, expected, epsilon, "%(value) is nearly equal to %(expected)")
     }
 
     /**

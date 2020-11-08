@@ -13,7 +13,7 @@ class StatisticsTests {
   // MARK: - Static Vars
   static testThatEpsilonExists {[
     "Ss.epsilon value exists",
-    Fiber.new { |assert|
+    Fn.new { |assert|
       assert.isNotNull(Ss.epsilon)
     }
   ]}
@@ -24,7 +24,7 @@ class StatisticsTests {
   static testThatSumWorks {[
     "Ss.sum()", [
       ["can get the sum from a list of numbers",
-      Fiber.new{ |assert|
+      Fn.new{ |assert|
         var sum = Ss.sum([1, 2])
         assert.equal(sum, 3)
 
@@ -73,7 +73,7 @@ class StatisticsTests {
         assert.equal(sum.round, 15)
       }],
       ["the sum of no numbers is zero",
-        Fiber.new{ |assert|
+        Fn.new{ |assert|
           assert.equal(Ss.sum([]), 0)
       }]
     ]
@@ -82,7 +82,7 @@ class StatisticsTests {
   static testThatSumSimpleWorks {[
     "Ss.sumsi()", [
       ["can get the sum from a list of numbers",
-      Fiber.new{ |assert|
+      Fn.new{ |assert|
         var sum = Ss.sumsi([1, 2])
         assert.equal(sum, 3)
 
@@ -131,7 +131,7 @@ class StatisticsTests {
         assert.equal(sum.round, 15)
       }],
       ["the sum of no numbers is zero",
-        Fiber.new{ |assert|
+        Fn.new{ |assert|
           assert.equal(Ss.sumsi([]), 0)
       }]
     ]
@@ -140,17 +140,17 @@ class StatisticsTests {
   static testThatMeanWorks {[
     "Ss.mean()", [
       ["can get the mean of two numbers",
-      Fiber.new {|assert|
+      Fn.new {|assert|
         assert.equal(Ss.mean([1, 2]), 1.5)
         assert.equal(Ss.mean([0, 2]), 1)
       }],
       ["can get the mean of one number",
-      Fiber.new {|assert|
+      Fn.new {|assert|
         assert.equal(Ss.mean([1]), 1)
         assert.equal(Ss.mean(2), 2)
       }],
       ["an empty list has no average",
-      Fiber.new{|assert|
+      Fn.new{|assert|
       assert.failure {
         Ss.mean([])
       }
@@ -167,17 +167,17 @@ class StatisticsTests {
   static testThatMeanSimpleWorks {[
     "Ss.meansi()", [
       ["can get the mean of two numbers",
-      Fiber.new {|assert|
+      Fn.new {|assert|
         assert.equal(Ss.meansi([1, 2]), 1.5)
         assert.equal(Ss.meansi([0, 2]), 1)
       }],
       ["can get the mean of one number",
-      Fiber.new {|assert|
+      Fn.new {|assert|
         assert.equal(Ss.meansi([1]), 1)
         assert.equal(Ss.meansi(2), 2)
       }],
       ["an empty list has no average",
-      Fiber.new{|assert|
+      Fn.new{|assert|
       assert.failure {
         Ss.meansi([])
       }

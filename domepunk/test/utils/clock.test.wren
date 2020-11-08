@@ -10,14 +10,14 @@ class ClockTests {
     "Clock", [
       [
         ".new()",
-        Fiber.new {|assert|
+        Fn.new {|assert|
           var clock = Clock.new()
           assert.isKind(clock, Clock)
         }
       ],
       [
         ".tick()",
-        Fiber.new {|assert|
+        Fn.new {|assert|
           var clock = Clock.new()
           var ticks = clock.ticks
           clock.tick()
@@ -26,7 +26,7 @@ class ClockTests {
       ],
       [
         "seconds",
-        Fiber.new {|assert|
+        Fn.new {|assert|
           var clock = Clock.new()
 
           for (i in 0..clock.unit) {
@@ -44,7 +44,7 @@ class ClockTests {
       ],
       [
         "minutes",
-        Fiber.new {|assert|
+        Fn.new {|assert|
           var clock = Clock.new()
           var minute = clock.unit * clock.unit
 
@@ -62,7 +62,7 @@ class ClockTests {
       ],
       [
         "hours",
-        Fiber.new {|assert|
+        Fn.new {|assert|
           var clock = Clock.new()
           var minute = clock.unit * clock.unit
           var hour = minute * clock.unit
@@ -82,7 +82,7 @@ class ClockTests {
       ],
       [
         "string",
-        Fiber.new {|assert|
+        Fn.new {|assert|
           var clock = Clock.new()
           assert.equal(clock.toString, "00:00:00")
 

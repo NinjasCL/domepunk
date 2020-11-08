@@ -9,7 +9,7 @@ class RandomTests {
 
   static testThatPrngWorks {[
     "Probabilities.prng()",
-    Fiber.new {|assert|
+    Fn.new {|assert|
       for (i in 1..repeat) {
         var lowEntropyRandom = Prng.prng(1)
         var number = lowEntropyRandom * 256

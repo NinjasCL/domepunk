@@ -13,7 +13,7 @@ class PercentageTests {
 
   static testThatEncodeWorks {[
     "Percentage.encode()",
-    Fiber.new {|assert|
+    Fn.new {|assert|
       assert.success {
         assert.equal(Pct.encode(0.5), "50\%")
         assert.equal(Pct.encode(-0.1), "-10\%")
@@ -27,16 +27,16 @@ class PercentageTests {
 
   static testThatDecodeWorks {[
     "Percentage.decode()",
-    Fiber.new {|assert|
+    Fn.new {|assert|
       assert.success {
         var result = 0
         result = Pct.decode("50\%")
         assert.isNotNull(result)
-        assert.floatEqual(result, 0.5, epsilon)
+        assert.nearlyEqual(result, 0.5, epsilon)
 
         result = Pct.decode(40)
         assert.isNotNull(result)
-        assert.floatEqual(result, 0.4, epsilon)
+        assert.nearlyEqual(result, 0.4, epsilon)
       }
 
       assert.failure {

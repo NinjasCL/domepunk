@@ -19,9 +19,9 @@ class ProbabilityTests {
 
   static testThatComplementWorks {[
     "Probabilities.complement()",
-    Fiber.new {|assert|
-      assert.floatEqual(Pr.complement(0.5), 0.5, epsilon)
-      assert.floatEqual(Pr.complement(0.9), 0.1, epsilon)
+    Fn.new {|assert|
+      assert.nearlyEqual(Pr.complement(0.5), 0.5, epsilon)
+      assert.nearlyEqual(Pr.complement(0.9), 0.1, epsilon)
 
       assert.failure {
         Pr.complement("1")
@@ -47,24 +47,27 @@ class ProbabilityTests {
 
   static testThatCDFWorks {[
     "Probabilities.cdf()",
+    // TODO: If we use a Fn.new this test fails, why?
     Fiber.new {|assert|
       var input = [10, 30, 60]
       var cdf = Pr.cdf(input)
-      assert.floatEqual(cdf[0], 0.1, epsilon)
-      assert.floatEqual(cdf[1], 0.4, epsilon)
-      assert.floatEqual(cdf[2], 1, epsilon)
+
+      assert.nearlyEqual(cdf[0], 0.1, epsilon)
+      assert.nearlyEqual(cdf[1], 0.4, epsilon)
+      assert.nearlyEqual(cdf[2], 1, epsilon)
 
       input = [70, 20, 10]
       cdf = Pr.cdf(input)
-      assert.floatEqual(cdf[0], 0.7, epsilon)
-      assert.floatEqual(cdf[1], 0.9, epsilon)
-      assert.floatEqual(cdf[2], 1, epsilon)
+
+      assert.nearlyEqual(cdf[0], 0.7, epsilon)
+      assert.nearlyEqual(cdf[1], 0.9, epsilon)
+      assert.nearlyEqual(cdf[2], 1, epsilon)
     }
   ]}
 
   static testThatChooseWorks {[
     "Probabilities.choose()",
-    Fiber.new {|assert|
+    Fn.new {|assert|
 
       assert.failure {
         Pr.choose([])
