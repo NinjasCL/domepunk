@@ -1,6 +1,10 @@
 /** doc-name: utils.number.wren */
 /**
 Simple number functions.
+```js
+import "domepunk/utils/number" for Number
+```
+- Since: 1.0.0
 */
 class Number {
   toNum {_num}
@@ -15,6 +19,7 @@ class Number {
 
   /**
   Fix decimals of a float number.
+  - Since: 1.0.0
   - Signature: fixed(quantity:Num) -> Number
   - Example:
   ```js

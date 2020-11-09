@@ -14,6 +14,8 @@
 
 [**Clock**](https://github.com/NinjasCL/domepunk/wiki/utils.clock.wren)
 
+[**Number**](https://github.com/NinjasCL/domepunk/wiki/utils.number.wren)
+
 [**Str**](https://github.com/NinjasCL/domepunk/wiki/utils.string.wren)
 
 ### Tools

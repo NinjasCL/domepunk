@@ -2,6 +2,10 @@
 /**
 Simple string functions.
 Some code was based on [Recto.wren](https://github.com/BrianOtto/Recto/blob/master/Recto.wren) library.
+```js
+import "domepunk/utils/string" for Str
+```
+- Since: 1.0.0
 */
 class Str {
 
@@ -59,6 +63,7 @@ class Str {
   /**
   Creates a new String object
   - Signature: construct new(string:String) -> Str
+  - Since: 1.0.0
   - Parameter string: A string object
   */
   construct new(string) {
@@ -71,6 +76,7 @@ class Str {
   throws if the number of characters available is less than
   the picked length.
   - Signature: limit(length:Num) -> Str
+  - Since: 1.0.0
   - Example:
   ```js
   // returns: hello
@@ -86,6 +92,7 @@ class Str {
   /**
   Reverses a string value.
   - Signature: reverse() -> Str
+  - Since: 1.0.0
   - Example:
   ```js
   // returns: "olleh"
@@ -103,6 +110,7 @@ class Str {
   /**
   Convert a string to lowercase.
   - Signature: lower() -> Str
+  - Since: 1.0.0
   - Example:
   ```js
   // Result is "camelcaseisawesome!"
@@ -126,6 +134,7 @@ class Str {
   /**
   Convert a string to uppercase
   - Signature: upper() -> Str
+  - Since: 1.0.0
   - Example:
   ```js
   // Result is "CAMELCASEISAWESOME!"
@@ -149,6 +158,7 @@ class Str {
   /**
   Uppercase the first letter in each word. Title Case.
   - Signature: title() -> Str
+  - Since: 1.0.0
   - Example:
   ```js
   // Result is "The Unicorn Prances"
@@ -194,10 +204,10 @@ class Str {
 
   /**
   Convert a character to its numeric ASCII value
-
   This only works with a single character.
   This works with the extended ASCII table (0 - 255).
-
+  - Signature: static toOrd(chr:String) -> Num
+  - Since: 1.0.0
   - Example:
   ```js
   // Result is 33 as Num
@@ -218,6 +228,7 @@ class Str {
   This only works with a single number.
   This works with the extended ASCII table (0 - 255).
   - Signature: static toChr(ord:Num) -> String
+  - Since: 1.0.0
   - Example:
   ```js
   // Result is "!"
