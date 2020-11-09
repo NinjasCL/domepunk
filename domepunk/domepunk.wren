@@ -9,6 +9,7 @@ import "domepunk/utils/fps" for Fps
 import "domepunk/utils/clock" for Clock
 import "domepunk/utils/di" for Di
 import "domepunk/utils/string" for Str
+import "domepunk/utils/number" for Number
 
 import "dome" for Window
 import "graphics" for Canvas
@@ -53,6 +54,7 @@ class DomePunk {
   static clock {ClockShared}
   static di {Di}
   static string {Str}
+  static number {Number}
 
   static init() {}
   static update() {

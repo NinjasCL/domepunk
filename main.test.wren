@@ -11,6 +11,7 @@ import "domepunk/test/science/random.test" for RandomTests
 
 import "domepunk/test/utils/clock.test" for ClockTests
 import "domepunk/test/utils/string.test" for StrTests
+import "domepunk/test/utils/number.test" for NumberTests
 
 class Game {
     static init() {
@@ -29,6 +30,7 @@ class Game {
 
       // MARK: Util Tests
       Runner.run(StrTests)
+      Runner.run(NumberTests)
 
       // MARK: Misc Tests
       Runner.run(EmojiTests)
