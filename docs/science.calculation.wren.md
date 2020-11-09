@@ -1,20 +1,22 @@
 <!-- file: domepunk/science/calculation.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
 ---
-## [Class Calculation](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L11)
+## [Class Calculation](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L13)
 
 
 Simple calculation functions.
 - Example:
 ```js
-import "domepunk/science/calculation" for Calc
 import "domepunk/science/calculation" for Calculation
+
+// shorthand
+import "domepunk/science/calculation" for Calc
 ```
 - Since: 1.0.0
 
 ## API
 
-### [static lerp(start, stop, percentage)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L32)
+### [static lerp(start, stop, percentage)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L34)
 
 
 Linear Interpolation.
@@ -36,7 +38,7 @@ Inspired on [Processing's p5.js](https://github.com/processing/p5.js/blob/main/s
   var c = Calc.lerp(20, 80, 0.2) // c => 32
 ```
 
-### [static nextpow(number)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L45)
+### [static nextpow(number)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L47)
 
 
 Returns the next power of two that is equal to or bigger than the specified number.
@@ -47,7 +49,7 @@ Adapted from [Starling](https://raw.githubusercontent.com/Gamua/Starling-Framewo
 - Parameter number: The number to calculate the next power of two.
 - Returns: The next power of two that is equal or bigger than the specified number.
 
-### [static equivalent(a, b, epsilon)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L71)
+### [static equivalent(a, b, epsilon)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L73)
 
 
 Indicates if two float (Number) values are equal, give or take `epsilon`.
@@ -59,7 +61,7 @@ Adapted from [Starling](https://raw.githubusercontent.com/Gamua/Starling-Framewo
 - Parameter epsilon: minimum difference between a and b.
 - Returns: true if a and b are equivalent.
 
-### [static max(a, b)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L84)
+### [static max(a, b)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L86)
 
 
 Returns the larger of the two values.
@@ -70,7 +72,7 @@ Adapted from [Starling](https://raw.githubusercontent.com/Gamua/Starling-Framewo
 - Parameter b: second number to check.
 - Returns: if a > b -> a, else b
 
-### [static min(a, b)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L97)
+### [static min(a, b)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L99)
 
 
 Returns the smaller of the two values.
@@ -81,7 +83,7 @@ Adapted from [Starling](https://raw.githubusercontent.com/Gamua/Starling-Framewo
 - Parameter b: second number to check.
 - Returns: if a < b -> a, else b
 
-### [static clamp(value, min, max)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L111)
+### [static clamp(value, min, max)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/calculation.wren#L113)
 
 
 Moves `value` into the range between `min<` and `max`.

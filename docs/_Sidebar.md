@@ -1,10 +1,12 @@
 ### Science
 
-[**Statistics**](https://github.com/NinjasCL/domepunk/wiki/science.statistics.wren)
+[**Calculation**](https://github.com/NinjasCL/domepunk/wiki/science.calculation.wren)
 
 [**Probabilities**](https://github.com/NinjasCL/domepunk/wiki/science.probability.wren)
 
 [**Percentages**](https://github.com/NinjasCL/domepunk/wiki/science.percentage.wren)
+
+[**Statistics**](https://github.com/NinjasCL/domepunk/wiki/science.statistics.wren)
 
 ### Unit Testing
 

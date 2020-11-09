@@ -3,8 +3,10 @@
 Simple calculation functions.
 - Example:
 ```js
-import "domepunk/science/calculation" for Calc
 import "domepunk/science/calculation" for Calculation
+
+// shorthand
+import "domepunk/science/calculation" for Calc
 ```
 - Since: 1.0.0
 */
