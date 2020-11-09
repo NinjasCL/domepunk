@@ -5,7 +5,7 @@ it's very handy to have an easy way of returning a value based on probabilities.
 This library is inspired by [Probability.js](https://github.com/fschaefer/Probability.js).
 
 ---
-## [Class Probability](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L19)
+## [Class Probability](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L20)
 
 
 Defines the main Probability methods.
@@ -16,10 +16,11 @@ import "./science/probability" for Probability
 // abbreviation
 import "./science/probability" for Pr
 ```
+- Since: 1.0.0
 
 ## API
 
-### [static complement(probability)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L33)
+### [static complement(probability)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L34)
 
 
 How probable is the event not to happen?.
@@ -32,7 +33,7 @@ in the sample space that are not in the event. A complement is itself an event.
 - Returns: The probability of the event not to happen.
 - Throws: `Fiber.abort()` if the probability is not a number
 
-### [static cdf(weights)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L47)
+### [static cdf(weights)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L48)
 
 
 The cumulative distribution function (CDF) of a
@@ -41,7 +42,7 @@ The advantage of the CDF is that it can be defined for any kind of random
 variable (discrete, continuous, and mixed).
 - See: [Probability Course](https://www.probabilitycourse.com/chapter3/3_2_1_cdf.php)
 
-### [static choose(options, seed)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L105)
+### [static choose(options, seed)](https://github.com/ninjascl/domepunk/blob/main/domepunk/science/probability.wren#L106)
 
 
 Choose a value inside a Map based on probabilities.

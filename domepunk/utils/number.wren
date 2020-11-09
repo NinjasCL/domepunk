@@ -1,6 +1,7 @@
 /** doc-name: utils.number.wren */
 /**
 Simple number functions.
+- Example:
 ```js
 import "domepunk/utils/number" for Number
 ```

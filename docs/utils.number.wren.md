@@ -1,10 +1,11 @@
 <!-- file: domepunk/utils/number.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
 ---
-## [Class Number](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/number.wren#L9)
+## [Class Number](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/number.wren#L10)
 
 
 Simple number functions.
+- Example:
 ```js
 import "domepunk/utils/number" for Number
 ```
@@ -12,7 +13,7 @@ import "domepunk/utils/number" for Number
 
 ## API
 
-### [fixed(quantity)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/number.wren#L34)
+### [fixed(quantity)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/number.wren#L35)
 
 
 Fix decimals of a float number.

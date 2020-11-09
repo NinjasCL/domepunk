@@ -1,6 +1,12 @@
 /** doc-name: science.calculation.wren */
 /**
 Simple calculation functions.
+- Example:
+```js
+import "domepunk/science/calculation" for Calc
+import "domepunk/science/calculation" for Calculation
+```
+- Since: 1.0.0
 */
 class Calculation {
   /**

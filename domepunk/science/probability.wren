@@ -15,6 +15,7 @@ import "./science/probability" for Probability
 // abbreviation
 import "./science/probability" for Pr
 ```
+- Since: 1.0.0
 */
 class Probability {
 

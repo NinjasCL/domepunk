@@ -2,6 +2,7 @@
 /**
 A simple Clock that counts ticks, seconds, minutes and hours.
 Use this in conjunction with the _static update()_ and _static draw(dt)_ of your _DOME_ Game class.
+- Example:
 ```js
 import "domepunk/utils/clock" for Clock
 ```

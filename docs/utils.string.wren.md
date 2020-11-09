@@ -1,11 +1,12 @@
 <!-- file: domepunk/utils/string.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
 ---
-## [Class Str](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L10)
+## [Class Str](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L11)
 
 
 Simple string functions.
 Some code was based on [Recto.wren](https://github.com/BrianOtto/Recto/blob/master/Recto.wren) library.
+- Example:
 ```js
 import "domepunk/utils/string" for Str
 ```
@@ -13,7 +14,7 @@ import "domepunk/utils/string" for Str
 
 ## API
 
-### [construct new(string)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L69)
+### [construct new(string)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L70)
 
 
 Creates a new String object
@@ -21,7 +22,7 @@ Creates a new String object
 - Since: 1.0.0
 - Parameter string: A string object
 
-### [limit(length)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L88)
+### [limit(length)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L89)
 
 
 Limits string length (or less) characters from the string.
@@ -38,7 +39,7 @@ Str.new("hello wren").limit(5)
 - Parameter length: How many characters to limit
 - Returns: a new string with the specified length characters.
 
-### [reverse()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L106)
+### [reverse()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L107)
 
 
 Reverses a string value.
@@ -54,7 +55,7 @@ Str.reverse("hello")
 ```
 - Returns: a reversed string
 
-### [lower()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L124)
+### [lower()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L125)
 
 
 Convert a string to lowercase.
@@ -70,7 +71,7 @@ Str.lower("camelCaseIsAwesome!")
 ```
 - Returns: The lowercased string
 
-### [upper()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L148)
+### [upper()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L149)
 
 
 Convert a string to uppercase
@@ -86,7 +87,7 @@ Str.upper("camelCaseIsAwesome!")
 ```
 - Returns: The uppercased string
 
-### [title()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L172)
+### [title()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L173)
 
 
 Uppercase the first letter in each word. Title Case.
@@ -102,7 +103,7 @@ Str.title("the unicorn prances")
 ````
 - Returns: The updated string.
 
-### [static toOrd(chr)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L219)
+### [static toOrd(chr)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L220)
 
 
 Convert a character to its numeric ASCII value
@@ -118,7 +119,7 @@ Str.toOrd("!")
 - Parameter chr: The character to convert.
 - Returns: The numeric ASCII value it represents.
 
-### [static toChr(ord)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L240)
+### [static toChr(ord)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/string.wren#L241)
 
 
 Convert a numeric ASCII value to its character

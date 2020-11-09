@@ -2,6 +2,7 @@
 /**
 Simple string functions.
 Some code was based on [Recto.wren](https://github.com/BrianOtto/Recto/blob/master/Recto.wren) library.
+- Example:
 ```js
 import "domepunk/utils/string" for Str
 ```
