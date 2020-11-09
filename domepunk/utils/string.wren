@@ -89,7 +89,10 @@ class Str {
   - Example:
   ```js
   // returns: "olleh"
-  "hello".reverse()
+  Str.new("hello").reverse()
+
+  // also available as static
+  Str.reverse("hello")
   ```
   - Returns: a reversed string
   */
@@ -198,7 +201,7 @@ class Str {
   - Example:
   ```js
   // Result is 33 as Num
-  toOrd("!")
+  Str.toOrd("!")
   ```
   - Parameter chr: The character to convert.
   - Returns: The numeric ASCII value it represents.
@@ -218,7 +221,7 @@ class Str {
   - Example:
   ```js
   // Result is "!"
-  toChr(33)
+  Str.toChr(33)
   ```
   - Parameter ord: The ASCII numeric value to convert.
   - Returns: A string of the character it represents.
