@@ -106,6 +106,9 @@ class Str {
 
   // also available as static
   Str.reverse("hello")
+
+  // and a property
+  Str.new("hello").toReverse
   ```
   - Returns: a reversed string
   */
@@ -124,6 +127,9 @@ class Str {
 
   // Also available as a static method
   Str.lower("camelCaseIsAwesome!")
+
+  // and a property
+  Str.new("hello").toLowerCase
   ```
   - Returns: The lowercased string
   */
@@ -149,6 +155,9 @@ class Str {
 
   // Also available as a static method
   Str.upper("camelCaseIsAwesome!")
+
+  // and a property
+  Str.new("hello").toUpperCase
   ```
   - Returns: The uppercased string
   */
@@ -173,6 +182,9 @@ class Str {
 
   // Or using the static method
   Str.title("the unicorn prances")
+
+  // and a property
+  Str.new("hello").toTitleCase
   ````
   - Returns: The updated string.
   */
