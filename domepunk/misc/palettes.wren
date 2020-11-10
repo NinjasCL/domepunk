@@ -2,6 +2,7 @@
 import "graphics" for Color
 
 /** doc-header
+## Palettes
 Different palettes for usage within games.
 - Example:
 ```js
@@ -184,33 +185,33 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static lightgray -> Color
+  - Signature: static lightgrey -> Color
   */
-  static lightgray {
-    if (!__lightgray) {
-      __lightgray = Color.hex("94B0C2")
+  static lightgrey {
+    if (!__lightgrey) {
+      __lightgrey = Color.hex("94B0C2")
     }
-    return __lightgray
+    return __lightgrey
   }
 
   /**
-  - Signature: static gray -> Color
+  - Signature: static grey -> Color
   */
-  static gray {
-    if (!__gray) {
-      __gray = Color.hex("566C86")
+  static grey {
+    if (!__grey) {
+      __grey = Color.hex("566C86")
     }
-    return __gray
+    return __grey
   }
 
   /**
-  - Signature: static darkgray -> Color
+  - Signature: static darkgrey -> Color
   */
-  static darkgray {
-    if (!__darkgray) {
-      __darkgray = Color.hex("333C57")
+  static darkgrey {
+    if (!__darkgrey) {
+      __darkgrey = Color.hex("333C57")
     }
-    return __darkgray
+    return __darkgrey
   }
 
   /**
@@ -232,9 +233,204 @@ class TIC is Palette {
         lightblue,
         cyan,
         white,
-        lightgray,
-        gray,
-        darkgray
+        lightgrey,
+        grey,
+        darkgrey
+      ]
+    }
+    return __all
+  }
+}
+
+/**
+Based on https://pico-8.fandom.com/wiki/Palette
+*/
+class Pico is Palette {
+
+  /**
+  - Signature: static black -> Color
+  */
+  static black {
+    if (!__black) {
+      __black = Color.hex("#000000")
+    }
+    return __black
+  }
+
+  /**
+  - Signature: static darkblue -> Color
+  */
+  static darkblue {
+    if (!__darkblue) {
+      __darkblue = Color.hex("#1D2B53")
+    }
+    return __darkblue
+  }
+
+  /**
+  - Signature: static darkpurple -> Color
+  */
+  static darkpurple {
+    if (!__darkpurple) {
+      __darkpurple = Color.hex("#7E2553")
+    }
+    return __darkpurple
+  }
+
+  /**
+  - Signature: static darkgreen -> Color
+  */
+  static darkgreen {
+    if (!__darkgreen) {
+      __darkgreen = Color.hex("#008751")
+    }
+    return __darkgreen
+  }
+
+  /**
+  - Signature: static brown -> Color
+  */
+  static brown {
+    if (!__brown) {
+      __brown = Color.hex("#AB5236")
+    }
+    return __brown
+  }
+
+  /**
+  - Signature: static darkgrey -> Color
+  */
+  static darkgrey {
+    if (!__darkgrey) {
+      __darkgrey = Color.hex("#5F574F")
+    }
+    return __darkgrey
+  }
+
+  /**
+  - Signature: static lightgrey -> Color
+  */
+  static lightgrey {
+    if (!__lightgrey) {
+      __lightgrey = Color.hex("#C2C3C7")
+    }
+    return __lightgrey
+  }
+
+  /**
+  - Signature: static white -> Color
+  */
+  static white {
+    if (!__white) {
+      __white = Color.hex("#FFF1E8")
+    }
+    return __white
+  }
+
+  /**
+  - Signature: static red -> Color
+  */
+  static red {
+    if (!__red) {
+      __red = Color.hex("#FF004D")
+    }
+    return __red
+  }
+
+  /**
+  - Signature: static orange -> Color
+  */
+  static orange {
+    if (!__orange) {
+      __orange = Color.hex("#FFA300")
+    }
+    return __orange
+  }
+
+  /**
+  - Signature: static yellow -> Color
+  */
+  static yellow {
+    if (!__yellow) {
+      __yellow = Color.hex("#FFEC27")
+    }
+    return __yellow
+  }
+
+  /**
+  - Signature: static green -> Color
+  */
+  static green {
+    if (!__green) {
+      __green = Color.hex("#00E436")
+    }
+    return __green
+  }
+
+  /**
+  - Signature: static blue -> Color
+  */
+  static blue {
+    if (!__blue) {
+      __blue = Color.hex("#29ADFF")
+    }
+    return __blue
+  }
+
+  /**
+  - Signature: static lavender -> Color
+  */
+  static lavender {
+    if (!__lavender) {
+      __lavender = Color.hex("#83769C")
+    }
+    return __lavender
+  }
+
+  /**
+  - Signature: static pink -> Color
+  */
+  static pink {
+    if (!__pink) {
+      __pink = Color.hex("#FF77A8")
+    }
+    return __pink
+  }
+
+  /**
+  - Signature: static lightpeach -> Color
+  */
+  static lightpeach {
+    if (!__lightpeach) {
+      __lightpeach = Color.hex("#FFCCAA")
+    }
+    return __lightpeach
+  }
+
+  // TODO: Add extended pico8 palette
+
+  /**
+  - Signature: static all -> List
+  */
+  static all {
+    if (!__all) {
+      __all = [
+        black,
+        darkblue,
+        darkpurple,
+        darkgreen,
+        brown,
+        darkgrey,
+        lightgrey,
+        white,
+        red,
+        orange,
+        yellow,
+        green,
+        blue,
+        lavender,
+        pink,
+        lightpeach
       ]
     }
     return __all
@@ -256,11 +452,16 @@ class Palettes {
   static tic {TIC}
 
   /**
+  - Signature: static pico -> Pico
+  */
+  static pico {Pico}
+
+  /**
   - Signature: static all -> List
   */
   static all {
     if (!__all) {
-      __all = [onebitmonitor, tic]
+      __all = [onebitmonitor, tic, pico]
     }
     return __all
   }
