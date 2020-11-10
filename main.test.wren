@@ -2,7 +2,7 @@ import "dome" for Process
 
 import "domepunk/test/unit" for Runner
 import "domepunk/test/test/unit.test" for UnitTests
-import "domepunk/test/misc/emoji.test" for EmojiTests
+
 import "domepunk/test/science/statistics.test" for StatisticsTests
 import "domepunk/test/science/probability.test" for ProbabilityTests
 import "domepunk/test/science/percentage.test" for PercentageTests
@@ -13,13 +13,15 @@ import "domepunk/test/utils/clock.test" for ClockTests
 import "domepunk/test/utils/string.test" for StrTests
 import "domepunk/test/utils/number.test" for NumberTests
 
+import "domepunk/test/misc/emoji.test" for EmojiTests
+import "domepunk/test/misc/palettes.test" for PalettesTests
+
 class Game {
     static init() {
       // Add your tests here
 
       // MARK: Internal Tests
       Runner.run(UnitTests)
-      Runner.run(ClockTests)
 
       // MARK: Science Tests
       Runner.run(StatisticsTests)
@@ -29,10 +31,12 @@ class Game {
       Runner.run(RandomTests)
 
       // MARK: Util Tests
+      Runner.run(ClockTests)
       Runner.run(StrTests)
       Runner.run(NumberTests)
 
       // MARK: Misc Tests
+      Runner.run(PalettesTests)
       Runner.run(EmojiTests)
 
       Runner.end {

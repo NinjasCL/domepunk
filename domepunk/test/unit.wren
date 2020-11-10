@@ -467,8 +467,20 @@ class Assert {
     */
     static isKind(value, Kind, message) {
         Assert.count = Assert.count + 1
-        if (!(value is Kind)) {
-          return Fiber.abort(message)
+        // TODO: Check for primitive classes
+        if (!(value is Kind || value == Kind)) {
+          var current = value.supertype
+          var found = false
+          while (current != Object) {
+            if (current == Kind) {
+              found = true
+              break
+            }
+            current = current.supertype
+          }
+          if (!found) {
+            return Assert.abort(message)
+          }
         }
     }
 
@@ -486,9 +498,10 @@ class Assert {
     - Throws: `Fiber.abort()` on assertion error.
     */
     static isNotKind(value, Kind, message) {
-        Assert.count = Assert.count + 1
-        if (value is Kind) {
-          return Fiber.abort(message)
+        var error = Fiber.new {Assert.isKind(value, Kind)}.try()
+        System.print(error)
+        if (!error) {
+          return Assert.abort(message)
         }
     }
 

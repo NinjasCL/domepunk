@@ -61,6 +61,11 @@ class Str {
     return _string
   }
 
+  toLowerCase {Str.lower(toString)}
+  toUpperCase {Str.upper(toString)}
+  toTitleCase {Str.title(toString)}
+  toReverse {Str.reverse(toString)}
+
   /**
   Creates a new String object
   - Signature: construct new(string:String) -> Str
@@ -123,6 +128,7 @@ class Str {
   - Returns: The lowercased string
   */
   lower() {
+    toString
     return Str.new(toString.bytes.map {|ord|
         if (ord >= 65 && ord <= 90) {
             ord = ord + 32
