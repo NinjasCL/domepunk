@@ -8,6 +8,7 @@ Different palettes for usage within games.
 ```js
 import "domepunk/misc/palettes" for Palettes
 ```
+- Since: 1.0.0
 */
 
 // Base class for Palettes
@@ -17,6 +18,7 @@ class Palette {
 
 /**
 Based on https://lospec.com/palette-list/1bit-monitor-glow
+- Since: 1.0.0
 */
 class OneBitMonitor is Palette {
 
@@ -53,6 +55,7 @@ class OneBitMonitor is Palette {
 
 /**
 Based on https://github.com/nesbox/TIC-80/wiki/palette
+- Since: 1.0.0
 */
 class TIC is Palette {
   /**
@@ -244,6 +247,7 @@ class TIC is Palette {
 
 /**
 Based on https://pico-8.fandom.com/wiki/Palette
+- Since: 1.0.0
 */
 class Pico is Palette {
 
@@ -439,6 +443,7 @@ class Pico is Palette {
 
 /**
 Based on https://lospec.com/palette-list/crtgb
+- Since: 1.0.0
 */
 class GBCrt is Palette {
 
@@ -500,6 +505,7 @@ class GBCrt is Palette {
 
 /**
 Contains all the palettes
+- Since: 1.0.0
 */
 class Palettes {
   /**
