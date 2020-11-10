@@ -438,6 +438,67 @@ class Pico is Palette {
 }
 
 /**
+Based on https://lospec.com/palette-list/crtgb
+*/
+class GBCrt is Palette {
+
+  /**
+  - Signature: static black -> Color
+  */
+  static black {
+    if (!__black) {
+      __black = Color.hex("#060601")
+    }
+    return __black
+  }
+
+  /**
+  - Signature: static green -> Color
+  */
+  static green {
+    if (!__green) {
+      __green = Color.hex("#0b3e08")
+    }
+    return __green
+  }
+
+  /**
+  - Signature: static lightgreen -> Color
+  */
+  static lightgreen {
+    if (!__lightgreen) {
+      __lightgreen = Color.hex("#489a0d")
+    }
+    return __lightgreen
+  }
+
+  /**
+  - Signature: static yellow -> Color
+  */
+  static yellow {
+    if (!__yellow) {
+      __yellow = Color.hex("#daf222")
+    }
+    return __yellow
+  }
+
+  /**
+  - Signature: static all -> List
+  */
+  static all {
+    if (!__all) {
+      __all = [
+        black,
+        green,
+        lightgreen,
+        yellow
+      ]
+    }
+    return __all
+  }
+}
+
+/**
 Contains all the palettes
 */
 class Palettes {
@@ -457,11 +518,16 @@ class Palettes {
   static pico {Pico}
 
   /**
+  - Signature: static gbcrt -> GBCrt
+  */
+  static gbcrt {GBCrt}
+
+  /**
   - Signature: static all -> List
   */
   static all {
     if (!__all) {
-      __all = [onebitmonitor, tic, pico]
+      __all = [onebitmonitor, tic, pico, gbcrt]
     }
     return __all
   }

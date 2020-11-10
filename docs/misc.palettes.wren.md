@@ -211,35 +211,73 @@ Based on https://pico-8.fandom.com/wiki/Palette
 
 - Signature: static lightpeach -> Color
 
-### [static all](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L413)
+### [static all](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L415)
 
 
 - Signature: static all -> List
 
 ---
-## [Class Palettes](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L441)
+## [Class GBCrt is Palette](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L443)
+
+
+Based on https://lospec.com/palette-list/crtgb
+
+## API
+
+### [static black](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L448)
+
+
+- Signature: static black -> Color
+
+### [static green](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L458)
+
+
+- Signature: static green -> Color
+
+### [static lightgreen](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L468)
+
+
+- Signature: static lightgreen -> Color
+
+### [static yellow](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L478)
+
+
+- Signature: static yellow -> Color
+
+### [static all](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L488)
+
+
+- Signature: static all -> List
+
+---
+## [Class Palettes](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L504)
 
 
 Contains all the palettes
 
 ## API
 
-### [static onebitmonitor](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L445)
+### [static onebitmonitor](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L508)
 
 
 - Signature: static onebitmonitor -> OneBitMonitor
 
-### [static tic](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L450)
+### [static tic](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L513)
 
 
 - Signature: static tic -> TIC
 
-### [static pico](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L455)
+### [static pico](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L518)
 
 
 - Signature: static pico -> Pico
 
-### [static all](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L460)
+### [static gbcrt](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L523)
+
+
+- Signature: static gbcrt -> GBCrt
+
+### [static all](https://github.com/ninjascl/domepunk/blob/main/domepunk/misc/palettes.wren#L528)
 
 
 - Signature: static all -> List
