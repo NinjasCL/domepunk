@@ -96,7 +96,7 @@ class TIC is Palette {
   /**
   - Signature: static yellow -> Color
   */
-  static yelloe {
+  static yellow {
     if (!__yellow) {
       __yellow = Color.hex("FFCD75")
     }
