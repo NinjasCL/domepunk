@@ -27,3 +27,5 @@
 ### Misc
 
 [**Emoji**](https://github.com/NinjasCL/domepunk/wiki/misc.emoji.wren)
+
+[**Palettes**](https://github.com/NinjasCL/domepunk/wiki/misc.palettes.wren)
