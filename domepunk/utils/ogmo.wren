@@ -26,6 +26,203 @@ import "domepunk/utils/ogmo" for OPrj, OLvl
 
 /**
 */
+class Project {
+
+  toString {Json.encode(toMap)}
+  toMap {{
+    "name": name,
+    "ogmoVersion": ogmoVersion,
+    "levelPaths": levelPaths,
+    "backgroundColor": backgroundColor.toString,
+    "gridColor": gridColor.toString,
+    "anglesRadians": anglesRadians,
+    "defaultExportMode": defaultExportMode,
+    "directoryDepth": directoryDepth,
+    "levelDefaultSize": levelDefaultSize,
+    "levelMinSize": levelMinSize,
+    "levelMaxSize": levelMaxSize,
+    "levelValues": levelValues,
+    "entityTags": entityTags,
+    "layers": layers,
+    "entities": entities,
+    "tilesets": tilesets,
+    "layerGridDefaultSize": layerGridDefaultSize
+  }}
+
+  /**
+  The Name of the Ogmo Project.
+  */
+  name {_name}
+
+  /**
+  The version of Ogmo used
+  */
+  version {_ogmoVersion}
+  ogmoVersion {_ogmoVersion}
+
+  /**
+  Array of paths that hold the Project's levels.
+  */
+  levelPaths {_levelPaths}
+
+  /**
+  The Project's background color.
+  */
+  backgroundColor {_backgroundColor}
+  backgroundColor = (value) {
+    _backgroundColor = OgmoColor.new(value)
+  }
+
+  /**
+  The color of the Grid displayed in the Project's Editor
+  */
+  gridColor {_gridColor}
+  gridColor = (value) {
+    _gridColor = OgmoColor.new(value)
+  }
+
+  /**
+  Flag to set whether the Project describes rotations in Radians or Degrees.
+  If set to `true` its in Radians. Otherwise it is in Degrees.
+  */
+  anglesRadians {_anglesRadians}
+
+  /**
+  Sets the default exported file type of a Level.
+  */
+  defaultExportMode {_defaultExportMode}
+
+  /**
+  Maximum Depth that the Editor will search for files for its File Tree.
+  */
+  directoryDepth {_directoryDepth}
+
+  /**
+  Default size of newly created levels in the Editor.
+  */
+  levelDefaultSize {_levelDefaultSize}
+
+  /**
+  Minimum size a level can be.
+  */
+  levelMinSize {_levelMinSize}
+
+  /**
+  Maximum size a level can be.
+  */
+  levelMaxSize {_levelMaxSize}
+
+  /**
+  Array of Value Templates for the Project's Levels.
+  */
+  levelValues {_levelValues}
+
+  /**
+  Array containing all of the Project's available Entity Tags.
+  */
+  entityTags {_entityTags}
+
+  /**
+  Array containing all of the Project's available Layer Templates.
+  */
+  layers {_layers}
+
+  /**
+  Array containing all of the Project's available Entity Templates.
+  */
+  entities {_entities}
+
+  /**
+  Array containing all of the Project's available Tilesets.
+  */
+  tilesets {_tilesets}
+
+  /**
+  */
+  layerGridDefaultSize {_layerGridDefaultSize}
+
+  /**
+  Creates an Ogmo Project from `.ogmo` data.
+  - Signature: static load(path:String) -> Project
+  - Parameter path: String to the file holding Ogmo data.
+  - Returns: Project parsed from Ogmo file.
+  */
+  construct load(path) {
+
+    var json = Json.load(path)
+
+    _name = json["name"]
+    _ogmoVersion = json["ogmoVersion"]
+
+    _levelPaths = json["levelPaths"]
+
+    backgroundColor = json["backgroundColor"]
+    gridColor = json["gridColor"]
+
+    _anglesRadians = json["anglesRadians"]
+    _defaultExportMode = json["defaultExportMode"]
+    _directoryDepth = json["directoryDepth"]
+    _entityTags = json["entityTags"]
+
+    _levelDefaultSize = Size.fromJson(json["levelDefaultSize"])
+    _levelMinSize =  Size.fromJson(json["levelMinSize"])
+    _levelMaxSize = Size.fromJson(json["levelMaxSize"])
+    _layerGridDefaultSize = Size.fromJson(json["levelGridDefaultSize"])
+
+    _levelValues = ProjectValue.listFromJson(json["levelValues"])
+    _layers = ProjectLayer.listFromJson(json["layers"])
+    _entities = ProjectEntity.listFromJson(json["entities"])
+    _tilesets = ProjectTileset.listFromJson(json["tilesets"])
+  }
+
+  /**
+  Attempts to get an ProjectEntity from an exportID.
+  - Parameter exportID: The export id
+  - Returns: ProjectEntity or null
+  */
+  entity(exportID) {
+    for (entity in entities) {
+      if (entity.exportID == exportID) {
+        return entity
+      }
+    }
+    return null
+  }
+
+  /**
+  Attempts to get an ProjectLayer from an exportID.
+  - Parameter exportID: The export id
+  - Returns: ProjectLayer or null
+  */
+  layer(exportID) {
+    for (layer in layers) {
+      if (layer.exportID == exportID) {
+        return layer
+      }
+    }
+    return null
+  }
+
+  /**
+  Attempts to get an ProjectTileset from an exportID.
+  - Parameter name: The tileset name
+  - Returns: ProjectTileset or null
+  */
+  tileset(name) {
+    for (tileset in tilesets) {
+      if (tileset.label == name) {
+        return tileset
+      }
+    }
+    return null
+  }
+}
+
+var OgmoProject = Project
+var OPrj = Project
+
+/**
+*/
 class Point {
 
   toString {Json.encode(toMap)}
@@ -735,203 +932,6 @@ class ProjectTileset {
     return items
   }
 }
-
-/**
-*/
-class Project {
-
-  toString {Json.encode(toMap)}
-  toMap {{
-    "name": name,
-    "ogmoVersion": ogmoVersion,
-    "levelPaths": levelPaths,
-    "backgroundColor": backgroundColor.toString,
-    "gridColor": gridColor.toString,
-    "anglesRadians": anglesRadians,
-    "defaultExportMode": defaultExportMode,
-    "directoryDepth": directoryDepth,
-    "levelDefaultSize": levelDefaultSize,
-    "levelMinSize": levelMinSize,
-    "levelMaxSize": levelMaxSize,
-    "levelValues": levelValues,
-    "entityTags": entityTags,
-    "layers": layers,
-    "entities": entities,
-    "tilesets": tilesets,
-    "layerGridDefaultSize": layerGridDefaultSize
-  }}
-
-  /**
-  The Name of the Ogmo Project.
-  */
-  name {_name}
-
-  /**
-  The version of Ogmo used
-  */
-  version {_ogmoVersion}
-  ogmoVersion {_ogmoVersion}
-
-  /**
-  Array of paths that hold the Project's levels.
-  */
-  levelPaths {_levelPaths}
-
-  /**
-  The Project's background color.
-  */
-  backgroundColor {_backgroundColor}
-  backgroundColor = (value) {
-    _backgroundColor = OgmoColor.new(value)
-  }
-
-  /**
-  The color of the Grid displayed in the Project's Editor
-  */
-  gridColor {_gridColor}
-  gridColor = (value) {
-    _gridColor = OgmoColor.new(value)
-  }
-
-  /**
-  Flag to set whether the Project describes rotations in Radians or Degrees.
-  If set to `true` its in Radians. Otherwise it is in Degrees.
-  */
-  anglesRadians {_anglesRadians}
-
-  /**
-  Sets the default exported file type of a Level.
-  */
-  defaultExportMode {_defaultExportMode}
-
-  /**
-  Maximum Depth that the Editor will search for files for its File Tree.
-  */
-  directoryDepth {_directoryDepth}
-
-  /**
-  Default size of newly created levels in the Editor.
-  */
-  levelDefaultSize {_levelDefaultSize}
-
-  /**
-  Minimum size a level can be.
-  */
-  levelMinSize {_levelMinSize}
-
-  /**
-  Maximum size a level can be.
-  */
-  levelMaxSize {_levelMaxSize}
-
-  /**
-  Array of Value Templates for the Project's Levels.
-  */
-  levelValues {_levelValues}
-
-  /**
-  Array containing all of the Project's available Entity Tags.
-  */
-  entityTags {_entityTags}
-
-  /**
-  Array containing all of the Project's available Layer Templates.
-  */
-  layers {_layers}
-
-  /**
-  Array containing all of the Project's available Entity Templates.
-  */
-  entities {_entities}
-
-  /**
-  Array containing all of the Project's available Tilesets.
-  */
-  tilesets {_tilesets}
-
-  /**
-  */
-  layerGridDefaultSize {_layerGridDefaultSize}
-
-  /**
-  Creates an Ogmo Project from `.ogmo` data.
-  - Signature: static load(path:String) -> Project
-  - Parameter path: String to the file holding Ogmo data.
-  - Returns: Project parsed from Ogmo file.
-  */
-  construct load(path) {
-
-    var json = Json.load(path)
-
-    _name = json["name"]
-    _ogmoVersion = json["ogmoVersion"]
-
-    _levelPaths = json["levelPaths"]
-
-    backgroundColor = json["backgroundColor"]
-    gridColor = json["gridColor"]
-
-    _anglesRadians = json["anglesRadians"]
-    _defaultExportMode = json["defaultExportMode"]
-    _directoryDepth = json["directoryDepth"]
-    _entityTags = json["entityTags"]
-
-    _levelDefaultSize = Size.fromJson(json["levelDefaultSize"])
-    _levelMinSize =  Size.fromJson(json["levelMinSize"])
-    _levelMaxSize = Size.fromJson(json["levelMaxSize"])
-    _layerGridDefaultSize = Size.fromJson(json["levelGridDefaultSize"])
-
-    _levelValues = ProjectValue.listFromJson(json["levelValues"])
-    _layers = ProjectLayer.listFromJson(json["layers"])
-    _entities = ProjectEntity.listFromJson(json["entities"])
-    _tilesets = ProjectTileset.listFromJson(json["tilesets"])
-  }
-
-  /**
-  Attempts to get an ProjectEntity from an exportID.
-  - Parameter exportID: The export id
-  - Returns: ProjectEntity or null
-  */
-  entity(exportID) {
-    for (entity in entities) {
-      if (entity.exportID == exportID) {
-        return entity
-      }
-    }
-    return null
-  }
-
-  /**
-  Attempts to get an ProjectLayer from an exportID.
-  - Parameter exportID: The export id
-  - Returns: ProjectLayer or null
-  */
-  layer(exportID) {
-    for (layer in layers) {
-      if (layer.exportID == exportID) {
-        return layer
-      }
-    }
-    return null
-  }
-
-  /**
-  Attempts to get an ProjectTileset from an exportID.
-  - Parameter name: The tileset name
-  - Returns: ProjectTileset or null
-  */
-  tileset(name) {
-    for (tileset in tilesets) {
-      if (tileset.label == name) {
-        return tileset
-      }
-    }
-    return null
-  }
-}
-
-var OgmoProject = Project
-var OPrj = Project
 
 // var OgmoLevel = Level
 // var OLvl = Level
