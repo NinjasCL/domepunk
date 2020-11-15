@@ -2,8 +2,6 @@
 import "json" for Json
 import "graphics" for Color
 
-// TODO: Add Level Parser
-
 /** doc-header
 ## [Ogmo](https://ogmo-editor-3.github.io/)
 Utility Classes for Parsing Ogmo Json files.
@@ -12,19 +10,40 @@ Based on https://github.com/Ogmo-Editor-3/ogmo-3-lib
 
 - Example:
 ```js
-import "domepunk/utils/ogmo" for Project, Level
+import "ogmo" for Project, Level
 
-// symlinks
-import "domepunk/utils/ogmo" for OgmoProject, OgmoLevel
-import "domepunk/utils/ogmo" for OPrj, OLvl
+class Game {
+    static init() {
+      var ogmo = Project.load("project.ogmo")
+      System.print(ogmo.version)
+
+      var level = Level.load("level.json")
+      level.onTileLayerLoaded {|data, layer|
+        System.print("onTileLayerLoaded triggered")
+        System.print(data)
+      }
+
+      level.init()
+
+    }
+    static update() {}
+    static draw(dt) {}
+}
 ```
 - Since: 1.0.0
 - Dome: 1.4.0
 - Ogmo: 3.2.2
 */
 
+// MARK: - Core Classes
 
 /**
+```js
+import "domepunk/utils/ogmo" for Project
+
+// alias
+import "domepunk/utils/ogmo" for OgmoProject, OProj
+```
 */
 class Project {
 
@@ -141,38 +160,65 @@ class Project {
   */
   layerGridDefaultSize {_layerGridDefaultSize}
 
+  construct new(params) {
+    _name = params["name"]
+    _ogmoVersion = params["ogmoVersion"]
+    _levelPaths = params["levelPaths"]
+
+    backgroundColor = params["backgroundColor"]
+    gridColor = params["gridColor"]
+
+    _anglesRadians = params["anglesRadians"]
+    _defaultExportMode = params["defaultExportMode"]
+    _directoryDepth = params["directoryDepth"]
+    _entityTags = params["entityTags"]
+    _levelDefaultSize = params["levelDefaultSize"]
+    _levelMinSize = params["levelMinSize"]
+    _levelMaxSize = params["levelMaxSize"]
+    _layerGridDefaultSize = params["layerGridDefaultSize"]
+    _levelValues = params["levelValues"]
+    _layers = params["layers"]
+    _entities = params["entities"]
+    _tilesets = params["tilesets"]
+  }
+
+  static fromJson(json) {
+    var params = {
+      "name": json["name"],
+      "ogmoVersion": json["ogmoVersion"],
+
+      "levelPaths": json["levelPaths"],
+
+      "backgroundColor": json["backgroundColor"],
+      "gridColor": json["gridColor"],
+
+      "anglesRadians": json["anglesRadians"],
+      "deaultExportMode": json["defaultExportMode"],
+      "directoryDepth": json["directoryDepth"],
+      "entityTags": json["entityTags"],
+
+      "levelDefaultSize": Size.fromJson(json["levelDefaultSize"]),
+      "levelMinSize": Size.fromJson(json["levelMinSize"]),
+      "levelMaxSize": Size.fromJson(json["levelMaxSize"]),
+      "levelGridDefaultSize": Size.fromJson(json["levelGridDefaultSize"]),
+
+      "levelValues": ProjectValue.listFromJson(json["levelValues"]),
+      "layers": ProjectLayer.listFromJson(json["layers"]),
+      "entities": ProjectEntity.listFromJson(json["entities"]),
+      "tilesets": ProjectTileset.listFromJson(json["tilesets"])
+    }
+    return Project.new(params)
+  }
+
   /**
   Creates an Ogmo Project from `.ogmo` data.
   - Signature: static load(path:String) -> Project
   - Parameter path: String to the file holding Ogmo data.
   - Returns: Project parsed from Ogmo file.
   */
-  construct load(path) {
-
+  static load(path) {
     var json = Json.load(path)
-
-    _name = json["name"]
-    _ogmoVersion = json["ogmoVersion"]
-
-    _levelPaths = json["levelPaths"]
-
-    backgroundColor = json["backgroundColor"]
-    gridColor = json["gridColor"]
-
-    _anglesRadians = json["anglesRadians"]
-    _defaultExportMode = json["defaultExportMode"]
-    _directoryDepth = json["directoryDepth"]
-    _entityTags = json["entityTags"]
-
-    _levelDefaultSize = Size.fromJson(json["levelDefaultSize"])
-    _levelMinSize =  Size.fromJson(json["levelMinSize"])
-    _levelMaxSize = Size.fromJson(json["levelMaxSize"])
-    _layerGridDefaultSize = Size.fromJson(json["levelGridDefaultSize"])
-
-    _levelValues = ProjectValue.listFromJson(json["levelValues"])
-    _layers = ProjectLayer.listFromJson(json["layers"])
-    _entities = ProjectEntity.listFromJson(json["entities"])
-    _tilesets = ProjectTileset.listFromJson(json["tilesets"])
+    return Project.fromJson(json)
   }
 
   /**
@@ -219,7 +265,296 @@ class Project {
 }
 
 var OgmoProject = Project
-var OPrj = Project
+var OProj = Project
+
+/**
+```js
+import "domepunk/utils/ogmo" for Level
+
+// alias
+import "domepunk/utils/ogmo" for OgmoLevel, OLevel
+```
+*/
+class Level {
+
+  toString {Json.encode(toMap)}
+  toMap {{
+    "width": width,
+    "height": height,
+    "offsetX": offsetX,
+    "offsetY": offsetY,
+    "layers": layers,
+    "values": values
+  }}
+
+  /**
+  Width of the Level.
+  */
+  width {_width}
+
+  /**
+  Height of the Level.
+  */
+  height {_height}
+
+  /**
+  Size (width, height)
+  */
+  size {Size.new(width, height)}
+
+  /**
+  Offset of the Level on the X axis. Useful for loading multiple chunked Levels.
+  */
+  offsetX {_offsetX}
+
+  /**
+  Offset of the Level on the Y axis. Useful for loading multiple chunked Levels.
+  */
+  offsetY {_offsetY}
+
+  /**
+  Point (offsetX, offsetY)
+  */
+  offset {Point.new(offsetX, offsetY)}
+
+  /**
+  Array containing all of the Level's Layer Definitions.
+  */
+  layers {_layers}
+
+  /**
+  Array containing all of the Level's custom values.
+  */
+  values {_values}
+
+  /**
+  Callback triggered when a Decal layer is found after calling `load()` on a Level.
+  The first argument is an Array holding the Layer's Decal Definitions.
+  The second argument is the Layer Definition itself.
+  */
+  onDecalLayerLoaded = (value) {
+    _onDecalLayerLoaded = value
+  }
+
+  // Support block syntax
+  onDecalLayerLoaded (value) {
+    onDecalLayerLoaded = value
+  }
+
+  decalLayerLoaded {_onDecalLayerLoaded}
+
+  /**
+  k triggered when an Entity layer is found after calling `load()` on a Level.
+  The first argument is an Array holding the Layer's Entity Definitions.
+  The second argument is the Layer Definition itself.
+  */
+  onEntityLayerLoaded = (value) {
+    _onEntityLayerLoaded = value
+  }
+
+  onEntityLayerLoaded (value) {
+    onEntityLayerLoaded = value
+  }
+
+  entityLayerLoaded {_onEntityLayerLoaded}
+
+  /**
+  Callback triggered when a Grid layer exported with a 1D Data Array is found after calling `load()` on a Level.
+  The first argument is a 1D Array holding the Layer's Grid Data.
+  The second argument is the Layer Definition itself.
+  */
+  onGridLayerLoaded = (value) {
+    _onGridLayerLoaded = value
+  }
+
+  onGridLayerLoaded (value) {
+    onGridLayerLoaded = value
+  }
+
+  gridLayerLoaded {_onGridLayerLoaded}
+
+  /**
+  Callback triggered when a Grid layer exported with a 2D Data Array is found after calling `load()` on a Level.
+  The first argument is a 2D Array holding the Layer's Grid Data.
+  The second argument is the Layer Definition itself.
+  */
+  onGrid2DLayerLoaded = (value) {
+    _onGrid2DLayerLoaded = value
+  }
+
+  onGrid2DLayerLoaded (value) {
+    onGrid2DLayerLoaded = value
+  }
+
+  grid2DLayerLoaded {_onGrid2DLayerLoaded}
+
+  /**
+  Callback triggered when a Tile layer exported with a 1D Data Array containing Tile IDs is found after calling `load()` on a Level.
+  The first argument is a 1D Array holding the Layer's Tile ID Data.
+  The second argument is the Layer Definition itself.
+  */
+  onTileLayerLoaded = (value) {
+    _onTileLayerLoaded = value
+  }
+
+  onTileLayerLoaded (value) {
+    onTileLayerLoaded = value
+  }
+
+  tileLayerLoaded {_onTileLayerLoaded}
+
+  /**
+  Callback triggered when a Tile layer exported with a 2D Data Array containing Tile IDs is found after calling `load()` on a Level.
+  The first argument is a 2D Array holding the Layer's Tile ID Data.
+  The second argument is the Layer Definition itself.
+  */
+  onTile2DLayerLoaded = (value) {
+    _onTile2DLayerLoaded = value
+  }
+
+  onTile2DLayerLoaded (value) {
+    onTile2DLayerLoaded = value
+  }
+
+  tile2DLayerLoaded {_onTile2DLayerLoaded}
+
+  /**
+  Callback triggered when a Tile layer exported with a 2D Data Array containing Tile Coords is found after calling `load()` on a Level.
+  The first argument is a 2D Array holding the Layer's Tile Cordinate Data.
+  The second argument is the Layer Definition itself.
+  */
+  onTileCoordsLayerLoaded = (value) {
+    _onTileCoordsLayerLoaded = value
+  }
+
+  onTileCoordsLayerLoaded (value) {
+    onTileCoordsLayerLoaded = value
+  }
+
+  tileCoordsLayerLoaded {_onTileCoordsLayerLoaded}
+
+  /**
+  Callback triggered when a Tile layer exported with a 3D Data Array containing Tile Coords is found after calling `load()` on a Level.
+  The first argument is a 3D Array holding the Layer's Tile Coords Data.
+  The second argument is the Layer Definition itself.
+  */
+  onTileCoords2DLayerLoaded = (value) {
+    _onTileCoords2DLayerLoaded = value
+  }
+
+  onTileCoords2DLayerLoaded (value) {
+    onTileCoords2DLayerLoaded = value
+  }
+
+  tileCoords2DLayerLoaded {_onTileCoords2DLayerLoaded}
+
+  /**
+  Loops through all layers, triggering each layer's callback if defined on this Level.
+  Available Callbacks:
+  - onTileLayerLoaded
+  - onTile2DLayerLoaded
+  - onTileCoordsLayerLoaded
+  - onTileCoords2DLayerLoaded
+  - onDecalLayerLoaded
+  - onEntityLayerLoaded
+  - onGridLayerLoaded
+  - onGrid2DLayerLoaded
+  */
+  init() {
+    for (layer in layers) {
+      if (layer.data) {
+        if (tileLayerLoaded is Fn || tileLayerLoaded is Fiber) {
+          tileLayerLoaded.call(layer.data, layer)
+        }
+      }
+
+      if (layer.data2D) {
+        if (tile2DLayerLoaded is Fn || tile2DLayerLoaded is Fiber) {
+          tile2DLayerLoaded.call(layer.data2D, layer)
+        }
+      }
+
+      if (layer.dataCoords) {
+        if (tileCoordsLayerLoaded is Fn || tileCoordsLayerLoaded is Fiber) {
+          tileCoordsLayerLoaded.call(layer.dataCoords, layer)
+        }
+      }
+
+      if (layer.dataCoords2D) {
+        if (tileCoords2DLayerLoaded is Fn || tileCoords2DLayerLoaded is Fiber) {
+          tileCoords2DLayerLoaded.call(layer.dataCoords2D, layer)
+        }
+      }
+
+      if (layer.grid) {
+        if (gridLayerLoaded is Fn || gridLayerLoaded is Fiber) {
+          gridLayerLoaded.call(layer.grid, layer)
+        }
+      }
+
+      if (layer.grid2D) {
+        if (grid2DLayerLoaded is Fn || grid2DLayerLoaded is Fiber) {
+          grid2DLayerLoaded.call(layer.grid2D, layer)
+        }
+      }
+
+      if (layer.decals) {
+        if (decalLayerLoaded is Fn || decalLayerLoaded is Fiber) {
+          decalLayerLoaded.call(layer.decals, layer)
+        }
+      }
+
+      if (layer.entities) {
+        if (entityLayerLoaded is Fn || entityLayerLoaded is Fiber) {
+          entityLayerLoaded.call(layer.entities, layer)
+        }
+      }
+    }
+  }
+
+  construct new(
+    width,
+    height,
+    offsetX,
+    offsetY,
+    layers,
+    values) {
+    _width = width
+    _height = height
+    _offsetX = offsetX
+    _offsetY = offsetY
+    _layers = layers
+    _values = values
+  }
+
+  construct fromJson(json) {
+    var layers = LevelLayer.listFromJson(json["layers"])
+    return Level.new(
+      json["width"],
+      json["height"],
+      json["offsetX"],
+      json["offsetY"],
+      layers,
+      json["values"]
+    )
+  }
+
+  /**
+  Creates a Level with `.json` data from Ogmo.
+  - Signature: static load(Path:String) -> Level
+  - Parameter path: Path string holding Ogmo Level Json data.
+  - Returns: Level parsed from Json.
+  */
+  static load(path) {
+    var json = Json.load(path)
+    return Level.fromJson(json)
+  }
+}
+
+var OgmoLevel = Level
+var OLevel = Level
+
+// MARK: Helper Classes
 
 /**
 */
@@ -335,6 +670,7 @@ class OgmoColor {
   }
 }
 
+// MARK: Project Inner Classes
 /**
 Data structure value for level, layers, entity
 */
@@ -462,6 +798,7 @@ class ProjectLayer {
     "definition": definition,
     "gridSize": gridSize,
     "exportID": exportID,
+    "_eid": exportID,
     "exportMode": exportMode,
     "arrayMode": arrayMode,
     "defaultTileset": defaultTileset,
@@ -637,6 +974,7 @@ class ProjectEntity {
   toMap {{
     "name": name,
     "exportID": exportID,
+    "_eid": exportID,
     "limit": limit,
     "size": size,
     "origin": origin,
@@ -933,5 +1271,423 @@ class ProjectTileset {
   }
 }
 
-// var OgmoLevel = Level
-// var OLvl = Level
+// MARK: - Level
+/**
+*/
+class LevelEntity {
+
+  toString {Json.encode(toMap)}
+  toMap {{
+    "name":name,
+    "id": id,
+    "_eid": exportID,
+    "exportID": exportID,
+    "x": x,
+    "y": y,
+    "width": width,
+    "height": height,
+    "originX": originX,
+    "originY": originY,
+    "rotation": rotation,
+    "flippedX": flippedX,
+    "flippedY": flippedY,
+    "nodes": nodes,
+    "values": values
+  }}
+
+  /**
+  */
+  name {_name}
+
+  /**
+  */
+  id {_id}
+
+  /**
+  */
+  exportID {_exportID}
+
+  /**
+  */
+  x {_x}
+
+  /**
+  */
+  y {_y}
+
+  // Point position
+  /**
+  */
+  position {Point.new(x, y)}
+
+  /**
+  */
+  width {_width}
+
+  /**
+  */
+  height {_height}
+
+  // Size size
+  /**
+  */
+  size {Size.new(width, height)}
+
+  /**
+  */
+  originX {_originX}
+
+  /**
+  */
+  originY {_originY}
+
+  // Point origin
+  /**
+  */
+  origin {Point.new(originX, originY)}
+
+  /**
+  */
+  rotation {_rotation}
+
+  /**
+  */
+  flippedX {_flippedX}
+
+  /**
+  */
+  flippedY {_flippedY}
+
+  // Point flipped
+  /**
+  `flippedX` and `flippedY` as a `Point` instance
+  - Example: `flipped.x, flipped.y`
+  */
+  flipped {Point.new(flippedX, flippedY)}
+
+  /**
+  */
+  nodes {_nodes}
+
+  /**
+  */
+  values {_values}
+
+  construct new(
+    name,
+    id,
+    exportID,
+    x,
+    y,
+    width,
+    height,
+    originX,
+    originY,
+    rotation,
+    flippedX,
+    flippedY,
+    nodes,
+    values) {
+    _name = name
+    _id = id
+    _exportID = exportID
+    _x = x
+    _y = y
+    _width = width
+    _height = height
+    _originX = originX
+    _originY = originY
+    _rotation = rotation
+    _flippedX = flippedX
+    _flippedY = flippedY
+    _nodes = nodes
+    _values = values
+  }
+
+  static fromJson(json) {
+    return LevelEntity.new(
+      json["name"],
+      json["id"],
+      json["_eid"] || json["exportID"],
+      json["x"],
+      json["y"],
+      json["width"],
+      json["height"],
+      json["originX"],
+      json["originY"],
+      json["rotation"],
+      json["flippedX"],
+      json["flippedY"],
+      json["nodes"],
+      json["values"]
+    )
+  }
+
+  static listFromJson(jsonList) {
+    var items = []
+    jsonList = jsonList || []
+    for (json in jsonList) {
+      items.add(LevelEntity.fromJson(json))
+    }
+    return items
+  }
+}
+
+/**
+*/
+class LevelDecal {
+
+  toString {Json.encode(toMap)}
+  toMap {{
+    "x": x,
+    "y": y,
+    "texture": texture,
+    "rotation": rotation,
+    "scaleX": scaleX,
+    "scaleY": scaleY
+  }}
+
+  /**
+  */
+  x {_x}
+
+  /**
+  */
+  y {_y}
+
+  /**
+  */
+  texture {_texture}
+
+  /**
+  */
+  rotation {_rotation}
+
+  /**
+  */
+  scaleX {_scaleX}
+
+  /**
+  */
+  scaleY {_scaleY}
+
+  /**
+  */
+  scale {Point.new(scaleX, scaleY)}
+
+  construct new(
+    x,
+    y,
+    texture,
+    rotation,
+    scaleX,
+    scaleY){
+    _x = x
+    _y = y
+    _texture = texture
+    _rotation = rotation
+    _scaleX = scaleX
+    _scaleY = scaleY
+  }
+
+  static fromJson(json) {
+    return LevelDecal.new(
+      json["x"],
+      json["y"],
+      json["texture"],
+      json["rotation"],
+      json["scaleX"],
+      json["scaleY"]
+    )
+  }
+
+  static listFromJson(jsonList) {
+    var items = []
+    jsonList = jsonList || []
+    for (json in jsonList) {
+      items.add(LevelDecal.fromJson(json))
+    }
+    return items
+  }
+}
+
+class LevelLayer {
+  toString {Json.encode(toMap)}
+  toMap {{
+    "name": name,
+    "exportID": exportID,
+    "_eid": exportID,
+    "offsetX": offsetX,
+    "offsetY": offsetY,
+    "gridCellWidth": gridCellWidth,
+    "gridCellHeight": gridCellHeight,
+    "gridCellsX": gridCellsX,
+    "gridCellsY": gridCellsY,
+    "data": data,
+    "data2D": data2D,
+    "dataCoords": dataCoords,
+    "dataCoords2D": dataCoords2D,
+    "grid": grid,
+    "grid2D": grid2D,
+    "entities": entities,
+    "decals": decals,
+    "exportMode": exportMode,
+    "arrayMode": arrayMode,
+    "tileset": tileset,
+    "folder": folder
+  }}
+
+  /**
+  */
+  name {_name}
+
+  /**
+  */
+  exportID {_exportID}
+
+  /**
+  */
+  offsetX {_offsetX}
+
+  /**
+  */
+  offsetY {_offsetY}
+
+  /**
+  */
+  offset {Point.new(offsetX, offsetY)}
+
+  /**
+  */
+  gridCellWidth {_gridCellWidth}
+
+  /**
+  */
+  gridCellHeight {_gridCellHeight}
+
+  /**
+  */
+  gridCell {Size.new(gridCellWidth, gridCellHeight)}
+
+  /**
+  */
+  gridCellsX {_gridCellsX}
+
+  /**
+  */
+  gridCellsY {_gridCellsY}
+
+  /*
+  */
+  gridCellsPosition {Point.new(gridCellsX, gridCellsY)}
+
+
+  /**
+  */
+  data {_data}
+
+  /**
+  */
+  data2D {_data2D}
+
+  /**
+  */
+  dataCoords {_dataCoords}
+
+  /**
+  */
+  dataCoords2D {_dataCoords2D}
+
+  /**
+  */
+  grid {_grid}
+
+  /**
+  */
+  grid2D {_grid2D}
+
+  /**
+  */
+  entities {_entities}
+
+  /**
+  */
+  decals {_decals}
+
+  /**
+  */
+  exportMode {_exportMode}
+
+  /**
+  */
+  arrayMode {_arrayMode}
+
+  /**
+  */
+  tileset {_tileset}
+
+  /**
+  */
+  folder {_folder}
+
+  construct new(params) {
+    _exportID = params["_eid"] || params["exportID"]
+    _name = params["name"]
+    _offsetX = params["offsetX"]
+    _offsetY = params["offsetY"]
+    _gridCellWidth = params["gridCellWidth"]
+    _gridCellHeight = params["gridCellHeight"]
+    _gridCellsX = params["gridCellsX"]
+    _gridCellsY = params["gridCellsY"]
+    _data = params["data"]
+    _data2D = params["data2D"]
+    _dataCoords = params["dataCoords"]
+    _dataCoords2D = params["dataCoords2D"]
+    _grid = params["grid"]
+    _grid2D = params["grid2D"]
+    _entities = params["entities"]
+    _decals = params["decals"]
+    _exportMode = params["exportMode"]
+    _arrayMode = params["arrayMode"]
+    _tileset = params["tileset"]
+    _folder = params["folder"]
+  }
+
+  static fromJson(json) {
+    var entities = LevelEntity.listFromJson(json["entities"])
+    var decals = LevelDecal.listFromJson(json["decals"])
+    var params = {
+      "exportID": json["_eid"] || json["exportID"],
+      "name": json["name"],
+      "offsetX": json["offsetX"],
+      "offsetY": json["offsetY"],
+      "gridCellWidth": json["gridCellWidth"],
+      "gridCellHeight": json["gridCellHeight"],
+      "gridCellsX": json["gridCellsX"],
+      "gridCellsY": json["gridCellsY"],
+      "data": json["data"],
+      "data2D": json["data2D"],
+      "dataCoords": json["dataCoords"],
+      "dataCoords2D": json["dataCoords2D"],
+      "grid": json["grid"],
+      "grid2D": json["grid2D"],
+      "entities": entities,
+      "decals": decals,
+      "exportMode": json["exportMode"],
+      "arrayMode": json["arrayMode"],
+      "tileset": json["tileset"],
+      "folder": json["folder"]
+    }
+
+    return LevelLayer.new(params)
+  }
+
+  static listFromJson(jsonList) {
+    var items = []
+    jsonList = jsonList || []
+    for (json in jsonList) {
+      items.add(LevelLayer.fromJson(json))
+    }
+    return items
+  }
+}
