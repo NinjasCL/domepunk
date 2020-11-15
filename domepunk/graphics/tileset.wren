@@ -156,18 +156,21 @@ class Tileset {
   }
 
   /**
+  No offset. Just path, width and height.
   */
   static load(path, width, height) {
     return Tileset.load(path, 0, 0, width, height)
   }
 
   /**
+  No offset. Will use size as width and height
   */
   static load(path, size) {
     return Tileset.load(path, size, size)
   }
 
   /**
+  Use only default values.
   */
   static load(path) {
     return Tileset.load(path, defaultSize)

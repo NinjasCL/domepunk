@@ -95,69 +95,72 @@ Creates a new tileset giving an image path.
 - Parameter height: *optional* The height for each tileset.
 - Return: a new Tileset instance.
 
-### [static load(path, width, height)](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L160)
+### [static load(path, width, height)](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L161)
 
 
+No offset. Just path, width and height.
 
-### [static load(path, size)](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L166)
-
-
-
-### [static load(path)](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L172)
+### [static load(path, size)](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L168)
 
 
+No offset. Will use size as width and height
+
+### [static load(path)](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L175)
+
+
+Use only default values.
 
 ---
-## [Class Tile is Drawable](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L180)
+## [Class Tile is Drawable](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L183)
 
 
 A tile instance inside the tileset.tiles list
 
 ## API
 
-### [tileset](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L195)
+### [tileset](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L198)
 
 
 The tileset where this tile is member of
 - Signature: `tileset : Tileset`
 
-### [image](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L201)
+### [image](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L204)
 
 
 The source image of this tile
 - Signature: `image: ImageData`
 
-### [x](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L207)
+### [x](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L210)
 
 
 x position inside the tileset
 - Signature: `x : Num`
 
-### [y](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L213)
+### [y](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L216)
 
 
 y position inside the tileset
 - Signature: `y : Num `
 
-### [width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L219)
+### [width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L222)
 
 
 width of this tile
 - Signature: `width: Num`
 
-### [height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L225)
+### [height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L228)
 
 
 height of this tile
 - Signature: `height: Num`
 
-### [index](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L231)
+### [index](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L234)
 
 
 Index of the tile inside tileset
 - Signature: `index: Num`
 
-### [draw(x, y)](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L247)
+### [draw(x, y)](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/tileset.wren#L250)
 
 
 Draws the tile using ImageData.drawArea.
