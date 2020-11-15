@@ -142,12 +142,12 @@ class Tileset {
 
   /**
   Creates a new tileset giving an image path.
-  - Signature: `static load(path:String, x:Num? = 0, y:Mum? = 0, width:Mum? = 8, height:Num? = 8)`
+  - Signature: `static load(path:String, x:Num? = 0, y:Num? = 0, width:Num? = 8, height:Num? = 8)`
   - Parameter path: The path to the image.
-  - Parameter x: The x offset for the tileset.
-  - Parameter y: The y offset for the tileset.
-  - Parameter width: The width for each tileset.
-  - Parameter height: The height for each tileset.
+  - Parameter x: *optional* The x offset for the tileset.
+  - Parameter y: *optional* The y offset for the tileset.
+  - Parameter width: *optional* The width for each tileset.
+  - Parameter height: *optional* The height for each tileset.
   - Return: a new Tileset instance.
   */
   static load(path, x, y, width, height) {
@@ -155,14 +155,20 @@ class Tileset {
     return Tileset.new(image, x, y, width, height)
   }
 
+  /**
+  */
   static load(path, width, height) {
     return Tileset.load(path, 0, 0, width, height)
   }
 
+  /**
+  */
   static load(path, size) {
     return Tileset.load(path, size, size)
   }
 
+  /**
+  */
   static load(path) {
     return Tileset.load(path, defaultSize)
   }
