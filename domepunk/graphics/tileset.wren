@@ -6,6 +6,8 @@ import "math" for Point
 /** doc-header
 ## Tileset
 A simple tileset builder.
+Some code based on [Ogmo Lib](https://github.com/Ogmo-Editor-3/ogmo-3-lib/blob/master/sample/Main.hx).
+
 - Example:
 ```js
 import "domepunk/graphics/tileset" for Tileset
