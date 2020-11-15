@@ -10,7 +10,7 @@ Based on https://github.com/Ogmo-Editor-3/ogmo-3-lib
 
 - Example:
 ```js
-import "ogmo" for Project, Level
+import "domepunk/utils/ogmo" for Project, Level
 
 class Game {
     static init() {
