@@ -1,7 +1,7 @@
-import "domepunk/misc/palettes" for Palettes, Palette
+import "domepunk/graphics/palettes" for Palettes, Palette
 
 class PalettesTests {
-  static describe {"misc/palettes.wren"}
+  static describe {"graphics/palettes.wren"}
   static all {[
     testPalettes
   ]}

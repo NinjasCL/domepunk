@@ -14,7 +14,9 @@ import "domepunk/test/utils/string.test" for StrTests
 import "domepunk/test/utils/number.test" for NumberTests
 
 import "domepunk/test/misc/emoji.test" for EmojiTests
-import "domepunk/test/misc/palettes.test" for PalettesTests
+
+import "domepunk/test/graphics/palettes.test" for PalettesTests
+import "domepunk/test/graphics/tileset.test" for TilesetTests
 
 class Game {
     static init() {
@@ -35,8 +37,11 @@ class Game {
       Runner.run(StrTests)
       Runner.run(NumberTests)
 
-      // MARK: Misc Tests
+      // MARK: Graphics Tests
       Runner.run(PalettesTests)
+      Runner.run(TilesetTests)
+
+      // MARK: Misc Tests
       Runner.run(EmojiTests)
 
       Runner.end {

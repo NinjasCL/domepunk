@@ -1,4 +1,4 @@
-/** doc-name: misc.palettes.wren */
+/** doc-name: graphics.palettes.wren */
 import "graphics" for Color
 
 /** doc-header
@@ -6,7 +6,7 @@ import "graphics" for Color
 Different palettes for usage within games.
 - Example:
 ```js
-import "domepunk/misc/palettes" for Palettes
+import "domepunk/graphics/palettes" for Palettes
 ```
 - Since: 1.0.0
 */

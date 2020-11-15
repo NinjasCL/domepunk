@@ -30,4 +30,8 @@
 
 [**Emoji**](https://github.com/NinjasCL/domepunk/wiki/misc.emoji.wren)
 
-[**Palettes**](https://github.com/NinjasCL/domepunk/wiki/misc.palettes.wren)
+### Graphics
+
+[**Palettes**](https://github.com/NinjasCL/domepunk/wiki/graphics.palettes.wren)
+
+[**Tilesets**](https://github.com/NinjasCL/domepunk/wiki/graphics.tileset.wren)
