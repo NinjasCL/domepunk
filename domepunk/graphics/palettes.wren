@@ -17,10 +17,123 @@ class Palette {
 }
 
 /**
+The standard DOME palette
+- Since: 1.0.0
+*/
+class DOME is Palette {
+
+    /**
+    - Signature: static none -> Color.none
+    */
+    static none { Color.none }
+
+    /**
+    - Signature: static black -> Color
+    */
+    static black { Color.black }
+
+    /**
+    - Signature: static darkblue -> Color
+    */
+    static darkblue { Color.darkblue }
+
+    /**
+    - Signature: static purple -> Color
+    */
+    static purple { Color.purple }
+
+    /**
+    - Signature: static darkpurple -> Color
+    */
+    static darkpurple { Color.darkpurple }
+
+    /**
+    - Signature: static darkgreen -> Color
+    */
+    static darkgreen { Color.darkgreen }
+
+    /**
+    - Signature: static brown -> Color
+    */
+    static brown { Color.brown }
+
+    /**
+    - Signature: static darkgrey -> Color
+    */
+    static darkgrey {Color.darkgray }
+    static darkgray { Color.darkgray }
+
+    /**
+    - Signature: static lightgrey -> Color
+    */
+    static lightgrey { Color.lightgray }
+    static lightgray { Color.lightgray }
+
+    /**
+    - Signature: static white -> Color
+    */
+    static white { Color.white }
+
+    /**
+    - Signature: static red -> Color
+    */
+    static red { Color.red }
+
+    /**
+    - Signature: static orange -> Color
+    */
+    static orange { Color.orange }
+
+    /**
+    - Signature: static yellow -> Color
+    */
+    static yellow { Color.yellow }
+
+    /**
+    - Signature: static green -> Color
+    */
+    static green { Color.green }
+
+    /**
+    - Signature: static blue -> Color
+    */
+    static blue { Color.blue }
+
+    /**
+    - Signature: static indigo -> Color
+    */
+    static indigo { Color.indigo }
+
+    /**
+    - Signature: static pink -> Color
+    */
+    static pink { Color.pink }
+
+    /**
+    - Signature: static peach -> Color
+    */
+    static peach { Color.peach }
+
+    static all {[
+      black, darkblue,
+      purple, darkpurple, darkgreen,
+      brown, darkgrey, lightgrey,
+      white, red, orange,
+      yellow, green, blue,
+      indigo, pink, peach
+    ]}
+}
+
+/**
 Based on https://lospec.com/palette-list/1bit-monitor-glow
 - Since: 1.0.0
 */
 class OneBitMonitor is Palette {
+
+  /**
+  - Signature: static none -> Color.none
+  */
+  static none { Color.none }
 
   /**
   - Signature: static black -> Color
@@ -58,6 +171,11 @@ Based on https://github.com/nesbox/TIC-80/wiki/palette
 - Since: 1.0.0
 */
 class TIC is Palette {
+  /**
+  - Signature: static none -> Color.none
+  */
+  static none { Color.none }
+
   /**
   - Signature: static black -> Color
   */
@@ -250,6 +368,10 @@ Based on https://pico-8.fandom.com/wiki/Palette
 - Since: 1.0.0
 */
 class Pico is Palette {
+  /**
+  - Signature: static none -> Color.none
+  */
+  static none { Color.none }
 
   /**
   - Signature: static black -> Color
@@ -446,6 +568,10 @@ Based on https://lospec.com/palette-list/crtgb
 - Since: 1.0.0
 */
 class GBCrt is Palette {
+  /**
+  - Signature: static none -> Color.none
+  */
+  static none { Color.none }
 
   /**
   - Signature: static black -> Color
@@ -529,11 +655,16 @@ class Palettes {
   static gbcrt {GBCrt}
 
   /**
+  - Signature: static dome -> DOME
+  */
+  static dome {DOME}
+
+  /**
   - Signature: static all -> List
   */
   static all {
     if (!__all) {
-      __all = [onebitmonitor, tic, pico, gbcrt]
+      __all = [dome, onebitmonitor, tic, pico, gbcrt]
     }
     return __all
   }
