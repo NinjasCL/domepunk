@@ -114,6 +114,9 @@ class DOME is Palette {
     */
     static peach { Color.peach }
 
+    /**
+    - Signature: static all -> List
+    */
     static all {[
       black, darkblue,
       purple, darkpurple, darkgreen,
