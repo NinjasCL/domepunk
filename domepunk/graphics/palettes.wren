@@ -11,6 +11,50 @@ import "domepunk/graphics/palettes" for Palettes
 - Since: 1.0.0
 */
 
+/**
+Contains all the palettes
+- Since: 1.0.0
+*/
+class Palettes {
+
+  /**
+  - Signature: `static dome -> DOME`
+  */
+  static dome {DOME}
+
+  /**
+  - Signature: `static onebitmonitor -> OneBitMonitor`
+  */
+  static onebitmonitor {OneBitMonitor}
+
+  /**
+  - Signature: `static tic -> TIC`
+  */
+  static tic {TIC}
+
+  /**
+  - Signature: `static pico -> Pico`
+  */
+  static pico {Pico}
+
+  /**
+  - Signature: `static gbcrt -> GBCrt`
+  */
+  static gbcrt {GBCrt}
+
+  /**
+  - Signature: `static all -> List`
+  */
+  static all {
+    if (!__all) {
+      __all = [dome, onebitmonitor, tic, pico, gbcrt]
+    }
+    return __all
+  }
+}
+
+// MARK: Palettes
+
 // Base class for Palettes
 class Palette {
   static all {}
@@ -627,47 +671,6 @@ class GBCrt is Palette {
         lightgreen,
         yellow
       ]
-    }
-    return __all
-  }
-}
-
-/**
-Contains all the palettes
-- Since: 1.0.0
-*/
-class Palettes {
-  /**
-  - Signature: `static onebitmonitor -> OneBitMonitor`
-  */
-  static onebitmonitor {OneBitMonitor}
-
-  /**
-  - Signature: `static tic -> TIC`
-  */
-  static tic {TIC}
-
-  /**
-  - Signature: `static pico -> Pico`
-  */
-  static pico {Pico}
-
-  /**
-  - Signature: `static gbcrt -> GBCrt`
-  */
-  static gbcrt {GBCrt}
-
-  /**
-  - Signature: `static dome -> DOME`
-  */
-  static dome {DOME}
-
-  /**
-  - Signature: `static all -> List`
-  */
-  static all {
-    if (!__all) {
-      __all = [dome, onebitmonitor, tic, pico, gbcrt]
     }
     return __all
   }
