@@ -23,99 +23,99 @@ The standard DOME palette
 class DOME is Palette {
 
     /**
-    - Signature: static none -> Color.none
+    - Signature: `static none -> Color.none`
     */
     static none { Color.none }
 
     /**
-    - Signature: static black -> Color
+    - Signature: `static black -> Color`
     */
     static black { Color.black }
 
     /**
-    - Signature: static darkblue -> Color
+    - Signature: `static darkblue -> Color`
     */
     static darkblue { Color.darkblue }
 
     /**
-    - Signature: static purple -> Color
+    - Signature: `static purple -> Color`
     */
     static purple { Color.purple }
 
     /**
-    - Signature: static darkpurple -> Color
+    - Signature: `static darkpurple -> Color`
     */
     static darkpurple { Color.darkpurple }
 
     /**
-    - Signature: static darkgreen -> Color
+    - Signature: `static darkgreen -> Color`
     */
     static darkgreen { Color.darkgreen }
 
     /**
-    - Signature: static brown -> Color
+    - Signature: `static brown -> Color`
     */
     static brown { Color.brown }
 
     /**
-    - Signature: static darkgrey -> Color
+    - Signature: `static darkgrey -> Color`
     */
     static darkgrey {Color.darkgray }
     static darkgray { Color.darkgray }
 
     /**
-    - Signature: static lightgrey -> Color
+    - Signature: `static lightgrey -> Color`
     */
     static lightgrey { Color.lightgray }
     static lightgray { Color.lightgray }
 
     /**
-    - Signature: static white -> Color
+    - Signature: `static white -> Color`
     */
     static white { Color.white }
 
     /**
-    - Signature: static red -> Color
+    - Signature: `static red -> Color`
     */
     static red { Color.red }
 
     /**
-    - Signature: static orange -> Color
+    - Signature: `static orange -> Color`
     */
     static orange { Color.orange }
 
     /**
-    - Signature: static yellow -> Color
+    - Signature: `static yellow -> Color`
     */
     static yellow { Color.yellow }
 
     /**
-    - Signature: static green -> Color
+    - Signature: `static green -> Color`
     */
     static green { Color.green }
 
     /**
-    - Signature: static blue -> Color
+    - Signature: `static blue -> Color`
     */
     static blue { Color.blue }
 
     /**
-    - Signature: static indigo -> Color
+    - Signature: `static indigo -> Color`
     */
     static indigo { Color.indigo }
 
     /**
-    - Signature: static pink -> Color
+    - Signature: `static pink -> Color`
     */
     static pink { Color.pink }
 
     /**
-    - Signature: static peach -> Color
+    - Signature: `static peach -> Color`
     */
     static peach { Color.peach }
 
     /**
-    - Signature: static all -> List
+    - Signature: `static all -> List`
     */
     static all {[
       black, darkblue,
@@ -134,12 +134,12 @@ Based on https://lospec.com/palette-list/1bit-monitor-glow
 class OneBitMonitor is Palette {
 
   /**
-  - Signature: static none -> Color.none
+  - Signature: `static none -> Color.none`
   */
   static none { Color.none }
 
   /**
-  - Signature: static black -> Color
+  - Signature: `static black -> Color`
   */
   static black {
     if (!__black) {
@@ -149,7 +149,7 @@ class OneBitMonitor is Palette {
   }
 
   /**
-  - Signature: static white -> Color
+  - Signature: `static white -> Color`
   */
   static white {
     if (!__white) {
@@ -159,7 +159,7 @@ class OneBitMonitor is Palette {
   }
 
   /**
-  - Signature: static all -> List
+  - Signature: `static all -> List`
   */
   static all {
     if (!__all) {
@@ -175,12 +175,12 @@ Based on https://github.com/nesbox/TIC-80/wiki/palette
 */
 class TIC is Palette {
   /**
-  - Signature: static none -> Color.none
+  - Signature: `static none -> Color.none`
   */
   static none { Color.none }
 
   /**
-  - Signature: static black -> Color
+  - Signature: `static black -> Color`
   */
   static black {
     if (!__black) {
@@ -189,7 +189,7 @@ class TIC is Palette {
     return __black
   }
   /**
-  - Signature: static purple -> Color
+  - Signature: `static purple -> Color`
   */
   static purple {
     if (!__purple) {
@@ -199,7 +199,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static red -> Color
+  - Signature: `static red -> Color`
   */
   static red {
     if (!__red) {
@@ -209,7 +209,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static orange -> Color
+  - Signature: `static orange -> Color`
   */
   static orange {
     if (!__orange) {
@@ -219,7 +219,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static yellow -> Color
+  - Signature: `static yellow -> Color`
   */
   static yellow {
     if (!__yellow) {
@@ -229,7 +229,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static lightgreen -> Color
+  - Signature: `static lightgreen -> Color`
   */
   static lightgreen {
     if (!__lightgreen) {
@@ -239,7 +239,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static green -> Color
+  - Signature: `static green -> Color`
   */
   static green {
     if (!__green) {
@@ -249,7 +249,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static darkgreen -> Color
+  - Signature: `static darkgreen -> Color`
   */
   static darkgreen {
     if (!__darkgreen) {
@@ -259,7 +259,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static darkblue -> Color
+  - Signature: `static darkblue -> Color`
   */
   static darkblue {
     if (!__darkblue) {
@@ -269,7 +269,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static blue -> Color
+  - Signature: `static blue -> Color`
   */
   static blue {
     if (!__blue) {
@@ -279,7 +279,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static lightblue -> Color
+  - Signature: `static lightblue -> Color`
   */
   static lightblue {
     if (!__lightblue) {
@@ -289,7 +289,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static cyan -> Color
+  - Signature: `static cyan -> Color`
   */
   static cyan {
     if (!__cyan) {
@@ -299,7 +299,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static white -> Color
+  - Signature: `static white -> Color`
   */
   static white {
     if (!__white) {
@@ -309,7 +309,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static lightgrey -> Color
+  - Signature: `static lightgrey -> Color`
   */
   static lightgrey {
     if (!__lightgrey) {
@@ -319,7 +319,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static grey -> Color
+  - Signature: `static grey -> Color`
   */
   static grey {
     if (!__grey) {
@@ -329,7 +329,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static darkgrey -> Color
+  - Signature: `static darkgrey -> Color`
   */
   static darkgrey {
     if (!__darkgrey) {
@@ -339,7 +339,7 @@ class TIC is Palette {
   }
 
   /**
-  - Signature: static all -> List
+  - Signature: `static all -> List`
   */
   static all {
     if (!__all) {
@@ -372,12 +372,12 @@ Based on https://pico-8.fandom.com/wiki/Palette
 */
 class Pico is Palette {
   /**
-  - Signature: static none -> Color.none
+  - Signature: `static none -> Color.none`
   */
   static none { Color.none }
 
   /**
-  - Signature: static black -> Color
+  - Signature: `static black -> Color`
   */
   static black {
     if (!__black) {
@@ -387,7 +387,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static darkblue -> Color
+  - Signature: `static darkblue -> Color`
   */
   static darkblue {
     if (!__darkblue) {
@@ -397,7 +397,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static darkpurple -> Color
+  - Signature: `static darkpurple -> Color`
   */
   static darkpurple {
     if (!__darkpurple) {
@@ -407,7 +407,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static darkgreen -> Color
+  - Signature: `static darkgreen -> Color`
   */
   static darkgreen {
     if (!__darkgreen) {
@@ -417,7 +417,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static brown -> Color
+  - Signature: `static brown -> Color`
   */
   static brown {
     if (!__brown) {
@@ -427,7 +427,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static darkgrey -> Color
+  - Signature: `static darkgrey -> Color`
   */
   static darkgrey {
     if (!__darkgrey) {
@@ -437,7 +437,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static lightgrey -> Color
+  - Signature: `static lightgrey -> Color`
   */
   static lightgrey {
     if (!__lightgrey) {
@@ -447,7 +447,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static white -> Color
+  - Signature: `static white -> Color`
   */
   static white {
     if (!__white) {
@@ -457,7 +457,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static red -> Color
+  - Signature: `static red -> Color`
   */
   static red {
     if (!__red) {
@@ -467,7 +467,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static orange -> Color
+  - Signature: `static orange -> Color`
   */
   static orange {
     if (!__orange) {
@@ -477,7 +477,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static yellow -> Color
+  - Signature: `static yellow -> Color`
   */
   static yellow {
     if (!__yellow) {
@@ -487,7 +487,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static green -> Color
+  - Signature: `static green -> Color`
   */
   static green {
     if (!__green) {
@@ -497,7 +497,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static blue -> Color
+  - Signature: `static blue -> Color`
   */
   static blue {
     if (!__blue) {
@@ -507,7 +507,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static lavender -> Color
+  - Signature: `static lavender -> Color`
   */
   static lavender {
     if (!__lavender) {
@@ -517,7 +517,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static pink -> Color
+  - Signature: `static pink -> Color`
   */
   static pink {
     if (!__pink) {
@@ -527,7 +527,7 @@ class Pico is Palette {
   }
 
   /**
-  - Signature: static lightpeach -> Color
+  - Signature: `static lightpeach -> Color`
   */
   static lightpeach {
     if (!__lightpeach) {
@@ -539,7 +539,7 @@ class Pico is Palette {
   // TODO: Add extended pico8 palette
 
   /**
-  - Signature: static all -> List
+  - Signature: `static all -> List`
   */
   static all {
     if (!__all) {
@@ -572,12 +572,12 @@ Based on https://lospec.com/palette-list/crtgb
 */
 class GBCrt is Palette {
   /**
-  - Signature: static none -> Color.none
+  - Signature: `static none -> Color.none`
   */
   static none { Color.none }
 
   /**
-  - Signature: static black -> Color
+  - Signature: `static black -> Color`
   */
   static black {
     if (!__black) {
@@ -587,7 +587,7 @@ class GBCrt is Palette {
   }
 
   /**
-  - Signature: static green -> Color
+  - Signature: `static green -> Color`
   */
   static green {
     if (!__green) {
@@ -597,7 +597,7 @@ class GBCrt is Palette {
   }
 
   /**
-  - Signature: static lightgreen -> Color
+  - Signature: `static lightgreen -> Color`
   */
   static lightgreen {
     if (!__lightgreen) {
@@ -607,7 +607,7 @@ class GBCrt is Palette {
   }
 
   /**
-  - Signature: static yellow -> Color
+  - Signature: `static yellow -> Color`
   */
   static yellow {
     if (!__yellow) {
@@ -617,7 +617,7 @@ class GBCrt is Palette {
   }
 
   /**
-  - Signature: static all -> List
+  - Signature: `static all -> List`
   */
   static all {
     if (!__all) {
@@ -638,32 +638,32 @@ Contains all the palettes
 */
 class Palettes {
   /**
-  - Signature: static onebitmonitor -> OneBitMonitor
+  - Signature: `static onebitmonitor -> OneBitMonitor`
   */
   static onebitmonitor {OneBitMonitor}
 
   /**
-  - Signature: static tic -> TIC
+  - Signature: `static tic -> TIC`
   */
   static tic {TIC}
 
   /**
-  - Signature: static pico -> Pico
+  - Signature: `static pico -> Pico`
   */
   static pico {Pico}
 
   /**
-  - Signature: static gbcrt -> GBCrt
+  - Signature: `static gbcrt -> GBCrt`
   */
   static gbcrt {GBCrt}
 
   /**
-  - Signature: static dome -> DOME
+  - Signature: `static dome -> DOME`
   */
   static dome {DOME}
 
   /**
-  - Signature: static all -> List
+  - Signature: `static all -> List`
   */
   static all {
     if (!__all) {
