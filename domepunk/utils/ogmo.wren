@@ -1,6 +1,13 @@
 /** doc-name: utils.ogmo.wren */
-import "json" for Json
 import "graphics" for Color
+import "dome" for Version
+
+// json module is available from 1.4.0 or greater
+if(!Version.atLeast("1.4.0")) {
+  Fiber.abort("DOME >= 1.4.0 required")
+}
+
+import "json" for Json
 
 /** doc-header
 ## [Ogmo](https://ogmo-editor-3.github.io/)
