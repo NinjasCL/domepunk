@@ -1,4 +1,5 @@
 /** doc-name: utils.number.wren */
+
 /**
 Simple number functions.
 - Example:
@@ -9,7 +10,12 @@ import "domepunk/utils/number" for Number
 */
 class Number {
   toNum {_num}
-  toString {_num.toString}
+  toString {toNum.toString}
+
+  /**
+  - Signature: Returns hex representation of the number
+  */
+  toHex {Number.toHex(toNum)}
 
   construct new(number) {
     _num = Num.fromString(number.toString)
