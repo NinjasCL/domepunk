@@ -22,6 +22,8 @@
 
 [**Str**](https://github.com/NinjasCL/domepunk/wiki/utils.string.wren)
 
+[**Logging**](https://github.com/NinjasCL/domepunk/wiki/utils.logging.wren)
+
 ### Tools
 
 [**WrenDoc**](https://github.com/NinjasCL/domepunk/wiki/tools.wrendoc)

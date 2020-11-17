@@ -12,6 +12,7 @@ import "domepunk/test/science/random.test" for RandomTests
 import "domepunk/test/utils/clock.test" for ClockTests
 import "domepunk/test/utils/string.test" for StrTests
 import "domepunk/test/utils/number.test" for NumberTests
+import "domepunk/test/utils/logging.test" for LoggingTests
 
 import "domepunk/test/misc/emoji.test" for EmojiTests
 
@@ -36,6 +37,7 @@ class Game {
       Runner.run(ClockTests)
       Runner.run(StrTests)
       Runner.run(NumberTests)
+      Runner.run(LoggingTests)
 
       // MARK: Graphics Tests
       Runner.run(PalettesTests)
