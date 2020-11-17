@@ -79,10 +79,14 @@ class Logger {
     this.handler = handler
   }
 
+  /**
+  */
   construct new(label) {
     this.label = label
   }
 
+  /**
+  */
   construct new() {}
 
   canLog(level) {

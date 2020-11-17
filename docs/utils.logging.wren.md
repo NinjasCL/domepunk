@@ -47,7 +47,15 @@ Get or set the configured log level.
 Creates a new Logger with specified label and handler.
 - Signature: `construct new(label:String?, handler:LogHandler?) -> Logger`
 
-### [log(level, message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L105)
+### [construct new(label)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L84)
+
+
+
+### [construct new()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L90)
+
+
+
+### [log(level, message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L109)
 
 
 Log a message passing with the `level` log level.
@@ -62,19 +70,19 @@ otherwise nothing will happen.
   - function: *optional* The function this log message originates from.
   - line: *optional* The line this log message originates from.
 
-### [log(level, message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L113)
+### [log(level, message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L117)
 
 
 
-### [log(level, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L121)
+### [log(level, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L125)
 
 
 
-### [log(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L129)
+### [log(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L133)
 
 
 
-### [trace(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L148)
+### [trace(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L152)
 
 
 Log a message passing with the `LogLevel.trace` log level.
@@ -89,15 +97,15 @@ otherwise nothing will happen.
   - function: *optional* The function this log message originates from.
   - line: *optional* The line this log message originates from.
 
-### [trace(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L154)
+### [trace(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L158)
 
 
 
-### [trace(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L160)
+### [trace(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L164)
 
 
 
-### [debug(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L177)
+### [debug(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L181)
 
 
 Log a message passing with the `LogLevel.debug` log level.
@@ -112,15 +120,15 @@ otherwise nothing will happen.
   - function: *optional* The function this log message originates from.
   - line: *optional* The line this log message originates from.
 
-### [debug(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L183)
+### [debug(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L187)
 
 
 
-### [debug(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L189)
+### [debug(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L193)
 
 
 
-### [info(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L206)
+### [info(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L210)
 
 
 Log a message passing with the `LogLevel.info` log level.
@@ -135,15 +143,15 @@ otherwise nothing will happen.
   - function: *optional* The function this log message originates from.
   - line: *optional* The line this log message originates from.
 
-### [info(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L212)
+### [info(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L216)
 
 
 
-### [info(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L218)
+### [info(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L222)
 
 
 
-### [notice(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L235)
+### [notice(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L239)
 
 
 Log a message passing with the `LogLevel.notice` log level.
@@ -158,15 +166,15 @@ otherwise nothing will happen.
   - function: *optional* The function this log message originates from.
   - line: *optional* The line this log message originates from.
 
-### [notice(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L241)
+### [notice(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L245)
 
 
 
-### [notice(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L247)
+### [notice(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L251)
 
 
 
-### [warning(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L264)
+### [warning(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L268)
 
 
 Log a message passing with the `LogLevel.warning` log level.
@@ -181,27 +189,27 @@ otherwise nothing will happen.
   - function: *optional* The function this log message originates from.
   - line: *optional* The line this log message originates from.
 
-### [warning(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L270)
+### [warning(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L274)
 
 
 
-### [warning(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L276)
+### [warning(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L280)
 
 
 
-### [warn(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L282)
+### [warn(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L286)
 
 
 
-### [warn(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L288)
+### [warn(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L292)
 
 
 
-### [warn(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L294)
+### [warn(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L298)
 
 
 
-### [error(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L311)
+### [error(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L315)
 
 
 Log a message passing with the `LogLevel.error` log level.
@@ -216,15 +224,15 @@ otherwise nothing will happen.
   - function: *optional* The function this log message originates from.
   - line: *optional* The line this log message originates from.
 
-### [error(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L317)
+### [error(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L321)
 
 
 
-### [error(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L323)
+### [error(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L327)
 
 
 
-### [critical(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L340)
+### [critical(message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L344)
 
 
 Log a message passing with the `LogLevel.critical` log level.
@@ -239,16 +247,16 @@ otherwise nothing will happen.
   - function: *optional* The function this log message originates from.
   - line: *optional* The line this log message originates from.
 
-### [critical(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L346)
+### [critical(message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L350)
 
 
 
-### [critical(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L352)
+### [critical(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L356)
 
 
 
 ---
-## [Class LogLevel](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L362)
+## [Class LogLevel](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L366)
 
 
 The log level.
@@ -257,103 +265,103 @@ Log levels are ordered by their severity, with `.trace` being the least severe a
 
 ## API
 
-### [static disable](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L369)
+### [static disable](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L373)
 
 
 Disable all logging
 
-### [static trace](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L379)
+### [static trace](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L383)
 
 
 Appropriate for messages that contain information only when debugging a program.
 
-### [static debug](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L391)
+### [static debug](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L395)
 
 
 Appropriate for messages that contain information normally of use only when
 debugging a program.
 - Alias: `log`
 
-### [static info](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L401)
+### [static info](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L405)
 
 
 Appropriate for informational messages.
 
-### [static notice](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L412)
+### [static notice](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L416)
 
 
 Appropriate for conditions that are not error conditions, but that may require
 special handling.
 
-### [static warning](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L423)
+### [static warning](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L427)
 
 
 Appropriate for messages that are not error conditions, but more severe than
 `.notice`.
 
-### [static error](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L433)
+### [static error](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L437)
 
 
 Appropriate for error conditions.
 
-### [static critical](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L444)
+### [static critical](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L448)
 
 
 Appropriate for critical error conditions that usually require immediate
 attention.
 
-### [name](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L464)
+### [name](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L468)
 
 
 Level Name
 - Signature: `name:String`
 
-### [severity](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L470)
+### [severity](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L474)
 
 
 Level Severity
 - Signature: `severity:Num`
 
 ---
-## [Class LogHandler](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L481)
+## [Class LogHandler](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L485)
 
 
 A `LogHandler` is an implementation of a logging backend.
 
 ## API
 
-### [meta](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L486)
+### [meta](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L490)
 
 
 Get or set the entire metadata storage as a map.
 
-### [meta = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L495)
+### [meta = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L499)
 
 
 
-### [meta(key, value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L503)
+### [meta(key, value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L507)
 
 
 
-### [meta(key)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L509)
+### [meta(key)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L513)
 
 
 
-### [metaReset()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L515)
+### [metaReset()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L519)
 
 
 
-### [level](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L523)
+### [level](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L527)
 
 
 Get or set the configured log level.
 Defaults to `LogLevel.info`
 
-### [level = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L532)
+### [level = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L536)
 
 
 
-### [log(level, message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L551)
+### [log(level, message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L555)
 
 
 This method is called when a `LogHandler` must emit a log message. There is no need for the `LogHandler` to
@@ -368,20 +376,20 @@ determined that a message should be logged.
   - function: The function the log line was emitted from.
   - line: The line the log message was emitted from.
 
-### [log(level, message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L555)
+### [log(level, message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L559)
 
 
 
-### [log(level, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L559)
+### [log(level, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L563)
 
 
 
-### [log(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L563)
+### [log(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L567)
 
 
 
 ---
-## [Class SystemPrintLogHandler is LogHandler](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L574)
+## [Class SystemPrintLogHandler is LogHandler](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L578)
 
 
 A Log Handler that use System.print()
