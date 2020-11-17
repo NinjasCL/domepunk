@@ -86,7 +86,7 @@ class Logger {
   construct new() {}
 
   canLog(level) {
-    return (this.level.magnitude <= level.magnitude)
+    return (this.level.severity <= level.severity)
   }
 
   /**
@@ -459,17 +459,19 @@ class LogLevel {
 
   /**
   Level Name
+  - Signature: `name:String`
   */
   name {_name || ""}
 
   /**
-  Level Importance
+  Level Severity
+  - Signature: `severity:Num`
   */
-  magnitude {_magnitude || 0}
+  severity {_severity || 0}
 
-  construct new(name, magnitude) {
+  construct new(name, severity) {
     _name = name
-    _magnitude = magnitude
+    _severity = severity
   }
 }
 

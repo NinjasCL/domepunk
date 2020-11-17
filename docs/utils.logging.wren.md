@@ -302,56 +302,58 @@ Appropriate for error conditions.
 Appropriate for critical error conditions that usually require immediate
 attention.
 
-### [name](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L463)
+### [name](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L464)
 
 
 Level Name
+- Signature: `name:String`
 
-### [magnitude](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L468)
+### [severity](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L470)
 
 
-Level Importance
+Level Severity
+- Signature: `severity:Num`
 
 ---
-## [Class LogHandler](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L479)
+## [Class LogHandler](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L481)
 
 
 A `LogHandler` is an implementation of a logging backend.
 
 ## API
 
-### [meta](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L484)
+### [meta](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L486)
 
 
 Get or set the entire metadata storage as a map.
 
-### [meta = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L493)
+### [meta = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L495)
 
 
 
-### [meta(key, value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L501)
+### [meta(key, value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L503)
 
 
 
-### [meta(key)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L507)
+### [meta(key)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L509)
 
 
 
-### [metaReset()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L513)
+### [metaReset()](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L515)
 
 
 
-### [level](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L521)
+### [level](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L523)
 
 
 Get or set the configured log level.
 Defaults to `LogLevel.info`
 
-### [level = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L530)
+### [level = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L532)
 
 
 
-### [log(level, message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L549)
+### [log(level, message, metadata, file, function, line)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L551)
 
 
 This method is called when a `LogHandler` must emit a log message. There is no need for the `LogHandler` to
@@ -366,20 +368,20 @@ determined that a message should be logged.
   - function: The function the log line was emitted from.
   - line: The line the log message was emitted from.
 
-### [log(level, message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L553)
+### [log(level, message, metadata)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L555)
 
 
 
-### [log(level, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L557)
+### [log(level, message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L559)
 
 
 
-### [log(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L561)
+### [log(message)](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L563)
 
 
 
 ---
-## [Class SystemPrintLogHandler is LogHandler](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L572)
+## [Class SystemPrintLogHandler is LogHandler](https://github.com/ninjascl/domepunk/blob/main/domepunk/utils/logging.wren#L574)
 
 
 A Log Handler that use System.print()
