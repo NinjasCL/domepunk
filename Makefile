@@ -11,6 +11,7 @@ c clean:
 	rm -f dome-${DOME_VERSION}-macosx-x64.zip
 	rm -f wren_cli-mac-${WREN_VERSION}.zip
 	rm -f wren_cli-linux-${WREN_VERSION}.zip
+	rm -rf wren_cli-linux-${WREN_VERSION}
 	rm -f dome
 	rm -f wren
 	rm -f main.wren
