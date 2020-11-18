@@ -1,6 +1,7 @@
 .DS_Store
 DOME-out.log
 dome
+wren
 main.wren
 __pycache__
 *.pyc
