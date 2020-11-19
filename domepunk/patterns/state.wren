@@ -102,10 +102,12 @@ water.do("invalid")
 */
 
 /**
+```js
 import "domepunk/patterns/state" for StateMachine
 
 // alias
 import "domepunk/patterns/state" for SM
+```
 */
 class StateMachine {
 
@@ -348,6 +350,7 @@ import "domepunk/patterns/state" for StateTransitionBuilder
 
 // alias
 import "domepunk/patterns/state" for STB
+```
 */
 class StateTransitionBuilder {
 
