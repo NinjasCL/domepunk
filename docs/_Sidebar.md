@@ -1,3 +1,17 @@
+### Design Patterns
+
+[**State Machines **](https://github.com/NinjasCL/domepunk/wiki/patterns.state.wren)
+
+### Graphics
+
+[**Palettes**](https://github.com/NinjasCL/domepunk/wiki/graphics.palettes.wren)
+
+[**Tilesets**](https://github.com/NinjasCL/domepunk/wiki/graphics.tileset.wren)
+
+### Misc
+
+[**Emoji**](https://github.com/NinjasCL/domepunk/wiki/misc.emoji.wren)
+
 ### Science
 
 [**Calculation**](https://github.com/NinjasCL/domepunk/wiki/science.calculation.wren)
@@ -8,32 +22,6 @@
 
 [**Statistics**](https://github.com/NinjasCL/domepunk/wiki/science.statistics.wren)
 
-### Unit Testing
-
-[**Assert**](https://github.com/NinjasCL/domepunk/wiki/test.unit.wren)
-
-### Utils
-
-[**Clock**](https://github.com/NinjasCL/domepunk/wiki/utils.clock.wren)
-
-[**Number**](https://github.com/NinjasCL/domepunk/wiki/utils.number.wren)
-
-[**Ogmo**](https://github.com/NinjasCL/domepunk/wiki/utils.ogmo.wren)
-
-[**Str**](https://github.com/NinjasCL/domepunk/wiki/utils.string.wren)
-
-[**Logging**](https://github.com/NinjasCL/domepunk/wiki/utils.logging.wren)
-
 ### Tools
 
 [**WrenDoc**](https://github.com/NinjasCL/domepunk/wiki/tools.wrendoc)
-
-### Misc
-
-[**Emoji**](https://github.com/NinjasCL/domepunk/wiki/misc.emoji.wren)
-
-### Graphics
-
-[**Palettes**](https://github.com/NinjasCL/domepunk/wiki/graphics.palettes.wren)
-
-[**Tilesets**](https://github.com/NinjasCL/domepunk/wiki/graphics.tileset.wren)

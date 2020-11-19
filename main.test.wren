@@ -19,6 +19,8 @@ import "domepunk/test/misc/emoji.test" for EmojiTests
 import "domepunk/test/graphics/palettes.test" for PalettesTests
 import "domepunk/test/graphics/tileset.test" for TilesetTests
 
+import "domepunk/test/patterns/state.test" for StateTests
+
 class Game {
     static init() {
       // Add your tests here
@@ -45,6 +47,9 @@ class Game {
 
       // MARK: Misc Tests
       Runner.run(EmojiTests)
+
+      // MARK: Patterns Tests
+      Runner.run(StateTests)
 
       Runner.end {
         Process.exit()
