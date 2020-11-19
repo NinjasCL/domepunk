@@ -9,6 +9,44 @@ class StateTests {
 
   static test {[
     "StateMachine", [
+      ["wildcard :from allows transition from any state",
+        Fn.new {|assert|
+        // Test the constructors using wildcard *
+        var fsm = StateMachine.new({
+        "init": "stopped",
+        "transitions": [
+          { "name": "prepare", "from": "stopped", "to": "ready"},
+          { "name": "start", "from": "ready", "to": "running"},
+          { "name": "resume", "from": "paused", "to": "running"},
+          { "name": "pause", "from": "running", "to": "paused"},
+          { "name": "stop", "from": "*", "to": "stopped"}
+        ]})
+
+        assert.equal(fsm.state.name, "stopped", "initial state should be stopped")
+
+        fsm.do("prepare")
+        assert.equal(fsm.state.name, "ready")
+        fsm.do("stop")
+        assert.equal(fsm.state.name, "stopped")
+
+        fsm.do("prepare")
+        assert.equal(fsm.state.name, "ready")
+        fsm.do("start")
+        assert.equal(fsm.state.name, "running")
+        fsm.do("stop")
+        assert.equal(fsm.state.name, "stopped")
+
+        fsm.do("prepare")
+        assert.equal(fsm.state.name, "ready")
+        fsm.do("start")
+        assert.equal(fsm.state.name, "running")
+        fsm.do("pause")
+        assert.equal(fsm.state.name, "paused")
+        fsm.do("stop")
+        assert.equal(fsm.state.name, "stopped")
+        fsm.do("stop")
+        assert.equal(fsm.state.name, "stopped")
+      }],
       [
         "single state machine",
         Fn.new {|assert|
@@ -38,18 +76,14 @@ class StateTests {
 
           "methods": {
             "before": {
-              "melt": Fn.new {|transition|
-              },
-              "freeze": Fn.new{|transition|
-              }
+              "melt": Fn.new {|transition|},
+              "freeze": Fn.new{|transition|}
             },
             "on": {
-              "melt": Fn.new{|transition|
-              }
+              "melt": Fn.new{|transition|}
             },
             "after": {
-              "melt": Fn.new{|transition|
-              }
+              "melt": Fn.new{|transition|}
             }
           }
         })

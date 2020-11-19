@@ -200,6 +200,14 @@ class StateMachine {
     return _transitions
   }
 
+  // Storage of the wildcards states
+  wildcards {
+    if (!_wildcards) {
+      _wildcards = []
+    }
+    return _wildcards
+  }
+
   /**
   Tries to execute a transition by name.
   - Signature: `do(name:String) -> this`
@@ -210,7 +218,7 @@ class StateMachine {
     var transition = transitions[name]
     var error = null
     if (transition is StateTransition) {
-      if (state.name == transition.from.name) {
+      if (state.name == transition.from.name || wildcards.contains(transition.to.name)) {
         if (transition.when()) {
           transition.before()
           _state = transition.step()
@@ -256,8 +264,6 @@ class StateMachine {
   */
   construct new(machine) {
 
-    // TODO: Support multiple states for a transition
-    // Example: https://github.com/jakesgordon/javascript-state-machine/blob/master/docs/states-and-transitions.md#multiple-states-for-a-transition
     if (!(machine is Map)) {
       Fiber.abort("State Machine %(machine) is not a Map instance")
     }
@@ -286,10 +292,35 @@ class StateMachine {
 
     var unique = {}
     for (data in machine["transitions"]) {
-      var name = data["from"]
-      unique[name] = name
-      name = data["to"]
-      unique[name] = name
+
+      var init = machine["init"]
+      if (init && init.trim().count > 0) {
+        unique[init.trim()] = init.trim()
+      }
+
+      var from = data["from"]
+      if (from) {
+        if (from is String) {
+          from = from.trim()
+          if (from.count > 0 && from != "*") {
+            unique[from] = from
+          }
+        }
+
+        if (from is List) {
+          for (name in from) {
+            name = name.trim()
+            if (name.count > 0 && name != "*") {
+              unique[name.trim()] = name.trim()
+            }
+          }
+        }
+      }
+
+      var to = data["to"]
+      if (to && to.trim().count > 0) {
+        unique[to.trim()] = to.trim()
+      }
     }
 
     unique = unique.values.toList
@@ -307,34 +338,64 @@ class StateMachine {
 
     for (data in machine["transitions"]) {
 
-      var name = data["name"]
-      var from = states[data["from"]]
-      var to = states[data["to"]]
+      var transitionName = data["name"].trim()
+      var to = data["to"].trim()
+      to = states[to]
+
+      // if missing from. assume wildcard
+      if (!data["from"]) {
+        data["from"] = "*"
+      }
+
       var when = data["when"]
 
-      var transition = StateTransition.new(name, from, to, when, this)
-      _transitions[transition.name] = transition
+      if(data["from"] is List && data["from"].count > 0) {
+        for (name in data["from"]) {
+          var from = states[name.trim()]
+          var transition = StateTransition.new(transitionName, from, to, when, this)
+          _transitions[transition.name] = transition
+        }
+      }
+
+      if (data["from"] is String) {
+        var from = data["from"].trim()
+        if (from == "*") {
+          // Wildcard includes all states
+          // If the `from` is * then the `to` is a wildcard state
+          wildcards.add(to.name)
+
+          for (name in unique) {
+            var transition = StateTransition.new(transitionName, states[name], to, when, this)
+            _transitions[transition.name] = transition
+          }
+        } else {
+          var transition = StateTransition.new(transitionName, states[from], to, when, this)
+          _transitions[transition.name] = transition
+        }
+      }
     }
 
-    for (key in machine["methods"].keys) {
-      var methods = machine["methods"][key]
-      for (name in methods.keys) {
-        var callback = methods[name]
-        var transition = transitions[name]
+    if (machine["methods"]) {
+      for (key in machine["methods"].keys) {
+        var methods = machine["methods"][key]
+        for (name in methods.keys) {
+          var callback = methods[name]
+          var transition = transitions[name]
 
-        if (key == "before") {
-          transition.before = callback
+          if (key == "before") {
+            transition.before = callback
+          }
+
+          if (key == "on") {
+            transition.on = callback
+          }
+
+          if (key == "after") {
+            transition.after = callback
+          }
+
+          _transitions[name] = transition
         }
-
-        if (key == "on") {
-          transition.on = callback
-        }
-
-        if (key == "after") {
-          transition.after = callback
-        }
-
-        _transitions[name] = transition
       }
     }
 
@@ -366,7 +427,13 @@ class StateTransitionBuilder {
   /**
   Get or sets the `from` state
   */
-  from {_from}
+  from {
+    if (!_from) {
+      // Wildcard is the default behaviour
+      _from = "*"
+    }
+    return _from
+  }
 
   /**
   */
@@ -376,10 +443,19 @@ class StateTransitionBuilder {
 
   /**
   Fluent interface
-  - Signature: `from(value:String) -> this`
+  - Signature: `from(value:<String|List>) -> this`
   */
   from(value) {
     from = value
+    return this
+  }
+
+  /**
+  Fluent interface to set from = "*"
+  - Signature: `any() -> this`
+  */
+  any() {
+    from = "*"
     return this
   }
 
@@ -558,6 +634,7 @@ class StateTransition {
 
   /**
   origin state
+  - Signature: `from:<String|List>`
   */
   from {_from}
 
@@ -677,7 +754,7 @@ class StateTransition {
   Creates a new StateTransition
   */
   construct new(name, from, to, when, machine) {
-    _name = name
+    _name = name.trim()
     _from = from
     _to = to
     _machine = machine
