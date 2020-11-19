@@ -641,9 +641,9 @@ class StateTransition {
   }
 
   /**
-  Get or sets the `when` callback
+  Get or sets the `when` callback.
+  Return false if this transition should not be executed.
   */
-  // Return false if this transition should not be executed
   when {
     if (!_when) {
       _when = Fn.new{true}

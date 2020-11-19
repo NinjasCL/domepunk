@@ -348,11 +348,11 @@ Get or sets the `before` callback
 
 Executes the `after` callback
 
-### [// Return false if this transition should not be executed
-  when](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L646)
+### [when](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L647)
 
 
-Get or sets the `when` callback
+Get or sets the `when` callback.
+Return false if this transition should not be executed.
 
 ### [when()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L663)
 
