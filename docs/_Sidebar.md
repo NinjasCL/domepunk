@@ -1,6 +1,6 @@
 ### Design Patterns
 
-[**State Machines **](https://github.com/NinjasCL/domepunk/wiki/patterns.state.wren)
+[**State Machines**](https://github.com/NinjasCL/domepunk/wiki/patterns.state.wren)
 
 ### Graphics
 
