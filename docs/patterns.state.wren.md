@@ -1,9 +1,11 @@
 <!-- file: domepunk/patterns/state.wren -->
 <!-- documentation automatically generated using domepunk/tools/doc -->
 ## State Machine
-Utility classes for creating simple [State Machines](http://gameprogrammingpatterns.com/state.html).
+Utility classes for creating simple _State Machines_.
 
-Inspired on https://github.com/jakesgordon/javascript-state-machine
+- References:
+  - https://github.com/jakesgordon/javascript-state-machine
+  - http://gameprogrammingpatterns.com/state.html
 
 - Since: `1.0.0`
 - Example:
@@ -100,7 +102,7 @@ water.do("invalid")
 ```
 
 ---
-## [Class StateMachine](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L112)
+## [Class StateMachine](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L114)
 
 
 ```js
@@ -112,51 +114,51 @@ import "domepunk/patterns/state" for SM
 
 ## API
 
-### [data](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L130)
+### [data](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L132)
 
 
 Get or set the state machine `data`
 
-### [ignoreErrors](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L147)
+### [ignoreErrors](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L149)
 
 
 By default state errors triggers a `fiber.abort()`.
 use `"ignoreErrors":true` on the constructor's Map to ignore all errors.
 
-### [onError](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L153)
+### [onError](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L155)
 
 
 By default state errors triggers a `fiber.abort()`.
 use `"onError": Fn.new {|message, name, transition, machine|}` to catch errors.
 
-### [error](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L165)
+### [error](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L167)
 
 
 Error message if available
 - Signature: `error:String?`
 
-### [state](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L170)
+### [state](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L172)
 
 
 Get the current state
 
-### [isState(name)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L181)
+### [isState(name)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L183)
 
 
 Returns true if the provided name is equal to the current state name.
 - Signature: `is(name:String) -> Bool`
 
-### [states](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L186)
+### [states](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L188)
 
 
 Map of possible states
 
-### [transitions](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L196)
+### [transitions](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L198)
 
 
 Map of possible transitions
 
-### [do(name)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L217)
+### [do(name)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L219)
 
 
 Tries to execute a transition by name.
@@ -164,12 +166,12 @@ Tries to execute a transition by name.
 - Example: `ice.do("melt")`
 - Throws: `Fiber.abort()` if `ignoreErrors` and `onError` properties are not set.
 
-### [reset()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L253)
+### [reset()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L255)
 
 
 Resets the state to the `init` value.
 
-### [construct new(machine)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L265)
+### [construct new(machine)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L267)
 
 
 Creates a new state machine.
@@ -177,7 +179,7 @@ Creates a new state machine.
 - Throws: `Fiber.abort()` if `machine` is not a Map.
 
 ---
-## [Class StateTransitionBuilder](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L416)
+## [Class StateTransitionBuilder](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L418)
 
 
 ```js
@@ -189,69 +191,69 @@ import "domepunk/patterns/state" for STB
 
 ## API
 
-### [from](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L430)
+### [from](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L432)
 
 
 Get or sets the `from` state
 
-### [from = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L440)
+### [from = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L442)
 
 
 
-### [from(value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L448)
+### [from(value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L450)
 
 
 Fluent interface
 - Signature: `from(value:<String|List>) -> this`
 
-### [any()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L457)
+### [any()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L459)
 
 
 Fluent interface to set from = "*"
 - Signature: `any() -> this`
 
-### [to](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L465)
+### [to](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L467)
 
 
 Get or sets the `to` state
 
-### [to = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L469)
+### [to = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L471)
 
 
 
-### [to(value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L477)
+### [to(value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L479)
 
 
 Fluent interface
 - Signature: `to(value:String) -> this`
 
-### [name](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L485)
+### [name](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L487)
 
 
 Get or sets the `name` for the transition
 
-### [name = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L489)
+### [name = (value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L491)
 
 
 
-### [name(value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L497)
+### [name(value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L499)
 
 
 Fluent interface
 - Signature: `name(value:String) -> this`
 
-### [when](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L505)
+### [when](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L507)
 
 
 Get or set the `when` function to determine if the transition is possible
 
-### [when(value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L514)
+### [when(value)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L516)
 
 
 Fluent interface
 - Signature: `when(value:Fn) -> this`
 
-### [construct new(name, from, to, when)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L527)
+### [construct new(name, from, to, when)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L529)
 
 
 Creates a new transition.
@@ -262,117 +264,117 @@ STB.new("melt").from("solid").to("liquid")
 ```
 
 ---
-## [Class State](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L552)
+## [Class State](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L554)
 
 
 The basic State
 
 ## API
 
-### [name](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L559)
+### [name](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L561)
 
 
 The state name
 
-### [machine](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L564)
+### [machine](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L566)
 
 
 The machine where this state belongs
 
-### [isInit](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L569)
+### [isInit](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L571)
 
 
 Is the initial state?
 
-### [children](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L578)
+### [children](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L580)
 
 
 States to transition to
 - Signature: `children : [State]`
 
-### [parents](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L597)
+### [parents](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L599)
 
 
 States from which this originates.
 - Signature: `parents : [State]`
 
 ---
-## [Class StateTransition](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L621)
+## [Class StateTransition](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L623)
 
 
 A state transition.
 
 ## API
 
-### [name](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L633)
+### [name](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L635)
 
 
 name of the transition
 
-### [from](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L639)
+### [from](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L641)
 
 
 origin state
 - Signature: `from:<String|List>`
 
-### [to](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L644)
+### [to](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L646)
 
 
 final state
 
-### [machine](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L649)
+### [machine](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L651)
 
 
 state machine reference
 
-### [before](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L654)
+### [before](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L656)
 
 
 Get or sets the `before` callback
 
-### [before()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L670)
+### [before()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L672)
 
 
 Executes the `before` callback
 
-### [on](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L677)
+### [on](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L679)
 
 
 Get or sets the `on` callback
 
-### [on()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L693)
+### [on()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L695)
 
 
 Executes the `on` callback
 
-### [after](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L700)
+### [after](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L702)
 
 
 Get or sets the `before` callback
 
-### [after()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L716)
+### [after()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L718)
 
 
 Executes the `after` callback
 
-### [when](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L724)
+### [when](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L726)
 
 
 Get or sets the `when` callback.
 Return false if this transition should not be executed.
 
-### [when()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L740)
+### [when()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L742)
 
 
 Executes the `when` callback
 
-### [step()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L748)
+### [step()](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L750)
 
 
 Triggers the `on` callback, then
 return the `to` property
 
-### [construct new(name, from, to, when, machine)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L756)
+### [construct new(name, from, to, when, machine)](https://github.com/ninjascl/domepunk/blob/main/domepunk/patterns/state.wren#L758)
 
 
 Creates a new StateTransition

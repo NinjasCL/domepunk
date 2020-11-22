@@ -8,6 +8,8 @@
 
 [**Tilesets**](https://github.com/NinjasCL/domepunk/wiki/graphics.tileset.wren)
 
+[**Resolutions**](https://github.com/NinjasCL/domepunk/wiki/graphics.res.wren)
+
 ### Misc
 
 [**Emoji**](https://github.com/NinjasCL/domepunk/wiki/misc.emoji.wren)

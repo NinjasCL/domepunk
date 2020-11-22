@@ -2,9 +2,11 @@
 
 /** doc-header
 ## State Machine
-Utility classes for creating simple [State Machines](http://gameprogrammingpatterns.com/state.html).
+Utility classes for creating simple _State Machines_.
 
-Inspired on https://github.com/jakesgordon/javascript-state-machine
+- References:
+  - https://github.com/jakesgordon/javascript-state-machine
+  - http://gameprogrammingpatterns.com/state.html
 
 - Since: `1.0.0`
 - Example:
