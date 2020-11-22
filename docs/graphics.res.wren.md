@@ -310,3 +310,30 @@ https://en.wikipedia.org/wiki/Atari_2600_hardware
 
 
 - Signature: `height:Num`
+
+---
+## [Class AppleII is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L380)
+
+
+Based on the Apple II specs _(280 x 192)_
+
+https://en.wikipedia.org/wiki/Apple_II_graphics
+
+- Since: `1.0.0`
+
+## API
+
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L385)
+
+
+- Signature: `size:Resolution`
+
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L395)
+
+
+- Signature: `width:Num`
+
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L400)
+
+
+- Signature: `height:Num`

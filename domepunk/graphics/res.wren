@@ -369,3 +369,33 @@ class Atari2600 is Resolution {
   */
   static height {size.height}
 }
+
+/**
+Based on the Apple II specs _(280 x 192)_
+
+https://en.wikipedia.org/wiki/Apple_II_graphics
+
+- Since: `1.0.0`
+*/
+class AppleII is Resolution {
+
+  /**
+  - Signature: `size:Resolution`
+  */
+  static size {
+    if (!__size) {
+      __size = Resolution.new(280, 192)
+    }
+    return __size
+  }
+
+  /**
+  - Signature: `width:Num`
+  */
+  static width {size.width}
+
+  /**
+  - Signature: `height:Num`
+  */
+  static height {size.height}
+}
