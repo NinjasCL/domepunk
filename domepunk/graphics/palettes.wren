@@ -42,12 +42,18 @@ class Palettes {
   */
   static gbcrt {GBCrt}
 
+
+  /**
+  - Signature: `static nokia-> Nokia`
+  */
+  static nokia {Nokia}
+
   /**
   - Signature: `static all -> List`
   */
   static all {
     if (!__all) {
-      __all = [dome, onebitmonitor, tic, pico, gbcrt]
+      __all = [dome, onebitmonitor, tic, pico, gbcrt, nokia]
     }
     return __all
   }
@@ -198,6 +204,48 @@ class OneBitMonitor is Palette {
   static white {
     if (!__white) {
       __white = Color.hex("#f0f6f0")
+    }
+    return __white
+  }
+
+  /**
+  - Signature: `static all -> List`
+  */
+  static all {
+    if (!__all) {
+      __all = [black, white]
+    }
+    return __all
+  }
+}
+
+/**
+Based on https://itch.io/jam/nokiajam3
+- Since: 1.0.0
+*/
+class Nokia is Palette {
+
+  /**
+  - Signature: `static none -> Color.none`
+  */
+  static none { Color.none }
+
+  /**
+  - Signature: `static black -> Color`
+  */
+  static black {
+    if (!__black) {
+      __black = Color.hex("#43523d")
+    }
+    return __black
+  }
+
+  /**
+  - Signature: `static white -> Color`
+  */
+  static white {
+    if (!__white) {
+      __white = Color.hex("#c7f0d8")
     }
     return __white
   }

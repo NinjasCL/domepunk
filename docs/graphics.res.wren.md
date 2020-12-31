@@ -57,12 +57,12 @@ https://arduboy.com/faq/
 - Signature: `height:Num`
 
 ---
-## [Class TIC80 is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L81)
+## [Class Nokia is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L81)
 
 
-Based on the TIC-80 specs _(240 x 136)_
+Based on the Nokia 3310 specs _(88 x 48)_
 
-https://github.com/nesbox/TIC-80/wiki#specification
+https://itch.io/jam/nokiajam3
 
 - Since: `1.0.0`
 
@@ -83,8 +83,50 @@ https://github.com/nesbox/TIC-80/wiki#specification
 
 - Signature: `height:Num`
 
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L109)
+
+
+- Signature: `size:Resolution`
+
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L119)
+
+
+- Signature: `width:Num`
+
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L124)
+
+
+- Signature: `height:Num`
+
 ---
-## [Class Pico8 is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L113)
+## [Class TIC80 is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L134)
+
+
+Based on the TIC-80 specs _(240 x 136)_
+
+https://github.com/nesbox/TIC-80/wiki#specification
+
+- Since: `1.0.0`
+
+## API
+
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L139)
+
+
+- Signature: `size:Resolution`
+
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L149)
+
+
+- Signature: `width:Num`
+
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L154)
+
+
+- Signature: `height:Num`
+
+---
+## [Class Pico8 is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L166)
 
 
 Based on the Pico8 specs _(128 x 128)_
@@ -95,23 +137,23 @@ https://pico-8.fandom.com/wiki/Pico8
 
 ## API
 
-### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L118)
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L171)
 
 
 - Signature: `size:Resolution`
 
-### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L128)
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L181)
 
 
 - Signature: `width:Num`
 
-### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L133)
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L186)
 
 
 - Signature: `height:Num`
 
 ---
-## [Class NES is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L143)
+## [Class NES is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L196)
 
 
 Based on the NES specs _(256 x 240)_
@@ -122,23 +164,23 @@ https://en.wikipedia.org/wiki/Nintendo_Entertainment_System
 
 ## API
 
-### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L148)
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L201)
 
 
 - Signature: `size:Resolution`
 
-### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L158)
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L211)
 
 
 - Signature: `width:Num`
 
-### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L163)
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L216)
 
 
 - Signature: `height:Num`
 
 ---
-## [Class SNES is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L175)
+## [Class SNES is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L228)
 
 
 Based on the SNES specs _(256 x 224)_ or _(512 x 448)_
@@ -149,29 +191,29 @@ https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System
 
 ## API
 
-### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L180)
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L233)
 
 
 - Signature: `size:Resolution`
 
-### [static interlaced](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L191)
+### [static interlaced](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L244)
 
 
 512 x 448
 - Signature: `size:Resolution`
 
-### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L201)
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L254)
 
 
 - Signature: `width:Num`
 
-### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L206)
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L259)
 
 
 - Signature: `height:Num`
 
 ---
-## [Class Gameboy is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L218)
+## [Class Gameboy is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L271)
 
 
 Based on the Gameboy specs _(160 x 144)_
@@ -182,23 +224,23 @@ https://en.wikipedia.org/wiki/Game_Boy
 
 ## API
 
-### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L223)
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L276)
 
 
 - Signature: `size:Resolution`
 
-### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L233)
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L286)
 
 
 - Signature: `width:Num`
 
-### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L238)
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L291)
 
 
 - Signature: `height:Num`
 
 ---
-## [Class GameboyAdvance is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L248)
+## [Class GameboyAdvance is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L301)
 
 
 Based on the Gameboy Advance specs _(240 x 160)_
@@ -209,23 +251,23 @@ https://en.wikipedia.org/wiki/Game_Boy_Advance
 
 ## API
 
-### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L253)
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L306)
 
 
 - Signature: `size:Resolution`
 
-### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L263)
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L316)
 
 
 - Signature: `width:Num`
 
-### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L268)
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L321)
 
 
 - Signature: `height:Num`
 
 ---
-## [Class PSP is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L278)
+## [Class PSP is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L331)
 
 
 Based on the Playstation Portable specs _(480 x 272)_
@@ -236,23 +278,23 @@ https://en.wikipedia.org/wiki/PlayStation_Portable
 
 ## API
 
-### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L283)
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L336)
 
 
 - Signature: `size:Resolution`
 
-### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L293)
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L346)
 
 
 - Signature: `width:Num`
 
-### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L298)
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L351)
 
 
 - Signature: `height:Num`
 
 ---
-## [Class C64 is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L309)
+## [Class C64 is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L362)
 
 
 Based on the Commondore 64 specs _(320 x 200)_ or _(160 x 200)_
@@ -263,29 +305,29 @@ https://en.wikipedia.org/wiki/Commodore_64
 
 ## API
 
-### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L314)
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L367)
 
 
 - Signature: `size:Resolution`
 
-### [static multicolor](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L325)
+### [static multicolor](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L378)
 
 
 Multicolor mode _(160 x 200)_
 - Signature: `size:Resolution`
 
-### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L335)
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L388)
 
 
 - Signature: `width:Num`
 
-### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L340)
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L393)
 
 
 - Signature: `height:Num`
 
 ---
-## [Class Atari2600 is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L350)
+## [Class Atari2600 is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L403)
 
 
 Based on the Atari 2600 specs _(160 x 192)_
@@ -296,23 +338,23 @@ https://en.wikipedia.org/wiki/Atari_2600_hardware
 
 ## API
 
-### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L355)
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L408)
 
 
 - Signature: `size:Resolution`
 
-### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L365)
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L418)
 
 
 - Signature: `width:Num`
 
-### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L370)
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L423)
 
 
 - Signature: `height:Num`
 
 ---
-## [Class AppleII is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L380)
+## [Class AppleII is Resolution](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L433)
 
 
 Based on the Apple II specs _(280 x 192)_
@@ -323,17 +365,17 @@ https://en.wikipedia.org/wiki/Apple_II_graphics
 
 ## API
 
-### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L385)
+### [static size](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L438)
 
 
 - Signature: `size:Resolution`
 
-### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L395)
+### [static width](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L448)
 
 
 - Signature: `width:Num`
 
-### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L400)
+### [static height](https://github.com/ninjascl/domepunk/blob/main/domepunk/graphics/res.wren#L453)
 
 
 - Signature: `height:Num`

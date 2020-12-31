@@ -72,6 +72,59 @@ class Arduboy is Resolution {
 }
 
 /**
+Based on the Nokia 3310 specs _(88 x 48)_
+
+https://itch.io/jam/nokiajam3
+
+- Since: `1.0.0`
+*/
+class Nokia is Resolution {
+
+  /**
+  - Signature: `size:Resolution`
+  */
+  static size {
+    if (!__size) {
+      __size = Resolution.new(88, 48)
+    }
+    return __size
+  }
+
+  /**
+  - Signature: `width:Num`
+  */
+  static width {size.width}
+
+  /**
+  - Signature: `height:Num`
+  */
+  static height {size.height}
+}
+
+class NokiaLandscape is Resolution {
+
+  /**
+  - Signature: `size:Resolution`
+  */
+  static size {
+    if (!__size) {
+      __size = Resolution.new(48, 88)
+    }
+    return __size
+  }
+
+  /**
+  - Signature: `width:Num`
+  */
+  static width {size.width}
+
+  /**
+  - Signature: `height:Num`
+  */
+  static height {size.height}
+}
+
+/**
 Based on the TIC-80 specs _(240 x 136)_
 
 https://github.com/nesbox/TIC-80/wiki#specification
